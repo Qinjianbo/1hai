@@ -19,7 +19,7 @@ class RegisterController extends Controller
 	 */
 	public function doRegister(Request $request): Collection
 	{
-        $rules = ['username' => 'required|digits:11|unique:ihai_user,username'];
+        $rules = ['username' => 'required|digits:11|unique:1hai_user,username'];
         $rules['password'] = 'required|alpha_dash';
         $rules['realname'] = 'required|string';
         $validator = Validator::make($request->all(), $rules);
