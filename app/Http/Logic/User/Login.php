@@ -25,13 +25,8 @@ class Login
 		$criteria['password'] = md5($request->input('password', ''));
 		$criteria['enabled'] = 1;
 		$userModel = new User();
+        $user = collect($userModel->where($criteria)->first());
 
-		$key = sprintf('login_user:%s', $request->input('username'));
-		if (!($user = Cache::get($key))) {
-			$expiredAt = Carbon::now()->addMinutes(60);
-			$user = collect($userModel->where($criteria)->first());
-			Cache::store('redisLogin')->put($key, $user, $expiredAt);
-		}
-		return $user;
+        return $user;
 	}		    
 }
