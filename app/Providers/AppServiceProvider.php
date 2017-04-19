@@ -16,9 +16,9 @@ class AppServiceProvider extends ServiceProvider
     {
 	    DB::listen(function ($query) {
 	        $prepareSql = str_replace(["?","\r\n", "\r", "\n"], ["'%s'", '', '', ''], $query->sql);
-		$prepareSql = preg_replace('/:[0-9a-z_]+/i', "'%s'", $prepareSql);
-		$sql = vsprintf($prepareSql, $query->bindings);
-		info(sprintf('sql:%s cost:%dms', $sql, $query->time));
+		    $prepareSql = preg_replace('/:[0-9a-z_]+/i', "'%s'", $prepareSql);
+		    $sql = vsprintf($prepareSql, $query->bindings);
+		    info(sprintf('sql:%s cost:%dms', $sql, $query->time));
 	    });
     }
 
