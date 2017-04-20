@@ -4,23 +4,23 @@ namespace App\Http\Responses;
 
 use Illuminate\Http\Response as BaseResponse;
 
-class Response extends BaseResponse
+class MobileResponse extends BaseResponse
 {
     /**
-     * code
+     * responseStatus
      *
      * public @int
      *
      * @access public
      */
-    public $code = 200;
+    public $responseStatus = 200;
     /**
-     * info
+     * responseMsg
      *
      * @public string
      * @access public
      */
-    public $info = 'OK';
+    public $responseMsg = 'OK';
     /**
      * __construct
      *
@@ -30,10 +30,10 @@ class Response extends BaseResponse
      * @access public
      * @return mixed
      */
-    public function __construct($content = '', $status = 200, $headers = array(), $code = 200, $info = 'OK')
+    public function __construct($content = '', $status = 200, $headers = array(), $responseStatus = 200, $responseMsg = 'OK')
     {
-        $this->code = $code;
-        $this->info = $info;
+        $this->responseStatus = $responseStatus;
+        $this->responseMsg = $responseMsg;
         parent :: __construct($content, $status, $headers);
     }
     /**
@@ -45,7 +45,7 @@ class Response extends BaseResponse
      */
     public function setContent($content)
     {
-        parent :: setContent(['code'=>$this->code, 'info'=>$this->info, 'data'=>$content]);
+        parent :: setContent(['ResponseStatus'=>$this->responseStatus, 'ResponseMsg'=>$this->responseMsg, 'ResponseData'=>$content]);
     }
     /**
      * Morph the given content into JSON.
@@ -61,8 +61,16 @@ class Response extends BaseResponse
 
         return json_encode($content, JSON_UNESCAPED_UNICODE);
     }
+    /**
+     * getCode
+     *
+     *
+     * @access public
+     *
+     * @return mixed
+     */
     public function getCode()
     {
-        return $this->code;
+        return $this->responseStatus;
     }
 }
