@@ -6,19 +6,6 @@
     <title>
         注册_一嗨租车
     </title>
-    <meta property="qc:admins" content="246245640410116367">
-    <link rel="shortcut icon" href="https://my.1hai.cn/favicon.ico?v=4ff0a68b31414931b6fa89756d1f0da3"
-          type="image/x-icon">
-    <script charset="utf-8" src="/js/register/b.js">
-    </script>
-    <script charset="utf-8" src="/js/register/v.js">
-    </script>
-    <script type="text/javascript" async="" src="/js/register/sm.js">
-    </script>
-    <script type="text/javascript" async="" src="/js/register/s.js">
-    </script>
-    <script src="/js/register/hm.js">
-    </script>
     <script async="async">
         var appInsights = window.appInsights ||
             function(c) {
@@ -54,14 +41,8 @@
         window.appInsights = appInsights;
         appInsights.trackPageView();
     </script>
-    <script src="/js/register/ai.0.js">
-    </script>
-    <link href="/css/common" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
     <link href="/css/register/register.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="/js/register/g" charset="utf-8">
-    </script>
-    <script src="/js/register/pc_nb.js" charset="UTF-8">
-    </script>
     <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
@@ -88,20 +69,18 @@
             <h3>
                 会员注册
             </h3>
-            <form action="https://my.1hai.cn/Register" id="myform" method="post">
-                <input name="__RequestVerificationToken" type="hidden" value="tmUINl5DBF44o-mVg8RGqcuMfc6_-u-Lv_wxyPaHs_pp_ZOadX7BFU-g7hPH1S4fh0rKbw2">
+            <form action="" id="myform" method="post">
                 <div class="reg-info">
                     <div class="reg-li">
 								<span>
 									姓名 :
 								</span>
                         <input class="input-name" id="TrueName" maxlength="20" name="TrueName"
-                               placeholder="请输入您的真实姓名" type="text" value="">
+                               placeholder="请输入您的真实姓名" type="text" value="" onblur="checkTrueName(this)">
                         <em>
                             *
                         </em>
-                        <i class="error-msg">
-                            请输入您的真实姓名
+                        <i class="error-msg" id="TrueName-error-msg">
                         </i>
                     </div>
                     <div class="reg-li">
@@ -109,32 +88,24 @@
 									手机号码 :
 								</span>
                         <input class="input-phone" id="PhoneNumber" maxlength="15" name="PhoneNumber"
-                               placeholder="请输入7到15位手机号码" type="text" value="">
+                               placeholder="请输入7到15位手机号码" type="text" value="" onblur="checkMobile(this)">
                         <em>
                             *
                         </em>
-                        <i class="error-msg">
-                            手机号码为空
+                        <i id="PhoneNumber-error-msg" class="error-msg">
                         </i>
                     </div>
                     <div class="reg-li">
 								<span>
 									图片验证码 :
 								</span>
-                        <input class="input-imgcode" id="txtCapthca" maxlength="4" name="ImgCode"
-                               placeholder="请输入您的图形验证码" type="text" value="">
+                        <input class="input-imgcode" id="txtCapthca" maxlength="5" name="ImgCode"
+                               placeholder="请输入您的图形验证码" type="text" value="" onblur="checkCaptha(this)">
                         <img class="imgCaptcha" id="imgCaptcha" src="/captcha">
-                        <script type="application/javascript">
-                            var imgCaptcha = document.getElementById("imgCaptcha");
-                            imgCaptcha.onclick = function () {
-                                this.src = "/captcha?v=" + Math.random();
-                            };
-                        </script>
                         <em>
                             *
                         </em>
-                        <i class="error-msg">
-                            验证码为空
+                        <i id="txtCapthca-error-msg" class="error-msg">
                         </i>
                     </div>
                     <div class="reg-li clear_float">
@@ -144,7 +115,7 @@
                         <div class="reg-pwd">
                             <div id="pass">
                                 <input class="input-pwd" id="password" name="Password" value="" type="text"
-                                       maxlength="18" placeholder="6-18个字符，请使用英文字母、数字或者组合">
+                                       maxlength="18" placeholder="6-18个字符，请使用英文字母、数字或者组合" onblur="checkPassword()">
                             </div>
                             <i id="pwd-state" class="pwd-hide">
                             </i>
@@ -152,8 +123,7 @@
                         <em>
                             *
                         </em>
-                        <i class="error-msg">
-                            请设置您的密码
+                        <i id="password-error-msg" class="error-msg">
                         </i>
                     </div>
                     <div class="reg-operate">
@@ -244,7 +214,7 @@
                 <a href="http://www.1hai.cn/link.aspx" rel="nofollow" target="_blank">
                     友情链接
                 </a>
-                | &nbsp;投诉通道：微信 - a654456239 &nbsp;
+                | &nbsp;投诉通道：15921446112
             </p>
             <p>
                 &nbsp;Copyright © 2007-2017 吴涛租车平台
@@ -252,8 +222,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="/js/register/register" async="async">
-</script>
 <script async="async" type="text/javascript">
     (function(b) {
         var e = {
@@ -353,5 +321,87 @@
     </ins>
     <!-- end -->
 </ins>
+<script type="application/javascript">
+    function httpajax(method,data,url){
+        var xhr=null;
+        if(window.XMLHttpRequest){
+            xhr=new XMLHttpRequest();
+        }else{
+            xhr=new ActiveXObject(Microsoft.XMLHttp);
+        }
+        method=="post"?"post":"get";
+        xhr.open(method,url,true);
+        if(method=="post"){
+            xhr.send(data)
+        }
+        else{
+            xhr.send(null);
+        }
+    }
+    var btnSubmit = document.getElementById("btnSubmit");
+    btnSubmit.onclick = function () {
+        var TrueName = document.getElementById("TrueName");
+        var PhoneNumber = document.getElementById("PhoneNumber");
+        var txtCapthca = document.getElementById("txtCapthca");
+        var password = document.getElementById("password");
+        if (checkTrueName(TrueName)) {
+            if (checkMobile(PhoneNumber)) {
+                if (checkCaptha(txtCapthca)) {
+                    if (checkPassword(password)) {
+
+                    } else {
+                        password.focus();
+                    }
+                } else {
+                    txtCapthca.focus();
+                }
+            } else {
+                PhoneNumber.focus();
+            }
+        } else {
+            TrueName.focus();
+        }
+    }
+    var imgCaptcha = document.getElementById("imgCaptcha");
+    imgCaptcha.onclick = function () {
+        this.src = "/captcha?v=" + Math.random();
+    };
+    function checkTrueName(obj) {
+        var n = obj,
+            t = trim(n.value),
+            i = !/^[a-zA-Z\u3400-\u9FFF]+$/.test(t);
+        return t.length === 0 ? (vercError(n, "请输入您的真实姓名"), !1) : t.length < 2 ? (vercError(n, "请输入2-20个字符"), !1) : t.length > 0 && i ? (vercError(n, "限汉字、英文字母2-20个字符"), !1) : (vercTrue(n), !0)
+    }
+    function checkMobile(obj) {
+        var n = obj,
+            t = trim(n.value),
+            i = !/^\d{7,15}$/.test(t);
+        return t.length === 0 ? (vercError(n, "手机号码为空"), !1) : t.length < 7 || t.length > 15 ? (vercError(n, "请输入7到15位手机号码"), !1) : t.length > 0 && i ? (vercError(n, "手机号码格式错误"), !1) : (vercTrue(n), !0)
+    }
+    function checkCaptha(obj) {
+        var n = obj,
+            i = trim(n.value);
+        return i.length === 0 ? (vercError(n, "验证码为空"), !1) : (vercTrue(n), !0)
+    }
+    function checkPassword(obj) {
+        var i = obj,
+            n = trim(i.value),
+            r = !/^[A-Za-z0-9]+$/.test(n);
+        return n.length === 0 ? (vercError(i, "请设置密码"), !1) : n.length < 6 || n.length > 18 ? (vercError(i,"请输入6-18个字符"), !1) : n.length > 0 && r ? (vercError(i,"限数字、英文字母6-18个字符"), !1) : (vercError(i,"error-msg").text(""), !0)
+    }
+    function vercError(n, t) {
+        var err = document.getElementById(n.id + "-error-msg");
+        err.className = "error-msg";
+        err.innerHTML = t;
+    }
+    function vercTrue(n) {
+        var err = document.getElementById(n.id + "-error-msg");
+        err.className = "";
+        err.innerHTML = "";
+    }
+    function trim(str){ //删除左右两端的空格
+        return str.replace(/(^\s*)|(\s*$)/g, "");
+    }
+</script>
 </body>
 </html>
