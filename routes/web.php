@@ -23,4 +23,4 @@ Route::get('blade', function () {
 Route::get('login', function() {
 	return view('user.login');
 });
-Route::get('captcha', 'Controller@getCaptcha');
+Route::get('/captcha', 'Controller@getCaptcha');

@@ -123,29 +123,18 @@
 								</span>
                         <input class="input-imgcode" id="txtCapthca" maxlength="4" name="ImgCode"
                                placeholder="请输入您的图形验证码" type="text" value="">
-                        <img class="imgCaptcha" id="imgCode" src="/js/DrawImage">
+                        <img class="imgCaptcha" id="imgCaptcha" src="/captcha">
+                        <script type="application/javascript">
+                            var imgCaptcha = document.getElementById("imgCaptcha");
+                            imgCaptcha.onclick = function () {
+                                this.src = "/captcha?v=" + Math.random();
+                            };
+                        </script>
                         <em>
                             *
                         </em>
                         <i class="error-msg">
                             验证码为空
-                        </i>
-                    </div>
-                    <div class="reg-li">
-								<span>
-									校验码 :
-								</span>
-                        <input class="input-code" id="SmsCode" maxlength="6" name="SmsCode" placeholder="请输入您的校验码"
-                               type="text" value="">
-                        <input class="input-codebtn" id="btnActive" type="button" value="获取校验码">
-                        <span style="display: none;" id="time">
-									重新获取
-								</span>
-                        <em>
-                            *
-                        </em>
-                        <i class="error-msg">
-                            请输入您的校验码
                         </i>
                     </div>
                     <div class="reg-li clear_float">
@@ -214,169 +203,7 @@
                 </dd>
             </dl>
             <div class="reg-banenr">
-                <img src="./注册_一嗨租车_files/reg-banner.jpg" width="100%">
-            </div>
-        </div>
-    </div>
-</div>
-<div class="agreement-wd" id="wd">
-    <div class="agreement-wdbg">
-    </div>
-    <div class="agreement-popup">
-        <div class="popup-close" id="wd_close">
-        </div>
-        <div class="agreement-box">
-            <div class="agreement-box-title">
-                一嗨租车会员注册协议
-            </div>
-            <div class="agreement-txt">
-                <h1>
-                    注册协议
-                </h1>
-                <h3>
-                    1．特别提示
-                </h3>
-                <p>
-                    1.1一嗨汽车租赁有限公司（以下简称“一嗨租车”）同意按照本协议的规定及其不时发布的操作规则提供基于互联网的相关服务（以下称“网络服务”），为获得网络服务，服务使用人（以下称“用户”）应当同意本协议的全部条款并按照页面上的提示完成全部的注册程序。用户注册成功即表示用户完全接受本协议项下的全部条款。
-                </p>
-                <p>
-                    1.2用户注册成功后，一嗨租车将给予每个用户一个用户帐号及相应的密码，该用户帐号和密码由用户自行保管。用户首次租赁车辆用车完毕后，如未产生任何纠纷，一嗨租车将通过邮递或其他方式向用户寄送会员卡。
-                </p>
-                <p>
-                    1.3为提供更好的服务，一嗨租车有权使用通过合法途径获得的用户其他身份信息（如身份证照片等）用于为用户提供服务，该信息是依据用户提供的身份信息而合法获取的，且仅限用于为客户提供服务。
-                </p>
-                <h3>
-                    2. 服务内容
-                </h3>
-                <p>
-                    2.1通过一嗨租车网站在线预订车辆、查询价格车型信息、对提供的服务发表意见等。（具体查看公司网页http://www.1hai.cn/）
-                </p>
-                <h3>
-                    3. 服务变更、中断或终止
-                </h3>
-                <p>
-                    3.1鉴于网络服务的特殊性，用户授权一嗨租车可随时变更、中断或终止部分或全部的网络服务。由于一嗨租车需要定期或不定期地对提供网络服务的平台（如互联网网站）或相关的设备进行检修或者维护，如因此类情况而造成网络服务在合理时间内的中断，一嗨租车无需为此承担任何责任。
-                </p>
-                <p>
-                    3.2如发生下列任何一种情形，一嗨租车有权在通知用户后中断或终止向用户提供本协议项下的网络服务而无需对用户或任何第三方承担任何责任：
-                </p>
-                <p>
-                    3.2.1 用户提供的个人资料不真实；
-                </p>
-                <p>
-                    3.2.2 用户违反本协议中规定的使用规则；
-                </p>
-                <p>
-                    3.3如用户注册的帐号在任何连续180日内未实际使用，则一嗨租车有权删除该帐号并停止为该用户提供相关的网络服务。
-                </p>
-                <h3>
-                    4. 使用规则
-                </h3>
-                <p>
-                    4.1用户在申请使用一嗨租车网络服务时，必须向一嗨租车提供准确的个人资料，如个人资料有任何变动，必须在三个工作日内更新。
-                </p>
-                <p>
-                    4.2用户需妥善保管其个人账号密码，无论基于何种相关目的，都不允许将帐号、密码转让或出借于他人使用。如用户发现其帐号遭他人非法使用，应当立即通知一嗨租车。因黑客行为、用户的保管疏忽导致帐号、密码遭他人非法使用或用户将其帐号、密码转让或出借于他人使用而导致任何的客户损失，一嗨租车不承担任何责任。
-                </p>
-                <p>
-                    4.3 用户注册成功后，视为允许一嗨租车通过电子邮件或其他方式向用户发送一嗨租车的优惠服务信息。
-                </p>
-                <p>
-                    4.4用户在使用一嗨租车网络服务过程中，必须遵循以下原则：
-                </p>
-                <p>
-                    4.4.1 遵守中国有关的法律和法规；
-                </p>
-                <p>
-                    4.4.2 遵守所有与网络服务有关的网络协议、规定和程序；
-                </p>
-                <p>
-                    4.4.3 不得为任何非法目的而使用网络服务系统；
-                </p>
-                <p>
-                    4.4.4 不得利用一嗨租车网络服务系统进行任何不利于一嗨租车的行为
-                </p>
-                <h3>
-                    5. 知识产权
-                </h3>
-                <p>
-                    一嗨租车提供的服务中包含的任何文本、图片、图形、音频和/或视频资料均受版权、商标和/或其它财产所有权法律的保护，未经相关权利人同意，上述资料均不得在任何媒体直接或间接发布、播放、出于播放或发布目的而改写或再发行，或者被用于其他任何商业目的。所有这些资料或资料的任何部分仅可作为私人和非商业用途而保存在某台计算机内。一嗨租车为提供服务而使用的任何软件（包括但不限于软件中所含的任何图象、照片、动画、录像、录音、音乐、文字和附加程序、随附的帮助材料）的一切权利均属于该软件的著作权人，未经该软件的著作权人许可，用户不得对该软件进行反向工程（reverse
-                    engineer）、反向编译（decompile）或反汇编（disassemble）。
-                </p>
-                <h3>
-                    6. 隐私保护
-                </h3>
-                <p>
-                    6.1保护用户隐私是一嗨租车的一项基本政策，一嗨租车保证不对外公开或向第三方提供单独用户的注册资料及用户在使用网络服务时存储在一嗨租车的非公开内容，但下列情况除外：
-                </p>
-                <p>
-                    6.1.1 事先获得用户的明确授权；
-                </p>
-                <p>
-                    6.1.2 根据有关的法律法规要求；
-                </p>
-                <p>
-                    6.1.3 按照相关政府主管部门的要求；
-                </p>
-                <p>
-                    6.1.4 为维护社会公众的利益；
-                </p>
-                <p>
-                    6.1.5 为维护一嗨租车的合法权益
-                </p>
-                <p>
-                    6.2当一嗨租车与第三方合作向用户提供相关的网络服务，在此情况下，如该第三方允诺严格承担与一嗨租车同等的保护用户隐私的责任，则视为客户授权一嗨租车将包含其个人注册资料在内的相关信息仅提供给该等第三方。
-                </p>
-                <h3>
-                    7. 免责声明
-                </h3>
-                <p>
-                    7.1用户明确同意其使用一嗨租车网络服务所存在的风险将完全由其自己承担；因其使用一嗨租车网络服务而产生的一切后果也由其自己承担，一嗨租车对用户不承担任何责任。
-                </p>
-                <p>
-                    7.2一嗨租车不保证为向用户提供便利而设置的外部链接的准确性和完整性。同时，对于该等外部链接指向的不由一嗨租车实际控制的任何网页上的内容，一嗨租车不承担任何责任。
-                </p>
-                <p>
-                    7.3对于因不可抗力或非因一嗨租车的原因造成的网络服务中断或其它缺陷，一嗨租车不承担任何责任。
-                </p>
-                <h3>
-                    8. 违约赔偿
-                </h3>
-                <p>
-                    8.1如因一嗨租车违反有关法律、法规或本协议项下的任何条款而给用户造成损失，一嗨租车同意承担由此造成的损害赔偿责任。
-                </p>
-                <p>
-                    8.2用户同意保障和维护一嗨租车及其他用户的合法利益，如因用户违反有关法律、法规或本协议项下的任何条款而给一嗨租车或任何其他第三人造成损失，用户同意承担由此造成的一切损害赔偿责任。
-                </p>
-                <h3>
-                    9. 协议修改
-                </h3>
-                <p>
-                    9.1一嗨租车有权随时修改本协议的任何条款，一旦本协议的内容发生变动，一嗨租车将会在http://www.1hai.cn/网站上公布修改之后的协议内容，该公布行为视为一嗨租车已经通知用户修改内容。
-                </p>
-                <p>
-                    9.2如果不同意一嗨租车对本协议相关条款所做的修改，用户有权停止使用网络服务。如果用户继续使用网络服务，则视为用户接受一嗨租车对本协议相关条款所做的修改
-                </p>
-                <h3>
-                    10. 通知送达
-                </h3>
-                <p>
-                    10.1本协议项下一嗨租车对于用户所有的通知均可通过网页公告、电子邮件、手机短信或常规的信件传送等方式进行；一嗨租车可任意选择其中一种方式通知用户，该通知于发送之日视为已送达用户，用户知悉并接受通知之内容。
-                </p>
-                <p>
-                    10.2 用户如有任何事宜需通知一嗨租车，应当通过一嗨租车对外正式公布的通信地址、传真号码、电子邮件地址等联系方式进行联系及送达。
-                </p>
-                <h3>
-                    11. 法律管辖
-                </h3>
-                <p>
-                    如双方就本协议内容或其执行发生任何争议，双方应友好协商解决；协商不成时，任何一方均可向一嗨汽车租赁有限公司所在地的人民法院提起诉讼。
-                </p>
-            </div>
-            <div class="agreement-btn">
-                <a href="javascript:void(0)" id="isArgee">
-                    已阅读同意条款
-                </a>
+                <img src="/pictures/reg-banner.jpg" width="100%">
             </div>
         </div>
     </div>
@@ -417,53 +244,15 @@
                 <a href="http://www.1hai.cn/link.aspx" rel="nofollow" target="_blank">
                     友情链接
                 </a>
-                | &nbsp;投诉通道：400-821-1608 &nbsp;
+                | &nbsp;投诉通道：微信 - a654456239 &nbsp;
             </p>
             <p>
-                &nbsp;Copyright © 2007-2017 上海一嗨信息技术服务有限公司
-                <a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">
-                    ICP证：沪B2-20140130
-                </a>
+                &nbsp;Copyright © 2007-2017 吴涛租车平台
             </p>
-        </div>
-        <div class="footer-right">
-            <a href="http://www.itrust.org.cn/yz/pjwx.asp?wm=1088681241">
-                <img src="./注册_一嗨租车_files/itrust_icon.jpg">
-            </a>
-            <a href="http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&amp;entyId=20120327164136446"
-               target="_blank">
-                <img src="./注册_一嗨租车_files/shgs.png">
-            </a>
         </div>
     </div>
 </div>
-<script async="async">
-    var GlobalUrl = {
-        submitRegisterPhone: '/Register',
-        getCaptcha: '/Common/DrawImage',
-        loginCaptcha: '/Common/LoginDrawImage',
-        fastLoginCaptcha: '/Common/FastLoginDrawImage',
-        sendMessageCode: '/Register/SendMessage',
-        existUrl: '/Register/Exists',
-        CollectBooking: '/Common/CollectBooking',
-        FindPasswordCaptchaCode: '/Common/FindPasswordCaptchaCode'
-    };
-</script>
 <script type="text/javascript" src="/js/register/register" async="async">
-</script>
-<script>
-    var URL = {
-        returnUrl: 'http://www.1hai.cn/',
-        completeUrl: '/Register/Complete'
-    };
-</script>
-<script async="async">
-    var _hmt = _hmt || []; (function() {
-        var b = document.createElement("script");
-        b.src = "//hm.baidu.com/hm.js?3d7f6839f5a39e141432b11842e73e26";
-        var a = document.getElementsByTagName("script")[0];
-        a.parentNode.insertBefore(b, a)
-    })();
 </script>
 <script async="async" type="text/javascript">
     (function(b) {
@@ -479,19 +268,6 @@
         var a = document.getElementsByTagName("script")[0];
         a.parentNode.insertBefore(d, a)
     })(window.__zp_tag_params);
-</script>
-<!-- Admaster监测代码部署-->
-<script type="text/javascript" async="async">
-    var _smq = _smq || [];
-    _smq.push(['_setAccount', '251d452', new Date()]);
-    _smq.push(['pageview']); (function() {
-        var sm = document.createElement('script');
-        sm.type = 'text/javascript';
-        sm.async = true;
-        sm.src = ('https:' == document.location.protocol ? 'https://': 'http://') + 'cdnmaster.com/sitemaster/sm.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(sm, s);
-    })();
 </script>
 <ins id="newBridge">
     <!-- target: nodeBoard -->
@@ -578,5 +354,4 @@
     <!-- end -->
 </ins>
 </body>
-
 </html>
