@@ -7,9 +7,6 @@
         注册_一嗨租车
     </title>
     <meta property="qc:admins" content="246245640410116367">
-    <meta content="租车,汽车租赁" name="keywords">
-    <meta content="一嗨租车-中国汽车租赁行业引领者，在全国120多座城市开设了1600多个直营租车网点，拥有100多款车型，3万多台自营车辆，满足各种用户需求。提供自驾租车、商务租车，不限里程，无纸交接，24小时客服，让您可以随时随地享受无忧的用车服务。"
-          name="description">
     <link rel="shortcut icon" href="https://my.1hai.cn/favicon.ico?v=4ff0a68b31414931b6fa89756d1f0da3"
           type="image/x-icon">
     <script charset="utf-8" src="/js/register/b.js">
@@ -73,9 +70,6 @@
         <a class="login-link" href="http://www.1hai.cn/" target="_self" title="一嗨租车">
         </a>
         <div class="head-nav">
-            <a href="http://www.1hai.cn/help/index.aspx">
-                帮助中心
-            </a>
             <span class="line">
 						|
 					</span>
@@ -173,25 +167,7 @@
                             请设置您的密码
                         </i>
                     </div>
-                    <div class="reg-li">
-								<span>
-									邀请码 :
-								</span>
-                        <input class="input-invitecode" id="InviteCode" maxlength="10" name="InviteCode"
-                               placeholder="" type="text" value="">
-                        <em>
-                        </em>
-                        <i class="">
-                        </i>
-                    </div>
                     <div class="reg-operate">
-                        <div class="reg-agree">
-                            <input id="IsAgreement" name="IsAgreement" type="checkbox" checked="checked">
-                            我已阅读并接受
-                            <a href="javascript:void(0)" id="argee">
-                                《一嗨租车会员注册协议》
-                            </a>
-                        </div>
                         <div class="reg-btn">
                             <a href="javascript:void(0)" type="submit" id="btnSubmit" class="reg-disable">
                                 注册
