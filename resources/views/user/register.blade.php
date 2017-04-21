@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>
-        注册_一嗨租车
+        注册_吴涛租车
     </title>
     <script async="async">
         var appInsights = window.appInsights ||
@@ -237,90 +237,6 @@
         a.parentNode.insertBefore(d, a)
     })(window.__zp_tag_params);
 </script>
-<ins id="newBridge">
-    <!-- target: nodeBoard -->
-    <ins class="nb-nodeboard-base nb-nodeboard-position-base nb-nodeboard-left-bottom nb-hide"
-         id="nb_nodeboard">
-        <ins class="nb-nodeboard-contain-base nb-nodeboard-contain">
-            <ins class="nb-nodeboard-top nb-nodeboard-top-0">
-                <ins class="nb-head-title">
-                    请您留言
-                </ins>
-                <ins class="nb-nodeboard-close" id="nb_nodeboard_close" data-type="min">
-                </ins>
-            </ins>
-            <form id="nb_nodeboard_form" autocomplete="off" class="nb-board-form"
-                  action="https://p.qiao.baidu.com/cps//bookmanage/saveBook.action?userId=1362481"
-                  method="post" accept-charset="utf-8">
-                <ins id="nb_nodeboard_set" class="nb-nodeboard-set">
-                    <ins class="nb-nodeboard-content">
-								<textarea id="nb-nodeboard-set-content-js" name="content" data-ph="请在此输入留言内容，我们会尽快与您联系。（必填）"
-                                          placeholder="请在此输入留言内容，我们会尽快与您联系。（必填）" class="nb-nodeboard-set-content">
-								</textarea>
-                    </ins>
-                    <ins class="nb-nodeboard-name" style="z-index:4;">
-                        <ins class="nb-nodeboard-icon nodeName">
-                        </ins>
-                        <input id="nb_nodeboard_set_name" data-write="1" name="visitorName" maxlength="30"
-                               class="nb-nodeboard-input" type="text" data-ph="姓名（必填）" placeholder="姓名（必填）">
-                    </ins>
-                    <ins class="nb-nodeboard-name" id="nb_nodeboard_phone" style="z-index:3;">
-                        <ins class="nb-nodeboard-icon nodePhone">
-                        </ins>
-                        <input id="nb_nodeboard_set_phone" name="visitorPhone" maxlength="30"
-                               class="nb-nodeboard-input" data-write="1" type="text" data-ph="电话（必填）"
-                               placeholder="电话（必填）">
-                    </ins>
-                </ins>
-            </form>
-            <ins class="nb-nodeboard-success" id="nb_nodeboard_success">
-                <ins class="nb-success-box">
-                    <ins class="nb-success-icon">
-                    </ins>
-                    <ins class="nb-success-title" id="nb_node_messagetitle">
-                        感谢留言
-                    </ins>
-                    <ins class="nb-success-content" id="nb_node_messagecontent">
-                        我们会尽快与您联系
-                    </ins>
-                    <ins id="sucess_close" class="nb-sucess-close">
-                        关闭
-                    </ins>
-                </ins>
-            </ins>
-            <ins class="nb-nodeboard-send" id="nb_node_contain">
-                <ins id="nb_nodeboard_send" class="nb-nodeboard-send-btn nb-nodeboard-send-btn-0">
-                    发送
-                </ins>
-            </ins>
-        </ins>
-    </ins>
-    <!-- end -->
-    <!-- target: invite -->
-    <ins class="nb-invite-wrap nb-invite-wrap-base nb-position-base nb-left-bottom  "
-         id="nb_invite_wrap" style="width:290px;display:none;;">
-        <ins class="nb-invite-body nb-invite-skin-0" style="height:125px;">
-            <ins class="nb-invite-tool nb-invite-tool-base" id="nb_invite_tool" style="">
-            </ins>
-            <ins class="nb-invite-text nb-invite-text-base">
-                <ins class="nb-invite-welcome nb-invite-welcome-base nb-show" id="nb_invite_welcome">
-                    <p style="color: #fff">
-                        欢迎来到本网站，请问有什么可以帮您？
-                    </p>
-                </ins>
-            </ins>
-            <ins class="nb-invite-btn-base nb-invte-btns-0">
-                <ins class="nb-invite-cancel nb-invite-cancel-base" id="nb_invite_cancel">
-                    稍后再说
-                </ins>
-                <ins class="nb-invite-ok nb-invite-ok-base" id="nb_invite_ok">
-                    现在咨询
-                </ins>
-            </ins>
-        </ins>
-    </ins>
-    <!-- end -->
-</ins>
 <script type="application/javascript">
     function httpajax(method,data,url){
         var xhr=null;

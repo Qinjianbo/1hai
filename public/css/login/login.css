@@ -1,0 +1,224 @@
+.login-wrap {
+    width: 100%;
+}
+
+.login-box {
+    width: 950px;
+    height: 375px;
+    margin: 0 auto;
+    background: url(Images/login_bg.jpg) no-repeat;
+    position: relative;
+}
+
+.login-pd {
+    padding-bottom: 35px;
+}
+
+.login-pannel {
+    width: 360px;
+    border: 1px solid #08c;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.login-form {
+    padding: 10px 20px 35px 20px;
+}
+.login-form .login-title {
+    font-size: 18px;
+    color: #333;
+    font-family: "\5fae\8f6f\96c5\9ed1";
+    position: relative;
+    height: 42px;
+    line-height: 38px;
+    border-bottom: 1px solid #08c;
+}
+.login-form .login-title span {
+    position: absolute;
+    right: 0;
+    font-size: 12px;
+    font-family: tahoma,arial,"\5b8b\4f53",sans-serif;
+    text-align: right;
+    color: #999;
+}
+.login-form p {
+    height: 32px;
+    line-height: 32px;
+    font-family: "\5fae\8f6f\96c5\9ed1";
+    font-size: 16px;
+    color: #333;
+    margin-top: 20px;
+    display: block;
+}
+.login-form p input {
+    border-left: 1px solid #bbb;
+    border-top: 1px solid #bbb;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    width: 260px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #666;
+    text-indent: 5px;
+    margin-left: 5px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.login-form p input:focus {
+    background: 0 0;
+    border: 1px solid #08c;
+}
+.login-form .login-btn {
+    margin-top: 10px;
+}
+.login-form .login-btn a {
+    height: 37px;
+    width: 316px;
+    display: inline-block;
+    margin-left: 2px;
+    background: url(Images/login_btnnew.png) no-repeat;
+    font-size: 18px;
+    color: #fff;
+    font-family: "\5fae\8f6f\96c5\9ed1";
+    text-align: center;
+    line-height: 35px;
+    text-decoration: none;
+}
+.login-form .login-btn .loading, .login-form .login-btn .loading:hover {
+    height: 37px;
+    width: 185px;
+    display: inline-block;
+    margin-left: 60px;
+    background: url(Images/loading_login.gif) no-repeat;
+}
+.login-form .login-btn a:hover {
+    background: url(Images/login_btnnew.png) 0 -39px no-repeat;
+}
+
+
+.login-way {
+    padding-top:22px;
+    padding-left:58px;
+}
+.login-way label {
+    padding-right:45px;
+    font-size:14px;
+    color:#666;
+}
+.login-way label input {
+    vertical-align:middle;
+    margin-right:3px;
+}
+
+.login-common p input.input-code {
+    border-left: 1px solid #bbb;
+    border-top: 1px solid #bbb;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    width: 146px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #666;
+    text-indent: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.login-common p span.ident-code img {
+    width: 99px;
+    height: 33px;
+    margin-left: 4px;
+    cursor: pointer;
+}
+.login-common p.forget {
+    text-align:right;
+    height: 18px;
+    line-height: 18px;
+    margin-top:0;
+}
+.login-common p.forget a {
+    font-size: 12px;
+    vertical-align: middle;
+    display: inline-block;
+    font-family: tahoma,arial,"\5b8b\4f53",sans-serif;
+}
+.login-common .auto-login {
+    margin-top: 10px;
+    padding-left: 60px;
+    font-size: 12px;
+    color: #333;
+}
+.login-common .auto-login input {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.login-common .error-msg {
+    padding-left: 60px;
+    margin-top: 10px;
+    height: 18px;
+    color: #e15814;
+    font-size: 12px;
+}
+
+.login-quick p.login-error {
+    color: #e15814;
+    font-size: 12px;
+    margin-top: 3px;
+    height: 38px;
+    padding: 0 0 5px 62px;
+
+}
+.login-quick p.quick-check .quick-code {
+    width:150px;
+}
+.login-quick p.quick-check .quick-codebtn {
+    width: 90px;
+    color: #08c;
+    background: #fff;
+    height: 32px;
+    font-size: 12px;
+    text-indent: initial;
+    cursor: pointer;
+}
+
+.login-btm {
+    width: 355px;
+    height: 55px;
+    background: #F5F5F5;
+    border-top: 1px dotted #ccc;
+    padding-top: 5px;
+}
+.login-btm span {
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    color: #666;
+    padding-left: 80px;
+}
+.login-btm span i {
+    font-style: normal;
+    color: #08c;
+    padding-left: 10px;
+}
+.login-btm span a {
+    background: url(Images/login_qq_link.png) no-repeat;
+    width: 77px;
+    height: 22px;
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.mobile-link {
+    display: block;
+    position: absolute;
+    width: 580px;
+    height: 400px;
+}
+
+
