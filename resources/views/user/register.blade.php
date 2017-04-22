@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0027)https://my.1hai.cn/Register -->
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -44,6 +43,7 @@
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/register/register.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <script type="application/javascript" src="/js/libs/jquery.1.8.3.min.js"></script>
 </head>
 <body>
 <div class="head-wrap">
@@ -114,8 +114,8 @@
 								</span>
                         <div class="reg-pwd">
                             <div id="pass">
-                                <input class="input-pwd" id="password" name="Password" value="" type="text"
-                                       maxlength="18" placeholder="6-18个字符，请使用英文字母、数字或者组合" onblur="checkPassword()">
+                                <input class="input-pwd" id="password" name="Password" value="" type="password"
+                                       maxlength="18" placeholder="6-18个字符，请使用英文字母、数字或者组合" onblur="checkPassword(this)">
                             </div>
                             <i id="pwd-state" class="pwd-hide">
                             </i>
@@ -238,42 +238,6 @@
     })(window.__zp_tag_params);
 </script>
 <script type="application/javascript">
-    function httpajax(data){
-        var xhr=null;
-        if(window.XMLHttpRequest){
-            xhr=new XMLHttpRequest();
-        }else{
-            xhr=new ActiveXObject(Microsoft.XMLHttp);
-        }
-        var url="";
-        var datatype="";
-        var type="";
-        if(data){
-            url=data.url;
-            datatype=data.datatype;
-            type=data.type;
-
-            if(type=="get") {
-                url +="?"+ data.data;
-            }
-
-            xhr.open(type,url)
-            if(type=="get"){
-             xhr.send(null);
-            }
-            else{
-                xhr.setRequestHeader('content-type',"application/x-www-form-urlencoded")
-                xhr.send(data.data);
-           }
-        }
-        xhr.onreadystatechange=function () {
-            if(xhr.readyState==4&&xhr.status==200){
-                var d=data.dataType=='xml'?xhr.responseXML:xhr.responseText;
-                data.success(d);
-
-            }
-        }
-    }
     var btnSubmit = document.getElementById("btnSubmit");
     btnSubmit.onclick = function () {
         var TrueName = document.getElementById("TrueName");
@@ -284,20 +248,23 @@
             if (checkMobile(PhoneNumber)) {
                 if (checkCaptcha(txtCaptcha)) {
                     if (checkPassword(password)) {
-                        httpajax({
-                            "url":"/api/user/reg",
-                            "type":"POST",
-                            "dataType":"",
-                            "data":{
-                                "realname":TrueName.value,
-                                "username":PhoneNumber.value,
-                                "captcha":txtCaptcha.value,
-                                "password":password.value
+                        $.ajax({
+                            url:"/api/user/reg",
+                            type:"post",
+                            data:{
+                                username:PhoneNumber.value,
+                                captcha:txtCaptcha.value,
+                                password:password.value,
+                                realname:TrueName.value
                             },
-                            "success":function (data) {
-                                alert(data);
+                            dataType:'',
+                            success:function (data) {
+
+                            },
+                            error:function (data) {
+                                alert("请检查网络");
                             }
-                        });
+                        })
                     } else {
                         password.focus();
                     }
@@ -333,9 +300,10 @@
         return i.length === 0 ? (vercError(n, "验证码为空"), !1) : (vercTrue(n), !0)
     }
     function checkPassword(obj) {
-        var i = obj,
-            n = trim(i.value),
-            r = !/^[A-Za-z0-9]+$/.test(n);
+        alert(obj.value);
+        var i = obj;
+        var n = trim(i.value);
+        var r = !/^[A-Za-z0-9]+$/.test(n);
         return n.length === 0 ? (vercError(i, "请设置密码"), !1) : n.length < 6 || n.length > 18 ? (vercError(i,"请输入6-18个字符"), !1) : n.length > 0 && r ? (vercError(i,"限数字、英文字母6-18个字符"), !1) : (vercError(i,""), !0)
     }
     function vercError(n, t) {

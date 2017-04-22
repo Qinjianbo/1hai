@@ -16,5 +16,4 @@ use Illuminate\Http\Request;
 Route::group(['prefix' => 'user', 'namespace' => 'User'], function() {
 	Route::get('/login', 'LoginController@doLogin');
 	Route::post('/reg', 'RegisterController@doRegister');
-	Route::get('/reg_code', 'RegisterController@checkRegisterCode');
 });
