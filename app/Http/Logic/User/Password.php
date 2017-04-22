@@ -4,7 +4,7 @@ namespace App\Http\Logic\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use App\User;
+use App\Models\User\User;
 
 class Password
 {

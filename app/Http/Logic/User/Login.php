@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Logic\User;
 
-use App\User;
+use App\Models\User\User;
 use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
