@@ -25,7 +25,7 @@ class Login
 		$criteria['password'] = md5($request->input('password', ''));
 		$criteria['enabled'] = 1;
 		$userModel = new User();
-        $user = collect($userModel->where($criteria)->first());
+        $user = collect($userModel->select('id,username,realname')->where($criteria)->first());
 
         return $user;
 	}		    
