@@ -99,13 +99,13 @@
 								<span>
 									图片验证码 :
 								</span>
-                        <input class="input-imgcode" id="txtCapthca" maxlength="5" name="ImgCode"
-                               placeholder="请输入您的图形验证码" type="text" value="" onblur="checkCaptha(this)">
+                        <input class="input-imgcode" id="txtCaptcha" maxlength="5" name="ImgCode"
+                               placeholder="请输入您的图形验证码" type="text" value="" onblur="checkCaptcha(this)">
                         <img class="imgCaptcha" id="imgCaptcha" src="/captcha">
                         <em>
                             *
                         </em>
-                        <i id="txtCapthca-error-msg" class="error-msg">
+                        <i id="txtCaptcha-error-msg" class="error-msg">
                         </i>
                     </div>
                     <div class="reg-li clear_float">
@@ -136,7 +136,7 @@
                         </div>
                         <div class="reg-login">
                             已有账号，
-                            <a href="https://my.1hai.cn/Login">
+                            <a href="/login">
                                 直接登录 》
                             </a>
                         </div>
@@ -278,18 +278,31 @@
     btnSubmit.onclick = function () {
         var TrueName = document.getElementById("TrueName");
         var PhoneNumber = document.getElementById("PhoneNumber");
-        var txtCapthca = document.getElementById("txtCapthca");
+        var txtCaptcha = document.getElementById("txtCaptcha");
         var password = document.getElementById("password");
         if (checkTrueName(TrueName)) {
             if (checkMobile(PhoneNumber)) {
-                if (checkCaptha(txtCapthca)) {
+                if (checkCaptcha(txtCaptcha)) {
                     if (checkPassword(password)) {
-
+                        httpajax({
+                            "url":"/api/user/reg",
+                            "type":"POST",
+                            "dataType":"",
+                            "data":{
+                                "realname":TrueName.value,
+                                "username":PhoneNumber.value,
+                                "captcha":txtCaptcha.value,
+                                "password":password.value
+                            },
+                            "success":function (data) {
+                                alert(data);
+                            }
+                        });
                     } else {
                         password.focus();
                     }
                 } else {
-                    txtCapthca.focus();
+                    txtCaptcha.focus();
                 }
             } else {
                 PhoneNumber.focus();
@@ -314,7 +327,7 @@
             i = !/^\d{7,15}$/.test(t);
         return t.length === 0 ? (vercError(n, "手机号码为空"), !1) : t.length < 7 || t.length > 15 ? (vercError(n, "请输入7到15位手机号码"), !1) : t.length > 0 && i ? (vercError(n, "手机号码格式错误"), !1) : (vercTrue(n), !0)
     }
-    function checkCaptha(obj) {
+    function checkCaptcha(obj) {
         var n = obj,
             i = trim(n.value);
         return i.length === 0 ? (vercError(n, "验证码为空"), !1) : (vercTrue(n), !0)
@@ -323,7 +336,7 @@
         var i = obj,
             n = trim(i.value),
             r = !/^[A-Za-z0-9]+$/.test(n);
-        return n.length === 0 ? (vercError(i, "请设置密码"), !1) : n.length < 6 || n.length > 18 ? (vercError(i,"请输入6-18个字符"), !1) : n.length > 0 && r ? (vercError(i,"限数字、英文字母6-18个字符"), !1) : (vercError(i,"error-msg").text(""), !0)
+        return n.length === 0 ? (vercError(i, "请设置密码"), !1) : n.length < 6 || n.length > 18 ? (vercError(i,"请输入6-18个字符"), !1) : n.length > 0 && r ? (vercError(i,"限数字、英文字母6-18个字符"), !1) : (vercError(i,""), !0)
     }
     function vercError(n, t) {
         var err = document.getElementById(n.id + "-error-msg");
