@@ -238,20 +238,40 @@
     })(window.__zp_tag_params);
 </script>
 <script type="application/javascript">
-    function httpajax(method,data,url){
+    function httpajax(data){
         var xhr=null;
         if(window.XMLHttpRequest){
             xhr=new XMLHttpRequest();
         }else{
             xhr=new ActiveXObject(Microsoft.XMLHttp);
         }
-        method=="post"?"post":"get";
-        xhr.open(method,url,true);
-        if(method=="post"){
-            xhr.send(data)
+        var url="";
+        var datatype="";
+        var type="";
+        if(data){
+            url=data.url;
+            datatype=data.datatype;
+            type=data.type;
+
+            if(type=="get") {
+                url +="?"+ data.data;
+            }
+
+            xhr.open(type,url)
+            if(type=="get"){
+             xhr.send(null);
+            }
+            else{
+                xhr.setRequestHeader('content-type',"application/x-www-form-urlencoded")
+                xhr.send(data.data);
+           }
         }
-        else{
-            xhr.send(null);
+        xhr.onreadystatechange=function () {
+            if(xhr.readyState==4&&xhr.status==200){
+                var d=data.dataType=='xml'?xhr.responseXML:xhr.responseText;
+                data.success(d);
+
+            }
         }
     }
     var btnSubmit = document.getElementById("btnSubmit");
