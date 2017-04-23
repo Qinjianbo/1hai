@@ -1,13 +1,13 @@
 <?php
 namespace App\Http\Logic\Car;
 
-use App\Models\Car\Property as PropertyModel;
+use App\Models\User\User as UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-class Property
+class User
 {
     /**
-     * 获取属性列表
+     * 获取用户列表
      *
      * @param Request $request
      *
@@ -15,16 +15,16 @@ class Property
      */
     public function getList(Request $request) : Collection
     {
-        return (new PropertyModel())->getList($request);
+        return (new UserModel())->getList($request);
     }
 
     public function show($id)
     {
-        return (new PropertyModel())->show($id);
+        return (new UserModel())->show($id );
     }
 
-    public function getPropertiesForAdmin(Request $request)
+    public function getUsersForAdmin(Request $request)
     {
-        return PropertyModel::paginate(20);
+        return UserModel::paginate(20);
     }
 }
