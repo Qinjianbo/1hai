@@ -5,10 +5,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\support\Collection;
 
-class IndexController extends Controller
+class CarController extends Controller
 {
     public function index(Request $request)
     {
-        return view('Admin.index');
+        return view('Admin.car');
     }
 }

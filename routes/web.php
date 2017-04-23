@@ -27,9 +27,10 @@ Route::get('/captcha', 'Controller@getCaptcha');
 
 // 后台路由
 Route::get('/Admin', function () {
-   return view('Admin.login');
+   return view('Admin.login', ['message' => '']);
 });
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::post('/login', 'LoginController@doLogin');
-    Route::get('/index', 'IndexController@index');
+    Route::get('/car', 'CarController@index')->middleware('adminAuthCheck');
+    Route::get('/logout', 'LogoutController@doLogout');
 });
