@@ -31,4 +31,5 @@ Route::get('/Admin', function () {
 });
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::post('/login', 'LoginController@doLogin');
+    Route::get('/index', 'IndexController@index');
 });

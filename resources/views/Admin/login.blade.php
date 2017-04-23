@@ -20,6 +20,7 @@
                 <button type="reset" class="btn btn-default pull-right">重置</button>
                 <button type="submit" class="btn btn-primary pull-right" style="margin-right:10px;">登陆</button>
             </form>
+            <div><p style="font-size: 20px;color: red">{{ $message }}</p></div>
         </div>
         <div class="col-xs-4"></div>
     </div>

@@ -11,6 +11,7 @@ class LoginController extends Controller
      * 后台登录
      *
      * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
 	public function doLogin(Request $request)
     {
@@ -19,9 +20,9 @@ class LoginController extends Controller
         $defaultAdminUser = config('app.defaultAdminUser');
         $defaultAdminPass = config('app.defaultAdminPass');
         if ($username == $defaultAdminUser && $password == $defaultAdminPass) {
-            echo '登录成功';
+            return redirect('/admin/index');
         } else {
-            echo '登录失败';
+            return view('Admin.login', ['message' => '用户名或密码错误']);
         }
     }
 }
