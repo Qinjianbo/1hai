@@ -17,4 +17,14 @@ class Brand
     {
         return (new BrandModel())->getList($request);
     }
+
+    public function show($id)
+    {
+        return (new BrandModel())->show($id );
+    }
+
+    public function getBrandsForAdmin(Request $request)
+    {
+        return BrandModel::paginate(20);
+    }
 }
