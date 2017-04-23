@@ -3,6 +3,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Logic\User\Register;
+use App\Models\User\User;
 use Illuminate\Http\Request;
 use App\Jobs\SendRegisterEmail;
 use Validator;
@@ -19,7 +20,8 @@ class RegisterController extends Controller
 	 */
 	public function doRegister(Request $request): Collection
 	{
-        $rules = ['username' => 'required|digits:11|unique:1hai_user,username'];
+	    $userTableName = (new User())->getTable();
+        $rules = ['username' => "required|digits:11|unique:{$userTableName},username"];
         $rules['password'] = 'required|alpha_dash';
         $rules['realname'] = 'required|string';
 //        $rules['captcha'] = 'required|captcha';
