@@ -6,5 +6,5 @@ use App\Models\Model;
 
 class Type extends Model
 {
-	protected $table = '1hai_car_type';
+	protected $table = 'wutao_car_type';
 }

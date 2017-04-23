@@ -19,7 +19,7 @@
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked" id="nav">
                 <li class="active">
-                    <a href="/admin/car/getcarlist.html" id="car">车辆管理</a>
+                    <a href="/admin/car" id="car">车辆管理</a>
                 </li>
                 <li class=""><a href="/admin/album/getalbumlist.html">相册管理</a></li>
                 <li><a href="##">帅哥图片管理</a></li>
@@ -32,7 +32,7 @@
                 <div class="container">
                     <div class="row" data-id="1" id="nowPage">
                         <div class="col-md-6">
-                            <form action="/admin/car/search.html" class="navbar-form bavbar-left" role="search" method="post">
+                            <form action="/admin/car/search" class="navbar-form bavbar-left" role="search" method="get">
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="请输入搜索关键词" name="keyword">
                                 </div>
@@ -54,21 +54,25 @@
                 <tr>
                     <th>编号</th>
                     <th>名字</th>
-                    <th>价格区间</th>
-                    <th>全拼</th>
+                    <th>所属类型</th>
+                    <th>所属品牌</th>
+                    <th>创建时间</th>
                     <th>操作</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($cars as $key => $car)
+                    <tr>
+                        <td>{{ $key + 1 }}</td>
+                        <td>{{ $car->name }}</td>
+                        <td>{{}}</td>
+                        <td>lenglianxilie</td>
+                        <td><a id="edit" style="cursor:pointer" onclick="edit(1345)">编辑</a></td>
+                        <td><a href="/admin/car/delete/carId/1345/nowPage/1.html">删除</a></td>
+                    </tr>
+                @endforeach
                 <tr>
-                    <td>1</td>
-                    <td>东风御风</td>
-                    <td>14.28-24.78万</td>
-                    <td>lenglianxilie</td>
-                    <td><a id="edit" style="cursor:pointer" onclick="edit(1345)">编辑</a></td>
-                    <td><a href="/admin/car/delete/carId/1345/nowPage/1.html">删除</a></td>
-                </tr><tr>
                     <td>2</td>
                     <td>菲亚特Tipo</td>
                     <td>暂无报价</td>

@@ -6,5 +6,5 @@ use App\Models\Model;
 
 class User extends Model
 {
-	protected $table = '1hai_user';
+	protected $table = 'wutao_user';
 }

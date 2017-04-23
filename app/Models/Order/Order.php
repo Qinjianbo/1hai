@@ -6,5 +6,5 @@ use App\Models\Model;
 
 class Order extends Model
 {
-	protected $table = '1hai_order';
+	protected $table = 'wutao_order';
 }
