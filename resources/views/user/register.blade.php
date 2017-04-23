@@ -257,9 +257,14 @@
                                 password:password.value,
                                 realname:TrueName.value
                             },
-                            dataType:'',
+                            dataType:'json',
                             success:function (data) {
-
+                                if (data.errCode) {
+                                    alert(data.message);
+                                } else {
+                                    alert("注册成功");
+                                    window.location.href="/login";
+                                }
                             },
                             error:function (data) {
                                 alert("请检查网络");

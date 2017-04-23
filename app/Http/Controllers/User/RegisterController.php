@@ -22,9 +22,10 @@ class RegisterController extends Controller
         $rules = ['username' => 'required|digits:11|unique:1hai_user,username'];
         $rules['password'] = 'required|alpha_dash';
         $rules['realname'] = 'required|string';
+//        $rules['captcha'] = 'required|captcha';
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return collect($validator->messages());
+            return collect(['message' => $validator->messages(), 'errCode' => 1, 'data' => []]);
         }
         $registorLogic = new Register();
         if ($registorLogic->doRegisterByMobile($request)) {
