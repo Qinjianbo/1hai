@@ -8,6 +8,7 @@
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/login/login.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <script type="application/javascript" src="/js/libs/jquery.1.8.3.min.js"></script>
 </head>
 <body>
 <div class="head-wrap">
@@ -41,7 +42,7 @@
                     <div class="login-title">
                         会员登录
                         <span>
-									<a href="https://my.1hai.cn/Register">
+									<a href="/register">
 										立即注册
 									</a>
 									，享专属优惠！
@@ -50,7 +51,7 @@
                     <div class="login-way">
                         <label>
                             <input name="longintype" type="radio" checked="checked" value="">
-                            普通登录
+                            手机号登录
                         </label>
                         {{--<label>--}}
                             {{--<input name="longintype" type="radio" value="">--}}
@@ -62,21 +63,24 @@
                             <p>
                                 登录名
                                 <input autocomplete="off" class="user-name" id="txtLoginName" maxlength="50"
-                                       name="LoginName" placeholder="请输入用户名/手机号/邮箱" type="text" value="">
+                                       onblur="checkMobile(this)" name="LoginName" placeholder="请输入注册手机号" type="text" value="">
                             </p>
+                            <i class="error-msg" id="txtLoginName-error-msg"></i>
                             <p>
                                 密　码
                                 <input autocomplete="off" id="txtPassword" maxlength="18" name="LoginPassword"
-                                       placeholder="请输入密码" type="password" value="">
+                                       onblur="checkPassword(this)" placeholder="请输入密码" type="password" value="">
                             </p>
+                            <i class="error-msg" id="txtPassword-error-msg"></i>
                             <p class="panel-captcha">
                                 验证码
                                 <input id="txtcaptcha" name="Captcha" autocomplete="off" class="input-code"
-                                       maxlength="4" type="text">
+                                       maxlength="5" type="text" onblur="checkCaptcha(this)">
                                 <span class="ident-code">
-											<img id="imgCaptcha" title="换一张" src="/captcha">
+											<img id="imgCaptcha" title="换一张" src="/captcha" onclick="reloadCaptcha(this)">
 										</span>
                             </p>
+                            <i class="error-msg" id="txtcaptcha-error-msg"></i>
                             <div class="error-msg">
                             </div>
                             {{--<p class="forget">--}}
@@ -103,7 +107,7 @@
                                 <input id="quick_txtcaptcha" name="Captcha" autocomplete="off" class="quick-code"
                                        maxlength="4" type="text" placeholder="请输入验证码">
                                 <span class="ident-code">
-											<img id="quick_imgCaptcha" title="换一张" src="./登录_一嗨租车_files/txyzm.png"
+											<img id="quick_imgCaptcha" title="换一张" src=""
                                                  style="width: 99px; height: 33px; margin-left: 5px; vertical-align: middle;">
 										</span>
                             </p>
@@ -184,13 +188,52 @@
         </div>
     </div>
 </div>
+<script type="application/javascript" src="/js/common.js"></script>
 <script type="text/javascript">
     $(function() {
         $(".login-way input").click(function() {
-            $(this).attr("checked", true);
-            $(".login-wayinfo > div").hide().eq($('.login-way input').index(this)).show();
-        });
+                $(this).attr("checked", true);
+                $(".login-wayinfo > div").hide().eq($('.login-way input').index(this)).show();
+            });
     });
+    var ahrLogin = $("#ahrLogin");
+    ahrLogin.click(function () {
+        var txtLoginName = document.getElementById("txtLoginName");
+        var txtPassword = document.getElementById("txtPassword");
+        var txtcaptcha = document.getElementById("txtcaptcha");
+        if (checkMobile(txtLoginName)) {
+            if (checkPassword(txtPassword)) {
+                if (checkCaptcha(txtcaptcha)) {
+                    $.ajax({
+                        url:"/api/user/login",
+                        type:"post",
+                        dataType:"json",
+                        data:{
+                            username:trim(txtLoginName.value),
+                            password:trim(txtPassword.value),
+                            captcha:trim(txtcaptcha.value)
+                        },
+                        success:function (data) {
+                            if (data.errCode) {
+                                alert(data.message);
+                            } else {
+                                alert(data.message);
+                            }
+                        },
+                        error:function (data) {
+                            alert("请检查网络后重试");
+                        }
+                    });
+                } else {
+                    txtcaptcha.focus();
+                }
+            } else {
+                txtPassword.focus();
+            }
+        } else {
+            txtLoginName.focus();
+        }
+    })
 </script>
 </body>
 

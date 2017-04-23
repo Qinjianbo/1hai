@@ -14,9 +14,14 @@ class LoginController extends Controller
 		$rules['password'] = 'required|alpha_dash';
 		$validator = Validator::make($request->all(), $rules);
 		if ($validator->fails()) {
-			return collect($validator->messages());
+			return collect(['message' => $validator->messages(), 'errCode' => 1, 'data' => []]);
 		}
 		$loginLogic = new Login();
-		return $loginLogic->doLogin($request);
+		$user = $loginLogic->doLogin($request);
+		if ($user) {
+            return collect(['message' => '登录成功', 'errCode' => 0, 'data' => $user]);
+        } else {
+            return collect(['message' => '用户名不存在或密码错误', 'errCode' => 1, 'data' => []]);
+        }
 	}
 }

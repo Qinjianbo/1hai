@@ -6,7 +6,7 @@
     width: 950px;
     height: 375px;
     margin: 0 auto;
-    background: url(Images/login_bg.jpg) no-repeat;
+    background: url(../../pictures/login_bg.jpg) no-repeat;
     position: relative;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .login-form {
-    padding: 10px 20px 35px 20px;
+    padding: 10px 20px 5px 20px;
 }
 .login-form .login-title {
     font-size: 18px;
