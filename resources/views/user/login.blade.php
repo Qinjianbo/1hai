@@ -5,41 +5,6 @@
     <title>
         登录_吴涛租车
     </title>
-    <script async="async">
-        var appInsights = window.appInsights ||
-            function(c) {
-                function l(e) {
-                    k[e] = function() {
-                        var f = arguments;
-                        k.queue.push(function() {
-                            k[e].apply(k, f)
-                        })
-                    }
-                }
-                var k = {
-                        config: c
-                    },
-                    a = document,
-                    g = window,
-                    h = "script",
-                    b = a.createElement(h),
-                    d,
-                    j;
-                for (b.src = c.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", a.getElementsByTagName(h)[0].parentNode.appendChild(b), k.cookie = a.cookie, k.queue = [], d = ["Event", "Exception", "Metric", "PageView", "Trace"]; d.length;) {
-                    l("track" + d.pop())
-                }
-                return c.disableExceptionTracking || (d = "onerror", l("_" + d), j = g[d], g[d] = function(i, n, p, q, t) {
-                    var m = j && j(i, n, p, q, t);
-                    return m !== !0 && k["_" + d](i, n, p, q, t),
-                        m
-                }),
-                    k
-            } ({
-                instrumentationKey: "ac0e5caa-c6c7-4006-b89e-39a462718572"
-            });
-        window.appInsights = appInsights;
-        appInsights.trackPageView();
-    </script>
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/login/login.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
@@ -87,10 +52,10 @@
                             <input name="longintype" type="radio" checked="checked" value="">
                             普通登录
                         </label>
-                        <label>
-                            <input name="longintype" type="radio" value="">
-                            快速登录
-                        </label>
+                        {{--<label>--}}
+                            {{--<input name="longintype" type="radio" value="">--}}
+                            {{--快速登录--}}
+                        {{--</label>--}}
                     </div>
                     <div class="login-wayinfo">
                         <div class="login-common">
@@ -114,11 +79,11 @@
                             </p>
                             <div class="error-msg">
                             </div>
-                            <p class="forget">
-                                <a href="https://my.1hai.cn/FindPassword">
-                                    忘记密码?
-                                </a>
-                            </p>
+                            {{--<p class="forget">--}}
+                                {{--<a href="https://my.1hai.cn/FindPassword">--}}
+                                    {{--忘记密码?--}}
+                                {{--</a>--}}
+                            {{--</p>--}}
                             <div class="login-btn">
                                 <a href="javascript:void(0)" title="登录" id="ahrLogin">
                                     登录
@@ -162,9 +127,9 @@
                 </div>
                 <div class="login-btm">
 							<span>
-								您还可以直接用手机访问
+								欢迎使用吴涛租车平台
 								<i>
-									m.1hai.cn
+									wutao.car.com
 								</i>
 							</span>
                 </div>
@@ -217,15 +182,6 @@
                 </a>
             </p>
         </div>
-        <div class="footer-right">
-            <a href="http://www.itrust.org.cn/yz/pjwx.asp?wm=1088681241">
-                <img src="./登录_一嗨租车_files/itrust_icon.jpg">
-            </a>
-            <a href="http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20120327164136446"
-               target="_blank">
-                <img src="./登录_一嗨租车_files/shgs.png">
-            </a>
-        </div>
     </div>
 </div>
 <script type="text/javascript">
@@ -235,8 +191,6 @@
             $(".login-wayinfo > div").hide().eq($('.login-way input').index(this)).show();
         });
     });
-</script>
-<script type="text/javascript" src="./登录_一嗨租车_files/login" async="async">
 </script>
 </body>
 
