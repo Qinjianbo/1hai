@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class Info
 {
+    public function getList(Request $request) : Collection
+    {
+        return (new CarModel())->getList($request);
+    }
     /**
      * 获取车辆信息（后台使用）
      *

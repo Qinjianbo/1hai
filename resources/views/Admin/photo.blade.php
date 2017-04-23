@@ -36,17 +36,17 @@
                 <div class="container">
                     <div class="row" data-id="1" id="nowPage">
                         <div class="col-md-6">
-                            <form action="/admin/car/search" class="navbar-form bavbar-left" role="search" method="get">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="请输入搜索关键词" name="keyword">
-                                </div>
-                                <button type="submit" class="btn btn-default">搜索</button>
-                            </form>
+                            {{--<form action="/admin/car/search" class="navbar-form bavbar-left" role="search" method="get">--}}
+                                {{--<div class="form-group">--}}
+                                    {{--<input type="text" class="form-control" placeholder="请输入搜索关键词" name="keyword">--}}
+                                {{--</div>--}}
+                                {{--<button type="submit" class="btn btn-default">搜索</button>--}}
+                            {{--</form>--}}
                         </div>
 
                         <div class="col-md-4 col-md-offset-2">
                             <ul class="nav navbar-nav">
-                                <li><a id="add" class="btn btn-default">新增车辆信息</a></li>
+                                {{--<li><a id="add" class="btn btn-default">新增车辆信息</a></li>--}}
                             </ul>
                         </div>
                     </div>

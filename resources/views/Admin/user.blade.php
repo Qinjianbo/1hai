@@ -52,7 +52,7 @@
                     </div>
                 </div>
             </div>
-            <!--车辆信息体-->
+            <!--用户信息主体-->
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                 <tr>
