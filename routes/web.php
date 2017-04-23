@@ -24,3 +24,11 @@ Route::get('login', function() {
 	return view('user.login');
 });
 Route::get('/captcha', 'Controller@getCaptcha');
+
+// 后台路由
+Route::get('/Admin', function () {
+   return view('Admin.login');
+});
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::post('/login', 'LoginController@doLogin');
+});
