@@ -43,7 +43,7 @@
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/register/register.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <script type="application/javascript" src="/js/libs/jquery.1.8.3.min.js"></script>
+    <script type="application/javascript" src="/js/libs/jquery-1.9.1.min.js"></script>
 </head>
 <body>
 <div class="head-wrap">

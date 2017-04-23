@@ -10,13 +10,18 @@ use Illuminate\support\Collection;
 
 class CarController extends Controller
 {
-    public function index(Request $request)
+    public function cars(Request $request)
     {
         $carInfo = (new Info())->getCarForAdmin($request);
 
-        $brands = (new Brand())->getList();
-        $type = (new Type())->getList();
+        $brands = (new Brand())->getList($request)->keyBy('id');
+        $type = (new Type())->getList($request)->keyBy('id');
 
         return view('Admin.car', ['cars' => $carInfo, 'brands' => $brands, 'type' => $type]);
+    }
+
+    public function show($id)
+    {
+        return (new Info())->show($id);
     }
 }

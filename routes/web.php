@@ -31,6 +31,21 @@ Route::get('/Admin', function () {
 });
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::post('/login', 'LoginController@doLogin');
-    Route::get('/car', 'CarController@index')->middleware('adminAuthCheck');
     Route::get('/logout', 'LogoutController@doLogout');
+    Route::get('/cars', 'CarController@cars')->middleware('adminAuthCheck');
+    Route::get('/car/{id}', 'CarController@show')->middleware('adminAuthCheck');
+    Route::get('/types', 'TypeController@types')->middleware('adminAuthCheck');
+    Route::get('/type/{id}', 'TypeController@show')->middleware('adminAuthCheck');
+    Route::get('/brands', 'BrandController@brands')->middleware('adminAuthCheck');
+    Route::get('/brand/{id}', 'BrandController@show')->middleware('adminAuthCheck');
+    Route::get('/properties', 'PropertyController@properties')->middleware('adminAuthCheck');
+    Route::get('/property/{id}', 'PropertyController@show')->middleware('adminAuthCheck');
+    Route::get('/photos', 'PhotoController@photos')->middleware('adminAuthCheck');
+    Route::get('/photo/{id}', 'PhotoController@show')->middleware('adminAuthCheck');
+    Route::get('/users', 'UserController@users')->middleware('adminAuthCheck');
+    Route::get('/user/{id}', 'UserController@show')->middleware('adminAuthCheck');
+    Route::get('/messages', 'MessageController@messages')->middleware('adminAuthCheck');
+    Route::get('/message/{id}', 'MessageController@show')->middleware('adminAuthCheck');
+    Route::get('/shops', 'ShopController@shops')->middleware('adminAuthCheck');
+    Route::get('/shop/{id}', 'MessageController@show')->middleware('adminAuthCheck');
 });

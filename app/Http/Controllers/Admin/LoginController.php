@@ -21,7 +21,7 @@ class LoginController extends Controller
         $defaultAdminPass = config('app.defaultAdminPass');
         if ($username == $defaultAdminUser && $password == $defaultAdminPass) {
             session(['username' => $username]);
-            return redirect('/admin/car');
+            return redirect('/admin/cars');
         } else {
             return view('Admin.login', ['message' => '用户名或密码错误']);
         }

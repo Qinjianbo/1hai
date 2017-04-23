@@ -17,4 +17,9 @@ class Info
     {
         return Car::paginate(20);
     }
+
+    public function show($id)
+    {
+        return Car::where('id', $id)->first();
+    }
 }

@@ -20,10 +20,10 @@
     <div class="row">
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked" id="nav">
-                <li class="active"><a href="/admin/cars" id="car">车辆信息管理</a></li>
+                <li class=""><a href="/admin/cars" id="car">车辆信息管理</a></li>
                 <li class=""><a href="/admin/types">车辆类型管理</a></li>
                 <li class=""><a href="/admin/brands">车辆品牌管理</a></li>
-                <li class=""><a href="/admin/properties">车辆属性管理</a></li>
+                <li class="active"><a href="/admin/properties">车辆属性管理</a></li>
                 <li class=""><a href="/admin/photos">车辆图片管理</a></li>
                 <li class=""><a href="/admin/users">用户信息管理</a></li>
                 <li class=""><a href="/admin/messages">留言信息管理</a></li>
