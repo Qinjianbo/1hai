@@ -46,7 +46,7 @@
 
                         <div class="col-md-4 col-md-offset-2">
                             <ul class="nav navbar-nav">
-                                <li><a id="add" class="btn btn-default">新增车辆信息</a></li>
+                                <li><a id="add" class="btn btn-default">新增车辆品牌信息</a></li>
                             </ul>
                         </div>
                     </div>

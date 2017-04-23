@@ -36,17 +36,17 @@
                 <div class="container">
                     <div class="row" data-id="1" id="nowPage">
                         <div class="col-md-6">
-                            <form action="/admin/car/search" class="navbar-form bavbar-left" role="search" method="get">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="请输入搜索关键词" name="keyword">
-                                </div>
-                                <button type="submit" class="btn btn-default">搜索</button>
-                            </form>
+                            {{--<form action="/admin/car/search" class="navbar-form bavbar-left" role="search" method="get">--}}
+                                {{--<div class="form-group">--}}
+                                    {{--<input type="text" class="form-control" placeholder="请输入搜索关键词" name="keyword">--}}
+                                {{--</div>--}}
+                                {{--<button type="submit" class="btn btn-default">搜索</button>--}}
+                            {{--</form>--}}
                         </div>
 
                         <div class="col-md-4 col-md-offset-2">
                             <ul class="nav navbar-nav">
-                                <li><a id="add" class="btn btn-default">新增车辆信息</a></li>
+                                <li><a id="add" class="btn btn-default">新增车辆类型信息</a></li>
                             </ul>
                         </div>
                     </div>
@@ -57,31 +57,21 @@
                 <thead>
                 <tr>
                     <th>编号</th>
-                    <th>名字</th>
-                    <th>所属类型</th>
-                    <th>所属品牌</th>
+                    <th>类型名</th>
                     <th>创建时间</th>
                     <th>操作</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($cars as $key => $car)
+                @foreach($types as $key => $type)
                     <tr>
                         <td>{{ $key + 1 }}</td>
-                        <td>{{ $car->name }}</td>
-                        <td>{{ $type[$car->typeid]->type_name }}</td>
-                        <td>{{ $brands[$car->brandid]->brand_name }}</td>
-                        <td>{{ $car->created_at }}</td>
-                        <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $car->id }})">编辑</a></td>
+                        <td>{{ $type->type_name }}</td>
+                        <td>{{ $type->created_at }}</td>
+                        <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $type->id }})">编辑</a></td>
                         <td>
-                            <a id="delete" style="cursor:pointer" href="javascript:;" onclick="changeValid({{ $car->id }})">
-                                @if ($car->valid == 1)
-                                    使失效
-                                @elseif ($car->valid == 0)
-                                    使有效
-                                @endif
-                            </a>
+                            <a id="delete" style="cursor:pointer" href="javascript:;" onclick="deleteType({{ $type->id }})">删除</a>
                         </td>
                     </tr>
                 @endforeach
@@ -89,14 +79,14 @@
             </table>
             <br>
             <!--分页导航-->
-            {{ $cars->links() }}
+            {{ $types->links() }}
 
             <!--增加和修改的模态框-->
             <div class="modal" id="mymodal">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            编辑/新增车辆信息
+                            编辑/新增类型信息
                         </div>
                         <div class="modal-body">
                             <form role="form" id="carform" action="" method="post" enctype="multipart/form-data">
@@ -137,7 +127,7 @@
             </div>
             <!--<script src="/Public/js/car/car.js"></script>-->
             <script type="application/javascript">
-                function changeValid(id) {
+                function deleteType(id) {
                     alert(id);
                 }
                 function edit(id) {

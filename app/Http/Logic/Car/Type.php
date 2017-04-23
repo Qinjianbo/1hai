@@ -11,4 +11,9 @@ class Type
     {
         return (new TypeModel())->getList($request);
     }
+
+    public function getTypesForAdmin(Request $request)
+    {
+        return TypeModel::paginate(20);
+    }
 }
