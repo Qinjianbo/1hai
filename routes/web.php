@@ -11,19 +11,17 @@
 |
 */
 
+// 前台路由
 Route::group(['namespace' => 'Home'], function () {
     Route::get('/', 'IndexController@index');
+    Route::get('/register', function () {
+        return view('user.register');
+    });
+    Route::get('/login', function() {
+        return view('user.login');
+    });
+    Route::get('/captcha', 'Controller@getCaptcha');
 });
-Route::get('/register', function () {
-    return view('user.register');
-});
-Route::get('blade', function () {
-	return view('child');
-});
-Route::get('login', function() {
-	return view('user.login');
-});
-Route::get('/captcha', 'Controller@getCaptcha');
 
 // 后台路由
 Route::get('/Admin', function () {
