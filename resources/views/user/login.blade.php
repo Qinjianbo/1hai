@@ -218,6 +218,7 @@
                                 alert(data.message);
                             } else {
                                 alert(data.message);
+                                window.location.href='/';
                             }
                         },
                         error:function (data) {
