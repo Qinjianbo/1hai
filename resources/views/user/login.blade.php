@@ -13,7 +13,7 @@
 <body>
 <div class="head-wrap">
     <div class="head">
-        <a class="login-link" href="" target="_self" title="吴涛租车平台租车">
+        <a class="login-link" href="/" target="_self" title="吴涛租车平台租车">
         </a>
         <div class="head-nav">
             <a href="">
@@ -34,7 +34,7 @@
 <form action="" method="post">
      <div class="login-wrap" id="loginFrom">
         <div class="login-box login-pd">
-            <a class="mobile-link" href=""
+            <a class="mobile-link" href="/"
                target="_blank" title="吴涛租车平台手机版">
             </a>
             <div class="login-pannel">

@@ -13,7 +13,7 @@
 <body>
 <div class="head-wrap">
     <div class="head">
-        <a class="login-link" href="" target="_self" title="吴涛租车平台租车">
+        <a class="login-link" href="/" target="_self" title="吴涛租车平台租车">
         </a>
         <div class="head-nav">
             <span class="line">
