@@ -5,41 +5,6 @@
     <title>
         注册_吴涛租车
     </title>
-    <script async="async">
-        var appInsights = window.appInsights ||
-            function(c) {
-                function l(e) {
-                    k[e] = function() {
-                        var f = arguments;
-                        k.queue.push(function() {
-                            k[e].apply(k, f)
-                        })
-                    }
-                }
-                var k = {
-                        config: c
-                    },
-                    a = document,
-                    g = window,
-                    h = "script",
-                    b = a.createElement(h),
-                    d,
-                    j;
-                for (b.src = c.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", a.getElementsByTagName(h)[0].parentNode.appendChild(b), k.cookie = a.cookie, k.queue = [], d = ["Event", "Exception", "Metric", "PageView", "Trace"]; d.length;) {
-                    l("track" + d.pop())
-                }
-                return c.disableExceptionTracking || (d = "onerror", l("_" + d), j = g[d], g[d] = function(i, n, p, q, t) {
-                    var m = j && j(i, n, p, q, t);
-                    return m !== !0 && k["_" + d](i, n, p, q, t),
-                        m
-                }),
-                    k
-            } ({
-                instrumentationKey: "ac0e5caa-c6c7-4006-b89e-39a462718572"
-            });
-        window.appInsights = appInsights;
-        appInsights.trackPageView();
-    </script>
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/register/register.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
@@ -48,16 +13,16 @@
 <body>
 <div class="head-wrap">
     <div class="head">
-        <a class="login-link" href="http://www.1hai.cn/" target="_self" title="一嗨租车">
+        <a class="login-link" href="" target="_self" title="吴涛租车平台租车">
         </a>
         <div class="head-nav">
             <span class="line">
-						|
+						帮助中心 |
 					</span>
             <span class="contact-info">
 						服务热线：
 						<em>
-							400-888-6608
+							8888-8888
 						</em>
 					</span>
         </div>
@@ -182,36 +147,36 @@
     <div class="footer-box">
         <div class="footer-left">
             <p>
-                <a href="http://www.1hai.cn/aboutus.aspx" rel="nofollow" target="_blank">
-                    关于一嗨
+                <a href="" rel="nofollow" target="_blank">
+                    关于平台
                 </a>
                 |
-                <a href="http://www.1hai.cn/1hai_union.aspx" target="_blank">
+                <a href="" target="_blank">
                     加盟合作
                 </a>
                 |
-                <a href="http://www.1hai.cn/job/index.aspx" target="_blank">
+                <a href="" target="_blank">
                     招募英才
                 </a>
                 |
-                <a href="http://www.1hai.cn/activity/active_iphone.aspx?from=foot" target="_blank">
+                <a href="" target="_blank">
                     移动客户端
                 </a>
                 |
-                <a href="http://www.1hai.cn/help/index_help.aspx?from=foot" rel="nofollow"
+                <a href="" rel="nofollow"
                    target="_blank">
                     帮助中心
                 </a>
                 |
-                <a href="http://www.1hai.cn/advice.aspx" rel="nofollow" target="_blank">
+                <a href="" rel="nofollow" target="_blank">
                     建议专区
                 </a>
                 |
-                <a href="http://www.1hai.cn/contactus.aspx" rel="nofollow" target="_blank">
+                <a href="" rel="nofollow" target="_blank">
                     联系我们
                 </a>
                 |
-                <a href="http://www.1hai.cn/link.aspx" rel="nofollow" target="_blank">
+                <a href="" rel="nofollow" target="_blank">
                     友情链接
                 </a>
                 | &nbsp;投诉通道：15921446112

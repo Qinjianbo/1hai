@@ -13,10 +13,10 @@
 <body>
 <div class="head-wrap">
     <div class="head">
-        <a class="login-link" href="http://www.1hai.cn/" target="_self" title="一嗨租车">
+        <a class="login-link" href="" target="_self" title="吴涛租车平台租车">
         </a>
         <div class="head-nav">
-            <a href="http://www.1hai.cn/help/index.aspx">
+            <a href="">
                 帮助中心
             </a>
             <span class="line">
@@ -34,8 +34,8 @@
 <form action="" method="post">
      <div class="login-wrap" id="loginFrom">
         <div class="login-box login-pd">
-            <a class="mobile-link" href="http://www.1hai.cn/activity/active_mobile.aspx?f=Login"
-               target="_blank" title="一嗨租车手机版">
+            <a class="mobile-link" href=""
+               target="_blank" title="吴涛租车平台租车手机版">
             </a>
             <div class="login-pannel">
                 <div class="login-form">
@@ -145,43 +145,43 @@
     <div class="footer-box">
         <div class="footer-left">
             <p>
-                <a href="http://www.1hai.cn/aboutus.aspx" rel="nofollow" target="_blank">
-                    关于一嗨
+                <a href="" rel="nofollow" target="_blank">
+                    关于平台
                 </a>
                 |
-                <a href="http://www.1hai.cn/1hai_union.aspx" target="_blank">
+                <a href="" target="_blank">
                     加盟合作
                 </a>
                 |
-                <a href="http://www.1hai.cn/job/index.aspx" target="_blank">
+                <a href="" target="_blank">
                     招募英才
                 </a>
                 |
-                <a href="http://www.1hai.cn/activity/active_iphone.aspx?from=foot" target="_blank">
+                <a href="" target="_blank">
                     移动客户端
                 </a>
                 |
-                <a href="http://www.1hai.cn/help/index_help.aspx?from=foot" rel="nofollow"
+                <a href="" rel="nofollow"
                    target="_blank">
                     帮助中心
                 </a>
                 |
-                <a href="http://www.1hai.cn/advice.aspx" rel="nofollow" target="_blank">
+                <a href="" rel="nofollow" target="_blank">
                     建议专区
                 </a>
                 |
-                <a href="http://www.1hai.cn/contactus.aspx" rel="nofollow" target="_blank">
+                <a href="" rel="nofollow" target="_blank">
                     联系我们
                 </a>
                 |
-                <a href="http://www.1hai.cn/link.aspx" rel="nofollow" target="_blank">
+                <a href="" rel="nofollow" target="_blank">
                     友情链接
                 </a>
                 | &nbsp;投诉通道：400-821-1608 &nbsp;
             </p>
             <p>
-                &nbsp;Copyright © 2007-2017 上海一嗨信息技术服务有限公司
-                <a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">
+                &nbsp;Copyright © 2007-2017 吴涛租车信息技术服务有限公司
+                <a href="" target="_blank" rel="nofollow">
                     ICP证：沪B2-20140130
                 </a>
             </p>
