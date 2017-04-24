@@ -25,7 +25,7 @@
             <span class="contact-info">
 						服务热线：
 						<em>
-							400-888-6608
+							888-8888-8888
 						</em>
 					</span>
         </div>
@@ -114,7 +114,7 @@
                             <p class="quick-check">
                                 校验码
                                 <input id="phoneCode" name="" autocomplete="off" class="quick-code" maxlength="6"
-                                       placeholder="请输入校验码" type="text">
+                                       placeholder="请输入您的图形验证码" type="text">
                                 <input id="J_quickcode" type="button" class="quick-codebtn" value="获取校验码">
                             </p>
                             <p class="login-error">
@@ -177,7 +177,7 @@
                 <a href="" rel="nofollow" target="_blank">
                     友情链接
                 </a>
-                | &nbsp;投诉通道：400-821-1608 &nbsp;
+                | &nbsp;投诉通道：888-8888-8888 &nbsp;
             </p>
             <p>
                 &nbsp;Copyright © 2007-2017 吴涛租车信息技术服务有限公司

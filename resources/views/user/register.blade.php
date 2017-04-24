@@ -22,7 +22,7 @@
             <span class="contact-info">
 						服务热线：
 						<em>
-							8888-8888
+							888-8888-8888
 						</em>
 					</span>
         </div>
@@ -177,9 +177,10 @@
                 </a>
                 |
                 <a href="" rel="nofollow" target="_blank">
+                <a href="" rel="nofollow" target="_blank">
                     友情链接
                 </a>
-                | &nbsp;投诉通道：15921446112
+                | &nbsp;投诉通道：888-8888-8888
             </p>
             <p>
                 &nbsp;Copyright © 2007-2017 吴涛租车平台
