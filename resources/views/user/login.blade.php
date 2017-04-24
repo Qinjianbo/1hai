@@ -35,7 +35,7 @@
      <div class="login-wrap" id="loginFrom">
         <div class="login-box login-pd">
             <a class="mobile-link" href=""
-               target="_blank" title="吴涛租车平台租车手机版">
+               target="_blank" title="吴涛租车平台手机版">
             </a>
             <div class="login-pannel">
                 <div class="login-form">
