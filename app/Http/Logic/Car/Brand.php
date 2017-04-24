@@ -4,6 +4,7 @@ namespace App\Http\Logic\Car;
 use App\Models\Car\Brand as BrandModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+
 class Brand
 {
     /**
@@ -20,7 +21,7 @@ class Brand
 
     public function show($id)
     {
-        return (new BrandModel())->show($id );
+        return (new BrandModel())->show($id);
     }
 
     public function getBrandsForAdmin(Request $request)

@@ -4,6 +4,7 @@ namespace App\Http\Logic\Car;
 use App\Models\Car\Property as PropertyModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+
 class Property
 {
     /**

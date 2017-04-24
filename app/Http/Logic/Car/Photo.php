@@ -21,7 +21,7 @@ class Photo
 
     public function show($id)
     {
-        return (new PhotoModel())->show($id );
+        return (new PhotoModel())->show($id);
     }
 
     public function getPhotosForAdmin(Request $request)

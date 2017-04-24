@@ -11,16 +11,16 @@ use Illuminate\support\Collection;
 
 class RegisterController extends Controller
 {
-	/**
-	 * doRegister 注册
-	 *
-	 * @param $request
-	 *
-	 * @return Collection
-	 */
-	public function doRegister(Request $request): Collection
-	{
-	    $userTableName = (new User())->getTable();
+    /**
+     * doRegister 注册
+     *
+     * @param $request
+     *
+     * @return Collection
+     */
+    public function doRegister(Request $request): Collection
+    {
+        $userTableName = (new User())->getTable();
         $rules = ['username' => "required|digits:11|unique:{$userTableName},username"];
         $rules['password'] = 'required|alpha_dash';
         $rules['realname'] = 'required|string';
@@ -35,5 +35,5 @@ class RegisterController extends Controller
         } else {
             return collect(['message' => '注册失败', 'errCode' => 1, 'data' => []]);
         }
-	}
+    }
 }

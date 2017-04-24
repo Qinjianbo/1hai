@@ -4,6 +4,7 @@ namespace App\Http\Logic\Car;
 use App\Models\User\User as UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+
 class User
 {
     /**
@@ -20,7 +21,7 @@ class User
 
     public function show($id)
     {
-        return (new UserModel())->show($id );
+        return (new UserModel())->show($id);
     }
 
     public function getUsersForAdmin(Request $request)

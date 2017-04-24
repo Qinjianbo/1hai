@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class Type extends Model
 {
-	protected $table = 'wutao_car_type';
+    protected $table = 'wutao_car_type';
 
-	public function getList(Request $request)
+    public function getList(Request $request)
     {
         return self::all();
     }

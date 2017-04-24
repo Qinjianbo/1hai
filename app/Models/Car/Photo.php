@@ -6,5 +6,5 @@ use App\Models\Model;
 
 class Photo extends Model
 {
-	protected $table = 'wutao_car_photo';
+    protected $table = 'wutao_car_photo';
 }

@@ -13,7 +13,7 @@ class LoginController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-	public function doLogin(Request $request)
+    public function doLogin(Request $request)
     {
         $username = $request->input('username');
         $password = $request->input('password');
