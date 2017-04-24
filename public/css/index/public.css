@@ -51,7 +51,7 @@ b,em,i{display:inline-block; font-weight:normal; font-style:normal;}
 	background: #f2f2f2;
 }
 .advantage{
-	background: url(../img/advantage_bg.png) no-repeat;
+	background: url(../../pictures/index/advantage_bg.png) no-repeat;
 	height:100px;
 }
 .advantage ul{
