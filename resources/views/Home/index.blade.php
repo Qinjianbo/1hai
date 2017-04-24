@@ -104,7 +104,7 @@
 				</div>
 			</div>
 			<div>
-				<p>版权所有&copy大连民族大学计算机科学与工程学院 网络工程 吴涛</p>
+				<p>版权所有&copy吴涛租车平台</p>
 			</div>
 		</div>
 		<script type="text/javascript" src="/js/index/index.js" ></script>
