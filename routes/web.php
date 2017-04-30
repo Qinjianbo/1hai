@@ -11,6 +11,9 @@
 |
 */
 
+//公共获取验证码路由
+Route::get('/captcha', 'Controller@getCaptcha');
+
 // 前台路由
 Route::group(['namespace' => 'Home'], function () {
     Route::get('/', 'IndexController@index');
@@ -20,7 +23,6 @@ Route::group(['namespace' => 'Home'], function () {
     Route::get('/login', function() {
         return view('user.login');
     });
-    Route::get('/captcha', 'Controller@getCaptcha');
 });
 
 // 后台路由
