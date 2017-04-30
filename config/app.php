@@ -233,4 +233,6 @@ return [
 	'Captcha' => Mews\Captcha\Facades\Captcha::class,
     ],
 
+    'defaultAdminUser' => env('DEFAULTADMINUSER', 'root'),
+    'defaultAdminPass' => env('DEFAULTADMINPASS', '888888'),
 ];

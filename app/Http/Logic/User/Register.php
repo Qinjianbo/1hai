@@ -13,7 +13,7 @@ class Register
      * @param Request $request
      * @return bool
      */
-	public function doRegisterByMobile(Request $request): bool
+    public function doRegisterByMobile(Request $request): bool
     {
         $userModel = new User();
         $userModel->username = $request->input('username');

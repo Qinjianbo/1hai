@@ -8,8 +8,8 @@ use Captcha;
 
 class Controller extends BaseController
 {
-	public function getCaptcha()
-	{
-		return Captcha::create();			
-	}
+    public function getCaptcha()
+    {
+        return Captcha::create();
+    }
 }

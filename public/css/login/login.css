@@ -6,7 +6,7 @@
     width: 950px;
     height: 375px;
     margin: 0 auto;
-    background: url(Images/login_bg.jpg) no-repeat;
+    background: url(../../pictures/login_bg.jpg) no-repeat;
     position: relative;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .login-form {
-    padding: 10px 20px 35px 20px;
+    padding: 10px 20px 5px 20px;
 }
 .login-form .login-title {
     font-size: 18px;
@@ -78,7 +78,7 @@
     width: 316px;
     display: inline-block;
     margin-left: 2px;
-    background: url(Images/login_btnnew.png) no-repeat;
+    background: url(../../pictures/login_btnnew.png) no-repeat;
     font-size: 18px;
     color: #fff;
     font-family: "\5fae\8f6f\96c5\9ed1";
@@ -91,10 +91,10 @@
     width: 185px;
     display: inline-block;
     margin-left: 60px;
-    background: url(Images/loading_login.gif) no-repeat;
+    background: url(../../pictures/loading_login.gif) no-repeat;
 }
 .login-form .login-btn a:hover {
-    background: url(Images/login_btnnew.png) 0 -39px no-repeat;
+    background: url(../../pictures/login_btnnew.png) 0 -39px no-repeat;
 }
 
 

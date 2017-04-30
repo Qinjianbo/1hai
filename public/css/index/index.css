@@ -1,0 +1,87 @@
+
+.banner{
+	position:relative;
+	width:1100px;
+	overflow: hidden;
+}
+.banner .imgs{
+	width: 600%;
+	position:relative;
+	left: 0px;
+}
+.banner ul li{
+	float: left;
+}
+.banner ul li img{
+	width:1100px
+}
+.banner:hover .arrow{
+	display: block;
+}
+.banner .arrow{
+	width:50px;
+	height: 70px;
+	text-align: center;
+	line-height: 70px;
+	font-size: 30px;
+	color:#fff;
+	display: none;
+	background: #444;
+	opacity: 0.3;
+	filter:alpha(opacity=30);
+	position: absolute;
+	top:50%;
+	margin-top: -25px;
+	cursor: pointer;
+}
+.banner .aright{
+	right: 0px;
+}
+.banner .aleft{
+	left: 0px;
+}
+.banner .arrow:hover{
+	opacity: 0.7;
+	filter:alpha(opacity=70);
+}
+.content{
+	position: relative;
+}
+.content_title h3{
+	font-size:24px;
+	font-family: "黑体";
+	display: inline-block;
+	margin: 10px 5px;
+}
+.content_title p{
+	font-size:16px;
+	color: #666666;
+	display: inline-block;
+}
+.contentL{
+	width:440px;
+	height: 392px;
+	float: left;
+}
+.contentR{
+	width:650px;
+	float: right;
+}
+.contentR_car{
+	display: inline-block;
+	width:320px;
+	margin-left: 3px;
+	height: 195px;
+	font-size:20px;
+	position:relative;
+}
+.contentR_car span{
+	color: #f00;
+}
+.contentR_car img{
+	position:absolute;
+	width: 210px;
+	height: 130px;
+	right: 0px;
+	bottom: 0px;
+}
