@@ -19,13 +19,49 @@ class Brand
         return (new BrandModel())->getList($request);
     }
 
+    /**
+     * 根据Id 获取品牌信息
+     *
+     * @param $id
+     * @return mixed
+     */
     public function show($id)
     {
         return (new BrandModel())->show($id);
     }
 
+    /**
+     * 后台分页获取品牌信息
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public function getBrandsForAdmin(Request $request)
     {
         return BrandModel::paginate(20);
+    }
+
+    /**
+     * 创建或更新品牌信息
+     *
+     * @param Collection $input
+     * @param $id
+     * @return mixed
+     */
+    public function store(Collection $input, $id)
+    {
+        return (new BrandModel())->store($input, $id);
+    }
+
+    /**
+     * 删除某品牌
+     *
+     * @param int $id
+     *
+     * @return int
+     */
+    public function delete(int $id)
+    {
+        return (new BrandModel())->delete($id);
     }
 }

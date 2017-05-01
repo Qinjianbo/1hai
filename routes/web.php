@@ -38,6 +38,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/type/{id}', 'TypeController@show')->middleware('adminAuthCheck');
     Route::get('/brands', 'BrandController@brands')->middleware('adminAuthCheck');
     Route::get('/brand/{id}', 'BrandController@show')->middleware('adminAuthCheck');
+    Route::post('/brand/store', 'BrandController@store')->middleware('adminAuthCheck');
+    Route::get('/brand/delete/{id}', 'BrandController@delete')->middleware('adminAuthCheck');
     Route::get('/properties', 'PropertyController@properties')->middleware('adminAuthCheck');
     Route::get('/property/{id}', 'PropertyController@show')->middleware('adminAuthCheck');
     Route::get('/photos', 'PhotoController@photos')->middleware('adminAuthCheck');
