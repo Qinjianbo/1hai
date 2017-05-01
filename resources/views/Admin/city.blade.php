@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked" id="nav">
-                <li class="active"><a href="/admin/cars" id="car">车辆信息管理</a></li>
+                <li class=""><a href="/admin/cars" id="car">车辆信息管理</a></li>
                 <li class=""><a href="/admin/types">车辆类型管理</a></li>
                 <li class=""><a href="/admin/brands">车辆品牌管理</a></li>
                 <li class=""><a href="/admin/properties">车辆属性管理</a></li>
@@ -37,12 +37,12 @@
                 <div class="container">
                     <div class="row" data-id="1" id="nowPage">
                         <div class="col-md-6">
-                            <form action="/admin/car/search" class="navbar-form bavbar-left" role="search" method="get">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="请输入搜索关键词" name="keyword">
-                                </div>
-                                <button type="submit" class="btn btn-default">搜索</button>
-                            </form>
+                            {{--<form action="/admin/car/search" class="navbar-form bavbar-left" role="search" method="get">--}}
+                                {{--<div class="form-group">--}}
+                                    {{--<input type="text" class="form-control" placeholder="请输入搜索关键词" name="keyword">--}}
+                                {{--</div>--}}
+                                {{--<button type="submit" class="btn btn-default">搜索</button>--}}
+                            {{--</form>--}}
                         </div>
 
                         <div class="col-md-4 col-md-offset-2">
@@ -53,34 +53,34 @@
                     </div>
                 </div>
             </div>
-            <!--车辆信息体-->
+            <!--用户信息主体-->
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                 <tr>
                     <th>编号</th>
-                    <th>名字</th>
-                    <th>所属类型</th>
-                    <th>所属品牌</th>
+                    <th>真实名字</th>
+                    <th>手机号码</th>
+                    <th>身份证号</th>
                     <th>创建时间</th>
                     <th>操作</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($cars as $key => $car)
+                @foreach($users as $key => $user)
                     <tr>
                         <td>{{ $key + 1 }}</td>
-                        <td>{{ $car->name }}</td>
-                        <td>{{ $type[$car->typeid]->type_name }}</td>
-                        <td>{{ $brands[$car->brandid]->brand_name }}</td>
-                        <td>{{ $car->created_at }}</td>
-                        <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $car->id }})">编辑</a></td>
+                        <td>{{ $user->realname }}</td>
+                        <td>{{ $user->username }}</td>
+                        <td>{{ $user->idcard }}</td>
+                        <td>{{ $user->created_at }}</td>
+                        <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $user->id }})">查看身份证图片</a></td>
                         <td>
-                            <a id="delete" style="cursor:pointer" href="javascript:;" onclick="changeValid({{ $car->id }})">
-                                @if ($car->valid == 1)
+                            <a id="delete" style="cursor:pointer" href="javascript:;" onclick="changeEnabled({{ $user->id }})">
+                                @if ($user->enabled == 1)
                                     使失效
-                                @elseif ($car->valid == 0)
-                                    使有效
+                                @elseif ($user->enabled == 0)
+                                    审核通过
                                 @endif
                             </a>
                         </td>
@@ -90,7 +90,7 @@
             </table>
             <br>
             <!--分页导航-->
-            {{ $cars->links() }}
+            {{ $users->links() }}
 
             <!--增加和修改的模态框-->
             <div class="modal" id="mymodal">
@@ -138,7 +138,7 @@
             </div>
             <!--<script src="/Public/js/car/car.js"></script>-->
             <script type="application/javascript">
-                function changeValid(id) {
+                function changeEnabled(id) {
                     alert(id);
                 }
                 function edit(id) {
