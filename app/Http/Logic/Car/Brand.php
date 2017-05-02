@@ -60,8 +60,8 @@ class Brand
      *
      * @return int
      */
-    public function delete(int $id)
+    public function delete($id)
     {
-        return (new BrandModel())->delete($id);
+        return (new BrandModel())->where('id', $id)->delete();
     }
 }

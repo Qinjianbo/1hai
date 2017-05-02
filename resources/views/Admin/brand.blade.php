@@ -104,10 +104,9 @@
                 function deleteBrand(id) {
                     $.ajax({
                         type:'get',
-                        url:'/admin/brand/delete',
+                        url:'/admin/brand/delete/'+id,
                         dataType:'json',
                         data:{
-                            id:id
                         },
                         success:function (data) {
                             if (data) {
