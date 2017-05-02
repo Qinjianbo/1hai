@@ -63,7 +63,7 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $brand->brand_name }}</td>
-                        <td>{{ $brand->created_at }}</td>
+                        <td>{{ date('Y-m-d H:i:s', $brand->created_at) }}</td>
                         <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $brand->id }})">编辑</a></td>
                         <td>
                             <a id="delete" style="cursor:pointer" href="javascript:;" onclick="deleteBrand({{ $brand->id }})">删除</a>
@@ -111,6 +111,7 @@
                         success:function (data) {
                             if (data) {
                                 alert('删除成功');
+                                location.reload();
                             } else {
                                 alert("删除失败");
                             }

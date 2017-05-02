@@ -29,6 +29,7 @@ class Model extends BaseModel
     public function store(Collection $input, $id)
     {
         if ($id > 0) {
+            $input->put('updated_at', time());
             $this->findOrFail($id)->update($input->toArray());
         } else {
             $input->put('created_at', time());
