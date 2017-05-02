@@ -18,4 +18,23 @@ class PropertyController extends Controller
     {
         return (new Property())->show($id);
     }
+    
+    /**
+     * 创建或更新属性信息
+     *
+     * @param Request $request
+     *
+     * @return mixed
+     */
+    public function store(Request $request)
+    {
+        return (new Property())
+            ->store(collect($request->input())
+                ->only(['property_name']), $request->get('id'));
+    }
+
+    public function delete($id)
+    {
+        return (new Property())->delete($id);
+    }
 }
