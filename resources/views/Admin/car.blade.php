@@ -71,8 +71,8 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $car->name }}</td>
-                        <td>{{ $type[$car->typeid]->type_name }}</td>
-                        <td>{{ $brands[$car->brandid]->brand_name }}</td>
+                        <td>{{ isset($type[$car->typeid])?$type[$car->typeid]->type_name:'' }}</td>
+                        <td>{{ isset($brands[$car->brandid])?$brands[$car->brandid]->brand_name:'' }}</td>
                         <td>{{ $car->created_at }}</td>
                         <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $car->id }})">编辑</a></td>
                         <td>
