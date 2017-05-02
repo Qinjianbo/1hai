@@ -4,6 +4,7 @@ namespace App\Http\Logic\Car;
 use App\Models\Car\Car as CarModel;
 use App\Models\Car\Car;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class Info
 {

@@ -69,28 +69,28 @@
                 <tbody>
                 @foreach($cars as $key => $car)
                     <tr>
-                        <td>{{ $key + 1 }}</td>
-                        <td>{{ $car->name }}</td>
-                        <td>{{ $type[$car->typeid]->type_name }}</td>
-                        <td>{{ $brands[$car->brandid]->brand_name }}</td>
-                        <td>{{ $car->created_at }}</td>
-                        <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $car->id }})">编辑</a></td>
-                        <td>
-                            <a id="delete" style="cursor:pointer" href="javascript:;" onclick="changeValid({{ $car->id }})">
-                                @if ($car->valid == 1)
-                                    使失效
-                                @elseif ($car->valid == 0)
-                                    使有效
-                                @endif
-                            </a>
-                        </td>
+                        {{--<td>{{ $key + 1 }}</td>--}}
+                        {{--<td>{{ $car->name }}</td>--}}
+                        {{--<td>{{ $type[$car->typeid]->type_name }}</td>--}}
+                        {{--<td>{{ $brands[$car->brandid]->brand_name }}</td>--}}
+                        {{--<td>{{ $car->created_at }}</td>--}}
+                        {{--<td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $car->id }})">编辑</a></td>--}}
+                        {{--<td>--}}
+                            {{--<a id="delete" style="cursor:pointer" href="javascript:;" onclick="changeValid({{ $car->id }})">--}}
+                                {{--@if ($car->valid == 1)--}}
+                                    {{--使失效--}}
+                                {{--@elseif ($car->valid == 0)--}}
+                                    {{--使有效--}}
+                                {{--@endif--}}
+                            {{--</a>--}}
+                        {{--</td>--}}
                     </tr>
                 @endforeach
                 </tbody>
             </table>
             <br>
             <!--分页导航-->
-            {{ $cars->links() }}
+            {{--{{ $cars->links() }}--}}
 
             <!--增加和修改的模态框-->
             <div class="modal" id="mymodal">
