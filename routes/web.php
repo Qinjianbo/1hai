@@ -50,6 +50,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/photo/{id}', 'PhotoController@show')->middleware('adminAuthCheck');
     Route::get('/users', 'UserController@users')->middleware('adminAuthCheck');
     Route::get('/user/{id}', 'UserController@show')->middleware('adminAuthCheck');
+    Route::get('/user/changeEnabled/{id}', 'UserController@changeEnabled')->middleware('adminAuthCheck');
     Route::get('/messages', 'MessageController@messages')->middleware('adminAuthCheck');
     Route::get('/message/{id}', 'MessageController@show')->middleware('adminAuthCheck');
     Route::get('/shops', 'ShopController@shops')->middleware('adminAuthCheck');

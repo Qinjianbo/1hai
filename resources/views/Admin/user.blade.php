@@ -47,7 +47,6 @@
 
                         <div class="col-md-4 col-md-offset-2">
                             <ul class="nav navbar-nav">
-                                <li><a id="add" class="btn btn-default">新增车辆信息</a></li>
                             </ul>
                         </div>
                     </div>
@@ -73,7 +72,7 @@
                         <td>{{ $user->realname }}</td>
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->idcard }}</td>
-                        <td>{{ $user->created_at }}</td>
+                        <td>{{ date('Y-m-d H:i:s', $user->created_at) }}</td>
                         <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $user->id }})">查看身份证图片</a></td>
                         <td>
                             <a id="delete" style="cursor:pointer" href="javascript:;" onclick="changeEnabled({{ $user->id }})">
@@ -84,6 +83,7 @@
                                 @endif
                             </a>
                         </td>
+                        <input type="hidden" id="enabled" value="{{ $user->enabled }}">
                     </tr>
                 @endforeach
                 </tbody>
@@ -97,41 +97,17 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            编辑/新增车辆信息
+                            身份证图片信息
                         </div>
                         <div class="modal-body">
                             <form role="form" id="carform" action="" method="post" enctype="multipart/form-data">
-                                <input type="text" hidden="" name="id">
                                 <div class="form-group">
-                                    <label for="modelName">名称:</label>
-                                    <input type="text" name="carName" id="carName" class="form-control" placeholder="请输入车辆名称">
-                                </div>
-                                <div class="form-group">
-                                    <label for="priceRange">价格区间:</label>
-                                    <input type="text" name="priceRange" id="priceRange" class="form-control" placeholder="请输入价格区间">
-                                </div>
-                                <div class="form-group">
-                                    <label for="allSpell">全拼</label>
-                                    <input type="text" name="allSpell" id="allSpell" class="form-control" placeholder="请输入车型全拼">
-                                </div>
-                                <div class="form-group">
-                                    <label for="source">来源</label>
-                                    <input type="text" name="source" id="source" class="form-control" placeholder="请输入信息来源">
-                                </div>
-                                <div class="form-group">
-                                    <label for="brief">简介</label>
-                                    <textarea id="brief" name="brief" rows="5" class="form-control" placeholder="请输入简介内容"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="thumbnail">缩略图</label>
-                                    <input type="file" id="thumbnail" name="thumbnail" class="form-control" placeholder="请选择图片">
-                                    <img src="" style="width:100px;" name="thumbnail">
+                                    <img src="" name="id_card" id="id_card" alt="暂无身份证图片信息">
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="button" class="btn btn-primary" id="save">保存</button>
                         </div>
                     </div>
                 </div>
@@ -139,45 +115,50 @@
             <!--<script src="/Public/js/car/car.js"></script>-->
             <script type="application/javascript">
                 function changeEnabled(id) {
-                    alert(id);
+                    var enabled = $("#enabled").val();
+                    if (enabled == 0) {
+                        enabled = enabled + 1;
+                    } else if(enabled == 1) {
+                        enabled = enabled - 1;
+                    }
+                    $.ajax({
+                        type:"get",
+                        dataType:"json",
+                        data:{
+                            enabled:enabled
+                        },
+                        url:"/admin/user/changeEnabled/"+id,
+                        success:function (data) {
+                            if (data) {
+                                alert("变更成功");
+                                location.reload();
+                            } else {
+                                alert("变更失败");
+                            }
+                        },
+                        error:function (data) {
+                            console.log(data.responseText);
+                            alert('请稍后重试');
+                        }
+                    });
                 }
                 function edit(id) {
                     $.ajax({
                         type: "get",
-                        url: "/admin/car/" + id,
+                        url: "/admin/user/" + id,
                         data: {},
                         dataType: "json",
                         success: function (data) {
                             if (data == null) {
                                 alert('没有对应信息');
                             } else {
-                                $('#mymodal input[name="id"]').val(data['id']);
-                                $('#mymodal input[name="modelName"]').val(data['modelname']);
-                                $('#mymodal input[name="priceRange"]').val(data['pricerange']);
-                                $('#mymodal input[name="allSpell"]').val(data['allspell']);
-                                $('#mymodal input[name="source"]').val(data['source']);
-                                $('#mymodal textarea[name="brief"]').text(data['brief']);
-                                var thumbnail = "http://www.boboidea.com/Uploads/car/thumbnail/"+data['id']+"/"+data['thumbnail'];
-                                $('#mymodal img[name="thumbnail"]').attr('src', thumbnail);
+                                $("#id_card").attr('src', data.card_pic_path);
                                 var nowPage = $('#nowPage').attr('data-id');
-                                $('#carform').attr('action',"/admin/car/addorupdatecar.html?nowPage="+nowPage);
                                 $('#mymodal').modal();
                             }
                         }
                     })
                 }
-                $('#add').click(function () {
-                    $('#mymodal input').val(null);
-                    $('#mymodal textarea').val(null);
-                    $('#mymodal img').attr('src', '');
-                    var nowPage = $('#nowPage').attr('data-id');
-                    $('#carform').attr('action',"/admin/car/addorupdatecar/nowPage/%2BnowPage%2B.html");
-                    $('#mymodal').modal();
-                });
-
-                $('#save').click(function(){
-                    $('#mymodal form').submit();
-                });
             </script>
 
         </div>

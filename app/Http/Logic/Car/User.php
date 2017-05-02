@@ -28,4 +28,9 @@ class User
     {
         return UserModel::paginate(20);
     }
+
+    public function store(Collection $input, $id)
+    {
+        return (new UserModel())->store($input, $id);
+    }
 }
