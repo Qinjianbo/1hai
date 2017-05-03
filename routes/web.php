@@ -51,6 +51,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/user/changeEnabled/{id}', 'UserController@changeEnabled')->middleware('adminAuthCheck');
     Route::get('/messages', 'MessageController@messages')->middleware('adminAuthCheck');
     Route::get('/message/{id}', 'MessageController@show')->middleware('adminAuthCheck');
+    Route::post('/message/store', 'MessageController@store')->middleware('adminAuthCheck');
     Route::get('/shops', 'ShopController@shops')->middleware('adminAuthCheck');
     Route::get('/shop/{id}', 'MessageController@show')->middleware('adminAuthCheck');
 });
