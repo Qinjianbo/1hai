@@ -8,6 +8,7 @@ use App\Http\Logic\Car\Property;
 use App\Http\Logic\Car\Type;
 use Illuminate\Http\Request;
 use Illuminate\support\Collection;
+use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
 {
@@ -28,15 +29,19 @@ class CarController extends Controller
 
     public function store(Request $request)
     {
-        $car = collect($request->input())
-            ->only(['name,typeid,brandid,properties']);
+        $car = collect($request->input())->only(['name', 'typeid', 'brandid', 'properties']);
         if ($request->hasFile('thumbnail')) {
-            $car_photo_path = $request->file('thumbnail')->store('car_photo');
+            $car_photo_path = $request->file('thumbnail')->store('car_photo', 'public');
             if ($car_photo_path) {
-                $car->put('car_photo_path', $car_photo_path);
+                $car->put('car_photo_path', '/storage/'.$car_photo_path);
             }
         }
-        return (new Info())
-            ->store($car, $request->get('id'));
+        $result = (new Info())->store($car, $request->get('id'));
+
+        if ($result) {
+            echo "<script>parent.callback('添加或更新成功')</script>";
+        } else {
+            echo "<script>parent.callback('添加或更新失败')</script>";
+        }
     }
 }

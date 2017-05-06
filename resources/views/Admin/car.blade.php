@@ -74,7 +74,7 @@
                         <td>{{ isset($brands[$car->brandid])?$brands[$car->brandid]->brand_name:'' }}</td>
                         <td>{{ $car->created_at }}</td>
                         <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $car->id }})">编辑</a></td>
-                        <td><a id="check_photo" href="javascript:;" style="cursor:pointer" onclick="check_photo({{ $car->car_photo_path }})">查看图片</a></td>
+                        <td><a id="check_photo" href="javascript:;" style="cursor:pointer" onclick="check_photo('{{ $car->car_photo_path }}')">查看图片</a></td>
                         <td>
                             <a id="delete" style="cursor:pointer" href="javascript:;" onclick="changeValid({{ $car->id }})">
                                 @if ($car->valid == 1)
@@ -100,7 +100,7 @@
                             编辑/新增车辆信息
                         </div>
                         <div class="modal-body">
-                            <form role="form" id="carform" action="" method="post" enctype="multipart/form-data">
+                            <form role="form" id="carform" action="" method="post" enctype="multipart/form-data" target="hidden_iframe">
                                 <input type="hidden" name="id" id="id">
                                 <div class="form-group">
                                     <label for="name">车辆名称:</label>
@@ -112,19 +112,19 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="types">所属分类</label>
-                                    <select class="form-control" id="types" name="types">
+                                    <select class="form-control" id="types" name="typeid">
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="brands">所属品牌</label>
-                                    <select class="form-control" id="brands" name="brands">
+                                    <select class="form-control" id="brands" name="brandid">
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="thumbnail">缩略图</label>
-                                    <input type="file" id="thumbnail" name="thumbnail" class="form-control" placeholder="请选择图片" onchange="doUpload()">
+                                    <input type="file" id="thumbnail" name="thumbnail" class="form-control" placeholder="请选择图片">
                                     <input type="hidden" id="thumbnail_path" name="thumbnail_path" value="">
-                                    <img src="" alt="暂时无图片" id="thumbnail_src"/>
+                                    <img alt="暂时无图片" id="thumbnail_src" width="100px" height="100px"/>
                                 </div>
                             </form>
                         </div>
@@ -156,9 +156,11 @@
                                 console.log(data);
                                 $('#brands').html(null);
                                 $("#types").html(null);
+                                $("#thumbnail_src").attr("src", data.car_photo_path);
                                 getBrands(data.brandid);
                                 getTypes(data.typeid);
                                 var nowPage = $('#nowPage').attr('data-id');
+                                $("#carform").attr("action", "/admin/car/store");
                                 $('#mymodal').modal();
                             }
                         }
@@ -170,28 +172,12 @@
                     $("#types").html(null);
                     getBrands();
                     getTypes();
+                    $("#carform").attr("action", "/admin/car/store");
                     $('#mymodal').modal();
                 });
 
                 $('#save').click(function(){
-                    $.ajax({
-                        url:"/admin/car/store",
-                        type:"POST",
-                        dataType:"json",
-                        data:$("#carform").serialize(),
-                        success:function (data) {
-                            console.log(data.responseText);
-                            if (data == null) {
-                                alert("添加或修改失败");
-                            } else {
-                                alert("添加或修改成功");
-                            }
-                        },
-                        error:function (data) {
-                            console.log(data.responseText);
-                            alert("请检查网络后重试");
-                        }
-                    });
+                    $("#carform").submit();
                 });
                 function getBrands(car_brand_id) {
                     $.ajax({
@@ -258,30 +244,17 @@
                         }
                     });
                 };
-                function doUpload() {
-                    var formData = new FormData($("#thumbnail"));
-                    $.ajax({
-                        url: '/upload' ,
-                        type: 'get',
-                        data:formData,
-                        async: false,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        success: function (data) {
-                            console.log('上传图片完成');
-                            $("#thumbnail_path").val(data);
-                            $("#thumbnail_src").attr('src', data);
-                        },
-                        error: function (data) {
-                            console.log(data.responseText);
-                        }
-                })
+                function callback(msg)
+                {
+                    alert(msg);
+                    $("#mymodal").modal('hide');
+                    location.reload();
                 }
             </script>
 
         </div>
     </div>
 </div>
+<iframe id="hidden_iframe" name="hidden_iframe" style="display: none"></iframe>
 </body>
 </html>

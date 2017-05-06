@@ -27,4 +27,9 @@ class Info
     {
         return Car::where('id', $id)->first();
     }
+
+    public function store(Collection $input, $id)
+    {
+        return (new CarModel())->store($input, $id);
+    }
 }

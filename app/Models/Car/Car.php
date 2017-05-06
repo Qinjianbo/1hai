@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 class Car extends Model
 {
     protected $table = 'wutao_car_info';
+    protected $guarded = [];
+    public $timestamps = false;
 
     public function getList(Request $request)
     {
