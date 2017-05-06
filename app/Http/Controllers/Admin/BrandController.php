@@ -15,6 +15,11 @@ class BrandController extends Controller
      */
     public function brands(Request $request)
     {
+        if ($request->get('all')) {
+            $brands = (new Brand())->getList($request);
+            echo $brands;
+            exit;
+        }
         $brands = (new Brand())->getBrandsForAdmin($request);
 
         return view('Admin.brand', ['brands' => $brands]);

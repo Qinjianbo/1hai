@@ -15,6 +15,11 @@ class TypeController extends Controller
      */
     public function types(Request $request)
     {
+        if ($request->get('all')) {
+            $types = (new Type())->getList($request);
+            echo $types;
+            exit;
+        }
         $types = (new Type())->getTypesForAdmin($request);
 
         return view('Admin.type', ['types' => $types]);

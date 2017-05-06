@@ -57,11 +57,11 @@
                 <tr>
                     <th>编号</th>
                     <th>名字</th>
+                    <th>车辆属性</th>
                     <th>所属类型</th>
                     <th>所属品牌</th>
                     <th>创建时间</th>
-                    <th>操作</th>
-                    <th></th>
+                    <th colspan="3">操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -69,10 +69,12 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $car->name }}</td>
+                        <td>{{ $car->properties }}</td>
                         <td>{{ isset($type[$car->typeid])?$type[$car->typeid]->type_name:'' }}</td>
                         <td>{{ isset($brands[$car->brandid])?$brands[$car->brandid]->brand_name:'' }}</td>
                         <td>{{ $car->created_at }}</td>
                         <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $car->id }})">编辑</a></td>
+                        <td><a id="check_photo" href="javascript:;" style="cursor:pointer" onclick="check_photo({{ $car->car_photo_path }})">查看图片</a></td>
                         <td>
                             <a id="delete" style="cursor:pointer" href="javascript:;" onclick="changeValid({{ $car->id }})">
                                 @if ($car->valid == 1)
@@ -99,31 +101,30 @@
                         </div>
                         <div class="modal-body">
                             <form role="form" id="carform" action="" method="post" enctype="multipart/form-data">
-                                <input type="text" hidden="" name="id">
+                                <input type="hidden" name="id" id="id">
                                 <div class="form-group">
-                                    <label for="modelName">名称:</label>
-                                    <input type="text" name="carName" id="carName" class="form-control" placeholder="请输入车辆名称">
+                                    <label for="name">车辆名称:</label>
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="请输入车辆名称">
                                 </div>
                                 <div class="form-group">
-                                    <label for="priceRange">价格区间:</label>
-                                    <input type="text" name="priceRange" id="priceRange" class="form-control" placeholder="请输入价格区间">
+                                    <label for="properties">车辆属性:</label>
+                                    <input type="text" name="properties" id="properties" class="form-control" placeholder="请输入车辆属性(多个用英文','隔开)">
                                 </div>
                                 <div class="form-group">
-                                    <label for="allSpell">全拼</label>
-                                    <input type="text" name="allSpell" id="allSpell" class="form-control" placeholder="请输入车型全拼">
+                                    <label for="types">所属分类</label>
+                                    <select class="form-control" id="types" name="types">
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="source">来源</label>
-                                    <input type="text" name="source" id="source" class="form-control" placeholder="请输入信息来源">
-                                </div>
-                                <div class="form-group">
-                                    <label for="brief">简介</label>
-                                    <textarea id="brief" name="brief" rows="5" class="form-control" placeholder="请输入简介内容"></textarea>
+                                    <label for="brands">所属品牌</label>
+                                    <select class="form-control" id="brands" name="brands">
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="thumbnail">缩略图</label>
-                                    <input type="file" id="thumbnail" name="thumbnail" class="form-control" placeholder="请选择图片">
-                                    <img src="" style="width:100px;" name="thumbnail">
+                                    <input type="file" id="thumbnail" name="thumbnail" class="form-control" placeholder="请选择图片" onchange="doUpload()">
+                                    <input type="hidden" id="thumbnail_path" name="thumbnail_path" value="">
+                                    <img src="" alt="暂时无图片" id="thumbnail_src"/>
                                 </div>
                             </form>
                         </div>
@@ -149,16 +150,15 @@
                             if (data == null) {
                                 alert('没有对应信息');
                             } else {
-                                $('#mymodal input[name="id"]').val(data['id']);
-                                $('#mymodal input[name="modelName"]').val(data['modelname']);
-                                $('#mymodal input[name="priceRange"]').val(data['pricerange']);
-                                $('#mymodal input[name="allSpell"]').val(data['allspell']);
-                                $('#mymodal input[name="source"]').val(data['source']);
-                                $('#mymodal textarea[name="brief"]').text(data['brief']);
-                                var thumbnail = "http://www.boboidea.com/Uploads/car/thumbnail/"+data['id']+"/"+data['thumbnail'];
-                                $('#mymodal img[name="thumbnail"]').attr('src', thumbnail);
+                                $("#id").val(data.id);
+                                $("#name").val(data.name);
+                                $("#properties").val(data.properties);
+                                console.log(data);
+                                $('#brands').html(null);
+                                $("#types").html(null);
+                                getBrands(data.brandid);
+                                getTypes(data.typeid);
                                 var nowPage = $('#nowPage').attr('data-id');
-                                $('#carform').attr('action',"/admin/car/addorupdatecar.html?nowPage="+nowPage);
                                 $('#mymodal').modal();
                             }
                         }
@@ -166,16 +166,118 @@
                 }
                 $('#add').click(function () {
                     $('#mymodal input').val(null);
-                    $('#mymodal textarea').val(null);
-                    $('#mymodal img').attr('src', '');
-                    var nowPage = $('#nowPage').attr('data-id');
-                    $('#carform').attr('action',"/admin/car/addorupdatecar/nowPage/%2BnowPage%2B.html");
+                    $('#brands').html(null);
+                    $("#types").html(null);
+                    getBrands();
+                    getTypes();
                     $('#mymodal').modal();
                 });
 
                 $('#save').click(function(){
-                    $('#mymodal form').submit();
+                    $.ajax({
+                        url:"/admin/car/store",
+                        type:"POST",
+                        dataType:"json",
+                        data:$("#carform").serialize(),
+                        success:function (data) {
+                            console.log(data.responseText);
+                            if (data == null) {
+                                alert("添加或修改失败");
+                            } else {
+                                alert("添加或修改成功");
+                            }
+                        },
+                        error:function (data) {
+                            console.log(data.responseText);
+                            alert("请检查网络后重试");
+                        }
+                    });
                 });
+                function getBrands(car_brand_id) {
+                    $.ajax({
+                        url:"/admin/brands",
+                        type:"get",
+                        dataType:"json",
+                        data:{
+                            all:1
+                        },
+                        success:function (data) {
+                            var brands = $("#brands");
+                            console.log(data);
+                            for(var i = 0; i < data.length; i++){
+                                var option = $("<option></option>");
+                                option.attr("id", data[i].id);
+                                option.attr("name", "brandid");
+                                option.attr("value", data[i].id);
+                                option.html(data[i].brand_name);
+                                if (car_brand_id == data[i].id) {
+                                    option.attr("selected", "selected");
+                                }
+                                if (car_brand_id == undefined && i == 0) {
+                                    option.attr("selected", "selected");
+                                }
+                                brands.append(option);
+                            }
+
+                        },
+                        error:function (data) {
+                            console.log(data.responseText);
+                            alert("请检查网络后重试");
+                        }
+                    });
+                };
+                function getTypes(car_type_id) {
+                    $.ajax({
+                        url:"/admin/types",
+                        type:"get",
+                        dataType:"json",
+                        data:{
+                            all:1
+                        },
+                        success:function (data) {
+                            var types = $("#types");
+                            console.log(data);
+                            for(var i = 0; i < data.length; i++){
+                                var option = $("<option></option>");
+                                option.attr("id", data[i].id);
+                                option.attr("name", "typeid");
+                                option.attr("value", data[i].id);
+                                option.html(data[i].type_name);
+                                if (car_type_id == data[i].id) {
+                                    option.attr("selected", "selected");
+                                }
+                                if (car_type_id == undefined && i == 0) {
+                                    option.attr("selected", "selected");
+                                }
+                                types.append(option);
+                            }
+                        },
+                        error:function (data) {
+                            console.log(data.responseText);
+                            alert("请检查网络后重试");
+                        }
+                    });
+                };
+                function doUpload() {
+                    var formData = new FormData($("#thumbnail"));
+                    $.ajax({
+                        url: '/upload' ,
+                        type: 'get',
+                        data:formData,
+                        async: false,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function (data) {
+                            console.log('上传图片完成');
+                            $("#thumbnail_path").val(data);
+                            $("#thumbnail_src").attr('src', data);
+                        },
+                        error: function (data) {
+                            console.log(data.responseText);
+                        }
+                })
+                }
             </script>
 
         </div>
