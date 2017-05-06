@@ -34,6 +34,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/logout', 'LogoutController@doLogout');
     Route::get('/cars', 'CarController@cars')->middleware('adminAuthCheck');
     Route::post('/car/store', 'CarController@store')->middleware('adminAuthCheck');
+    Route::get('/car/changeValid', 'CarController@changeValid')->middleware('adminAuthCheck');
     Route::get('/car/{id}', 'CarController@show')->middleware('adminAuthCheck');
     Route::get('/types', 'TypeController@types')->middleware('adminAuthCheck');
     Route::get('/type/delete/{id}', 'TypeController@delete')->middleware('adminAuthCheck');

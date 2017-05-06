@@ -23,7 +23,7 @@
                 <li class=""><a href="/admin/cars" id="car">车辆信息管理</a></li>
                 <li class=""><a href="/admin/types">车辆类型管理</a></li>
                 <li class=""><a href="/admin/brands">车辆品牌管理</a></li>
-                <li class=""><a href="/admin/properties">车辆属性管理</a></li>
+                {{--<li class=""><a href="/admin/properties">车辆属性管理</a></li>--}}
                 <li class=""><a href="/admin/users">用户信息管理</a></li>
                 <li class="active"><a href="/admin/messages">留言信息管理</a></li>
                 <li class=""><a href="/admin/shops">门店信息管理</a></li>
@@ -75,7 +75,7 @@
                                 @endif
                             </a>
                         </td>
-                        <input type="hidden" id="can_show" name="can_show" value="{{ $message->can_show }}">
+                        <input type="hidden" id="can_show{{ $message->id }}" name="can_show" value="{{ $message->can_show }}">
                     </tr>
                 @endforeach
                 </tbody>
@@ -115,7 +115,7 @@
             <!--<script src="/Public/js/car/car.js"></script>-->
             <script type="application/javascript">
                 function changeShow(id) {
-                    var can_show = $("#can_show").val();
+                    var can_show = $("#can_show" + id).val();
                     if (can_show == 1) {
                         can_show = can_show - 1;
                     } else if (can_show == 0) {

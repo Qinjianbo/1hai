@@ -44,4 +44,10 @@ class CarController extends Controller
             echo "<script>parent.callback('添加或更新失败')</script>";
         }
     }
+
+    public function changeValid(Request $request)
+    {
+        return (new Info())->store(collect($request->input())
+            ->only(['valid']), $request->get('id'));
+    }
 }

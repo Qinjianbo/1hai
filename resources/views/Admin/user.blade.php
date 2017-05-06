@@ -23,7 +23,7 @@
                 <li class=""><a href="/admin/cars" id="car">车辆信息管理</a></li>
                 <li class=""><a href="/admin/types">车辆类型管理</a></li>
                 <li class=""><a href="/admin/brands">车辆品牌管理</a></li>
-                <li class=""><a href="/admin/properties">车辆属性管理</a></li>
+                {{--<li class=""><a href="/admin/properties">车辆属性管理</a></li>--}}
                 <li class="active"><a href="/admin/users">用户信息管理</a></li>
                 <li class=""><a href="/admin/messages">留言信息管理</a></li>
                 <li class=""><a href="/admin/shops">门店信息管理</a></li>
@@ -81,7 +81,7 @@
                                 @endif
                             </a>
                         </td>
-                        <input type="hidden" id="enabled" value="{{ $user->enabled }}">
+                        <input type="hidden" id="enabled{{ $user->id }}" value="{{ $user->enabled }}">
                     </tr>
                 @endforeach
                 </tbody>
@@ -113,7 +113,7 @@
             <!--<script src="/Public/js/car/car.js"></script>-->
             <script type="application/javascript">
                 function changeEnabled(id) {
-                    var enabled = $("#enabled").val();
+                    var enabled = $("#enabled" + id).val();
                     if (enabled == 0) {
                         enabled = enabled + 1;
                     } else if(enabled == 1) {

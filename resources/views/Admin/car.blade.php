@@ -23,7 +23,7 @@
                 <li class="active"><a href="/admin/cars" id="car">车辆信息管理</a></li>
                 <li class=""><a href="/admin/types">车辆类型管理</a></li>
                 <li class=""><a href="/admin/brands">车辆品牌管理</a></li>
-                <li class=""><a href="/admin/properties">车辆属性管理</a></li>
+                {{--<li class=""><a href="/admin/properties">车辆属性管理</a></li>--}}
                 <li class=""><a href="/admin/users">用户信息管理</a></li>
                 <li class=""><a href="/admin/messages">留言信息管理</a></li>
                 <li class=""><a href="/admin/shops">门店信息管理</a></li>
@@ -35,12 +35,6 @@
                 <div class="container">
                     <div class="row" data-id="1" id="nowPage">
                         <div class="col-md-6">
-                            <form action="/admin/car/search" class="navbar-form bavbar-left" role="search" method="get">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="请输入搜索关键词" name="keyword">
-                                </div>
-                                <button type="submit" class="btn btn-default">搜索</button>
-                            </form>
                         </div>
 
                         <div class="col-md-4 col-md-offset-2">
@@ -61,7 +55,7 @@
                     <th>所属类型</th>
                     <th>所属品牌</th>
                     <th>创建时间</th>
-                    <th colspan="3">操作</th>
+                    <th colspan="2">操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -74,16 +68,16 @@
                         <td>{{ isset($brands[$car->brandid])?$brands[$car->brandid]->brand_name:'' }}</td>
                         <td>{{ $car->created_at }}</td>
                         <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $car->id }})">编辑</a></td>
-                        <td><a id="check_photo" href="javascript:;" style="cursor:pointer" onclick="check_photo('{{ $car->car_photo_path }}')">查看图片</a></td>
                         <td>
                             <a id="delete" style="cursor:pointer" href="javascript:;" onclick="changeValid({{ $car->id }})">
                                 @if ($car->valid == 1)
-                                    使失效
+                                    前台隐藏
                                 @elseif ($car->valid == 0)
-                                    使有效
+                                    前台展示
                                 @endif
                             </a>
                         </td>
+                        <input type="hidden" name="valid" id="valid{{ $car->id }}" value="{{ $car->valid }}">
                     </tr>
                 @endforeach
                 </tbody>
@@ -138,7 +132,33 @@
             <!--<script src="/Public/js/car/car.js"></script>-->
             <script type="application/javascript">
                 function changeValid(id) {
-                    alert(id);
+                    var valid = $("#valid" + id).val();
+                    if (valid == 0) {
+                        valid = valid + 1;
+                    } else if(valid == 1) {
+                        valid = valid - 1;
+                    }
+                    $.ajax({
+                        url:"/admin/car/changeValid",
+                        type:"get",
+                        dataType:"json",
+                        data:{
+                            id:id,
+                            valid:valid
+                        },
+                        success:function (data) {
+                            if (data) {
+                                alert("操作成功");
+                                location.reload();
+                            } else {
+                                alert("操作失败");
+                            }
+                        },
+                        error:function (data) {
+                            console.log(data.responseText);
+                            alert("请检查网络后重试");
+                        }
+                    });
                 }
                 function edit(id) {
                     $.ajax({
