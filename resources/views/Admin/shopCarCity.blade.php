@@ -21,13 +21,13 @@
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked" id="nav">
                 <li class=""><a href="/admin/cars" id="car">车辆信息管理</a></li>
-                <li class="active"><a href="/admin/types">车辆类型管理</a></li>
+                <li class=""><a href="/admin/types">车辆类型管理</a></li>
                 <li class=""><a href="/admin/brands">车辆品牌管理</a></li>
                 {{--<li class=""><a href="/admin/properties">车辆属性管理</a></li>--}}
                 <li class=""><a href="/admin/users">用户信息管理</a></li>
                 <li class=""><a href="/admin/messages">留言信息管理</a></li>
                 <li class=""><a href="/admin/shops">门店信息管理</a></li>
-                <li class=""><a href="/admin/shopCarCity">租售信息管理</a></li>
+                <li class="active"><a href="/admin/shopCarCity">租售信息管理</a></li>
             </ul>
         </div>
         <div class="col-md-10">
@@ -40,7 +40,7 @@
 
                         <div class="col-md-4 col-md-offset-2">
                             <ul class="nav navbar-nav">
-                                <li><a id="add" class="btn btn-default">新增车辆类型信息</a></li>
+                                <li><a id="add" class="btn btn-default">新增店铺信息</a></li>
                             </ul>
                         </div>
                     </div>
@@ -51,43 +51,41 @@
                 <thead>
                 <tr>
                     <th>编号</th>
-                    <th>类型名</th>
+                    <th>店铺名称</th>
                     <th>创建时间</th>
                     <th>操作</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($types as $key => $type)
+                @foreach($shops as $key => $shop)
                     <tr>
                         <td>{{ $key + 1 }}</td>
-                        <td>{{ $type->type_name }}</td>
-                        <td>{{ date('Y-m-d H:i:s', $type->created_at) }}</td>
-                        <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $type->id }})">编辑</a></td>
-                        <td>
-                            <a id="delete" style="cursor:pointer" href="javascript:;" onclick="deleteType({{ $type->id }})">删除</a>
-                        </td>
+                        <td>{{ $shop->shop_name }}</td>
+                        <td>{{ date('Y-m-d H:i:s', $shop->created_at) }}</td>
+                        <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $shop->id }})">编辑</a></td>
+                        <td><a id="delete" href="javascript:;" style="cursor:pointer" onclick="deleteShop({{ $shop->id }})">删除</a></td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
             <br>
             <!--分页导航-->
-            {{ $types->links() }}
+            {{ $shops->links() }}
 
             <!--增加和修改的模态框-->
             <div class="modal" id="mymodal">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            编辑/新增类型信息
+                            编辑/新增店铺信息
                         </div>
                         <div class="modal-body">
                             <form role="form" id="carform" action="" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="id" id="id">
                                 <div class="form-group">
-                                    <label for="modelName">类型名称:</label>
-                                    <input type="text" name="type_name" id="type_name" class="form-control" placeholder="请输入类型名称">
+                                    <label for="shop_name">店铺名称:</label>
+                                    <input type="text" name="shop_name" id="shop_name" class="form-control" placeholder="请输入店铺名称">
                                 </div>
                             </form>
                         </div>
@@ -100,16 +98,16 @@
             </div>
             <!--<script src="/Public/js/car/car.js"></script>-->
             <script type="application/javascript">
-                function deleteType(id) {
+                function deleteShop(id) {
                     $.ajax({
-                        type:'get',
-                        url:'/admin/type/delete/'+id,
-                        dataType:'json',
+                        url:"/admin/shop/delete/" + id,
                         data:{
                         },
+                        type:"get",
+                        dataType:"json",
                         success:function (data) {
                             if (data) {
-                                alert('删除成功');
+                                alert("删除成功");
                                 location.reload();
                             } else {
                                 alert("删除失败");
@@ -117,22 +115,22 @@
                         },
                         error:function (data) {
                             console.log(data.responseText);
-                            alert('请稍后重试');
+                            alert("操作失败，请稍后重试");
                         }
                     });
                 }
                 function edit(id) {
                     $.ajax({
                         type: "get",
-                        url: "/admin/type/" + id,
+                        url: "/admin/shop/" + id,
                         data: {},
                         dataType: "json",
                         success: function (data) {
                             if (data == null) {
                                 alert('没有对应信息');
                             } else {
-                                $('#id').val(data.id);
-                                $('#type_name').val(data.type_name);
+                                $("#id").val(data.id);
+                                $("#shop_name").val(data.shop_name);
                                 var nowPage = $('#nowPage').attr('data-id');
                                 $('#mymodal').modal();
                             }
@@ -140,34 +138,33 @@
                     })
                 }
                 $('#add').click(function () {
-                    $('#id').val(null);
-                    $('#type_name').val(null);
+                    $('#mymodal input').val(null);
                     var nowPage = $('#nowPage').attr('data-id');
                     $('#mymodal').modal();
                 });
 
                 $('#save').click(function(){
-                    var id = $('#id').val();
-                    var type_name = $('#type_name').val();
+                    var shop_name = $("#shop_name").val();
+                    var id = $("#id").val();
                     $.ajax({
-                        type:'post',
-                        dataType:'json',
+                        url:"/admin/shop/store",
+                        type:"post",
+                        dataType:"json",
                         data:{
                             id:id,
-                            type_name:type_name
+                            shop_name:shop_name
                         },
-                        url:'/admin/type/store',
                         success:function (data) {
                             if (data) {
-                                alert('添加或修改成功');
-                                window.location.reload();
+                                alert("添加或修改成功");
+                                location.reload();
                             } else {
-                                alert('添加或修改失败');
+                                alert("添加或修改失败");
                             }
                         },
                         error:function (data) {
                             console.log(data.responseText);
-                            alert('请稍后重试');
+                            alert("操作失败，请稍后重试");
                         }
                     });
                 });
