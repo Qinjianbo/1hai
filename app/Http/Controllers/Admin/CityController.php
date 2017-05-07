@@ -2,27 +2,24 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Logic\Shop\Shop;
+use App\Http\Logic\City\City;
 use Illuminate\Http\Request;
 
-class ShopController extends Controller
+class CityController extends Controller
 {
     /**
-     * 获取品牌列表
+     * 获取城市列表
      *
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function shops(Request $request)
+    public function cities(Request $request)
     {
         if ($request->get('all')) {
-            $shops = (new Shop())->getList($request);
-            echo $shops;
+            $cities = (new City())->getList($request);
+            echo $cities;
             exit;
         }
-        $shops = (new Shop())->getShopsForAdmin($request);
-
-        return view('Admin.shop', ['shops' => $shops]);
     }
 
     /**

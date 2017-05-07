@@ -59,5 +59,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/shop/delete/{id}', 'ShopController@delete')->middleware('adminAuthCheck');
     Route::post('/shop/store', 'ShopController@store')->middleware('adminAuthCheck');
     Route::get('/shopCarCityList', 'ShopCarCityController@rents')->middleware('adminAuthCheck');
-    Route::get('/shopCarCity/delete', 'ShopCarCityController@delete')->middleware('adminAuthCheck');
+    Route::get('/shopCarCity/delete/{id}', 'ShopCarCityController@delete')->middleware('adminAuthCheck');
+    Route::get('/shopCarCity/{id}', 'ShopCarCityController@show')->middleware('adminAuthCheck');
+    Route::post('/shopCarCity/store', 'ShopCarCityController@store')->middleware('adminAuthCheck');
+    Route::get('/cities', 'CityController@cities')->middleware('adminAuthCheck');
 });

@@ -14,6 +14,11 @@ class CarController extends Controller
 {
     public function cars(Request $request)
     {
+        if ($request->get('all')) {
+            $cars = (new Info())->getList($request);
+            echo $cars;
+            exit;
+        }
         $carInfo = (new Info())->getCarForAdmin($request);
 
         $brands = (new Brand())->getList($request)->keyBy('id');

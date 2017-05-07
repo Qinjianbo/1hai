@@ -53,6 +53,7 @@
                     <th>编号</th>
                     <th>店铺名称</th>
                     <th>所在城市</th>
+                    <th>车辆名称</th>
                     <th>租赁价格</th>
                     <th>创建时间</th>
                     <th>操作</th>
@@ -64,8 +65,9 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>{{ isset($shops[$rent->shop_id]) ? $shops[$rent->shop_id]->shop_name : '' }}</td>
-                        <td>{{ isset($citys[$rent->city_id]) ? $citys[$rent->city_id]->city_name : '' }}</td>
+                        <td>{{ isset($cities[$rent->city_id]) ? $cities[$rent->city_id]->city_name : '' }}</td>
                         <td>{{ isset($cars[$rent->car_id]) ? $cars[$rent->car_id]->name : '' }}</td>
+                        <td>{{ $rent->price }}</td>
                         <td>{{ date('Y-m-d H:i:s', $rent->created_at) }}</td>
                         <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $rent->id }})">编辑</a></td>
                         <td><a id="delete" href="javascript:;" style="cursor:pointer" onclick="deleteRent({{ $rent->id }})">删除</a></td>
@@ -85,22 +87,26 @@
                             编辑/新增租售信息
                         </div>
                         <div class="modal-body">
-                            <form role="form" id="carform" action="" method="post" enctype="multipart/form-data">
+                            <form role="form" id="rent_form" action="" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="id" id="id">
                                 <div class="form-group">
-                                    <label for="shop_name">店铺名称</label>
-                                    <select class="form-control" id="shop_name" name="shop_id">
+                                    <label for="shops">店铺名称</label>
+                                    <select class="form-control" id="shops" name="shop_id">
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="city_id">城市名称</label>
-                                    <select class="form-control" id="city_id" name="city_id">
+                                    <label for="cities">城市名称</label>
+                                    <select class="form-control" id="cities" name="city_id">
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="car_id">车辆名称</label>
-                                    <select class="form-control" id="car_id" name="car_id">
+                                    <label for="cars">车辆名称</label>
+                                    <select class="form-control" id="cars" name="car_id">
                                     </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">租赁价格:</label>
+                                    <input type="text" name="price" id="price" class="form-control" placeholder="请输入租赁价格">
                                 </div>
                             </form>
                         </div>
@@ -137,7 +143,7 @@
                 function edit(id) {
                     $.ajax({
                         type: "get",
-                        url: "/admin/shop/" + id,
+                        url: "/admin/shopCarCity/" + id,
                         data: {},
                         dataType: "json",
                         success: function (data) {
@@ -145,7 +151,13 @@
                                 alert('没有对应信息');
                             } else {
                                 $("#id").val(data.id);
-                                $("#shop_name").val(data.shop_name);
+                                $("#price").val(data.price);
+                                $("#shops").html(null);
+                                $("#cars").html(null);
+                                $("#cities").html(null);
+                                getShops(data.shop_id);
+                                getCars(data.car_id);
+                                getCities(data.city_id);
                                 var nowPage = $('#nowPage').attr('data-id');
                                 $('#mymodal').modal();
                             }
@@ -154,21 +166,22 @@
                 }
                 $('#add').click(function () {
                     $('#mymodal input').val(null);
+                    $("#shops").html(null);
+                    $("#cars").html(null);
+                    $("#cities").html(null);
+                    getShops();
+                    getCars();
+                    getCities();
                     var nowPage = $('#nowPage').attr('data-id');
                     $('#mymodal').modal();
                 });
 
                 $('#save').click(function(){
-                    var shop_name = $("#shop_name").val();
-                    var id = $("#id").val();
                     $.ajax({
-                        url:"/admin/shop/store",
+                        url:"/admin/shopCarCity/store",
                         type:"post",
                         dataType:"json",
-                        data:{
-                            id:id,
-                            shop_name:shop_name
-                        },
+                        data:$("#rent_form").serialize(),
                         success:function (data) {
                             if (data) {
                                 alert("添加或修改成功");
@@ -183,8 +196,103 @@
                         }
                     });
                 });
+                function getShops(shop_id) {
+                    $.ajax({
+                        url:"/admin/shops",
+                        type:"get",
+                        dataType:"json",
+                        data:{
+                            all:1
+                        },
+                        success:function (data) {
+                            var shops = $("#shops");
+                            console.log(data);
+                            for(var i = 0; i < data.length; i++){
+                                var option = $("<option></option>");
+                                option.attr("id", data[i].id);
+                                option.attr("name", "shop_id");
+                                option.attr("value", data[i].id);
+                                option.html(data[i].shop_name);
+                                if (shop_id == data[i].id) {
+                                    option.attr("selected", "selected");
+                                }
+                                if (shop_id == undefined && i == 0) {
+                                    option.attr("selected", "selected");
+                                }
+                                shops.append(option);
+                            }
+                        },
+                        error:function (data) {
+                            console.log(data.responseText);
+                            alert("请检查网络后重试");
+                        }
+                    });
+                };
+                function getCities(city_id) {
+                    $.ajax({
+                        url:"/admin/cities",
+                        type:"get",
+                        dataType:"json",
+                        data:{
+                            all:1
+                        },
+                        success:function (data) {
+                            var cities = $("#cities");
+                            console.log(data);
+                            for(var i = 0; i < data.length; i++){
+                                var option = $("<option></option>");
+                                option.attr("id", data[i].id);
+                                option.attr("name", "city_id");
+                                option.attr("value", data[i].id);
+                                option.html(data[i].city_name);
+                                if (city_id == data[i].id) {
+                                    option.attr("selected", "selected");
+                                }
+                                if (city_id == undefined && i == 0) {
+                                    option.attr("selected", "selected");
+                                }
+                                cities.append(option);
+                            }
+                        },
+                        error:function (data) {
+                            console.log(data.responseText);
+                            alert("请检查网络后重试");
+                        }
+                    });
+                };
+                function getCars(car_id) {
+                    $.ajax({
+                        url:"/admin/cars",
+                        type:"get",
+                        dataType:"json",
+                        data:{
+                            all:1
+                        },
+                        success:function (data) {
+                            var cars = $("#cars");
+                            console.log(data);
+                            for(var i = 0; i < data.length; i++){
+                                var option = $("<option></option>");
+                                option.attr("id", data[i].id);
+                                option.attr("name", "car_id");
+                                option.attr("value", data[i].id);
+                                option.html(data[i].name);
+                                if (car_id == data[i].id) {
+                                    option.attr("selected", "selected");
+                                }
+                                if (car_id == undefined && i == 0) {
+                                    option.attr("selected", "selected");
+                                }
+                                cars.append(option);
+                            }
+                        },
+                        error:function (data) {
+                            console.log(data.responseText);
+                            alert("请检查网络后重试");
+                        }
+                    });
+                };
             </script>
-
         </div>
     </div>
 </div>

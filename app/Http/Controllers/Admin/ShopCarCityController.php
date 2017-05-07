@@ -20,7 +20,7 @@ class ShopCarCityController extends Controller
         $shops = (new Shop())->getList($request)->keyBy('id');
         $cities = (new City())->getList($request)->keyBy('id');
 
-        return view('Admin.shopCarCity', ['rents' => $rents, 'cars' => $cars, 'shops'=>$shops]);
+        return view('Admin.shopCarCity', ['rents' => $rents, 'cars' => $cars, 'shops'=>$shops, 'cities' => $cities]);
     }
 
     public function show($id)
@@ -35,22 +35,18 @@ class ShopCarCityController extends Controller
         return $rent;
     }
 
+    /**
+     * 创建或更新租赁信息
+     *
+     * @param Request $request
+     *
+     * @return mixed
+     */
     public function store(Request $request)
     {
-        $car = collect($request->input())->only(['name', 'typeid', 'brandid', 'properties']);
-        if ($request->hasFile('thumbnail')) {
-            $car_photo_path = $request->file('thumbnail')->store('car_photo', 'public');
-            if ($car_photo_path) {
-                $car->put('car_photo_path', '/storage/'.$car_photo_path);
-            }
-        }
-        $result = (new Info())->store($car, $request->get('id'));
-
-        if ($result) {
-            echo "<script>parent.callback('添加或更新成功')</script>";
-        } else {
-            echo "<script>parent.callback('添加或更新失败')</script>";
-        }
+        return (new Rent())
+            ->store(collect($request->input())
+                ->only(['shop_id', 'car_id', 'city_id', 'price']), $request->get('id'));
     }
 
     /**
