@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models\City;
+namespace App\Models\Car;
 
 use App\Models\Model;
 use Illuminate\Http\Request;
 
-class City extends Model
+class Rent extends Model
 {
-    protected $table = 'wutao_city';
+    protected $table = 'wutao_shop_car_city';
     protected $guarded = [];
     public $timestamps = false;
 

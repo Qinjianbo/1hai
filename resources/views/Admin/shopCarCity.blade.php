@@ -27,7 +27,7 @@
                 <li class=""><a href="/admin/users">用户信息管理</a></li>
                 <li class=""><a href="/admin/messages">留言信息管理</a></li>
                 <li class=""><a href="/admin/shops">门店信息管理</a></li>
-                <li class="active"><a href="/admin/shopCarCity">租售信息管理</a></li>
+                <li class="active"><a href="/admin/shopCarCityList">租售信息管理</a></li>
             </ul>
         </div>
         <div class="col-md-10">
@@ -52,33 +52,37 @@
                 <tr>
                     <th>编号</th>
                     <th>店铺名称</th>
+                    <th>所在城市</th>
+                    <th>租赁价格</th>
                     <th>创建时间</th>
                     <th>操作</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($shops as $key => $shop)
+                @foreach($rents as $key => $rent)
                     <tr>
                         <td>{{ $key + 1 }}</td>
-                        <td>{{ $shop->shop_name }}</td>
-                        <td>{{ date('Y-m-d H:i:s', $shop->created_at) }}</td>
+                        <td>{{ isset($shops[$rent->shop_id]) ? $shops[$rent->shop_id]->shop_name : '' }}</td>
+                        <td>{{ isset($citys[$rent->city_id]) ? $citys[$rent->city_id]->city_name : '' }}</td>
+                        <td>{{ isset($cars[$rent->car_id]) ? $cars[$rent->car_id]->name : '' }}</td>
+                        <td>{{ date('Y-m-d H:i:s', $rent->created_at) }}</td>
                         <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $shop->id }})">编辑</a></td>
-                        <td><a id="delete" href="javascript:;" style="cursor:pointer" onclick="deleteShop({{ $shop->id }})">删除</a></td>
+                        <td><a id="delete" href="javascript:;" style="cursor:pointer" onclick="deleteRent({{ $rent->id }})">删除</a></td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
             <br>
             <!--分页导航-->
-            {{ $shops->links() }}
+            {{ $rents->links() }}
 
             <!--增加和修改的模态框-->
             <div class="modal" id="mymodal">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            编辑/新增店铺信息
+                            编辑/新增租售信息
                         </div>
                         <div class="modal-body">
                             <form role="form" id="carform" action="" method="post" enctype="multipart/form-data">
@@ -98,7 +102,7 @@
             </div>
             <!--<script src="/Public/js/car/car.js"></script>-->
             <script type="application/javascript">
-                function deleteShop(id) {
+                function deleteRent(id) {
                     $.ajax({
                         url:"/admin/shop/delete/" + id,
                         data:{

@@ -1,14 +1,14 @@
 <?php
-namespace App\Http\Logic\City;
+namespace App\Http\Logic\Car;
 
-use App\Models\City\City as CityModel;
+use App\Models\Car\Rent as RentModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
-class City
+class Rent
 {
     /**
-     * 获取城市列表
+     * 获取品牌列表
      *
      * @param Request $request
      *
@@ -16,33 +16,33 @@ class City
      */
     public function getList(Request $request) : Collection
     {
-        return (new CityModel())->getList($request);
+        return (new RentModel())->getList($request);
     }
 
     /**
-     * 根据Id 获取城市信息
+     * 根据Id 获取品牌信息
      *
      * @param $id
      * @return mixed
      */
     public function show($id)
     {
-        return (new CityModel())->show($id);
+        return (new RentModel())->show($id);
     }
 
     /**
-     * 后台分页获取城市信息
+     * 后台分页获取品牌信息
      *
      * @param Request $request
      * @return mixed
      */
-    public function getCitysForAdmin(Request $request)
+    public function getRentsForAdmin(Request $request)
     {
-        return CityModel::paginate(20);
+        return RentModel::paginate(20);
     }
 
     /**
-     * 创建或更新城市信息
+     * 创建或更新品牌信息
      *
      * @param Collection $input
      * @param $id
@@ -50,11 +50,11 @@ class City
      */
     public function store(Collection $input, $id)
     {
-        return (new CityModel())->store($input, $id);
+        return (new RentModel())->store($input, $id);
     }
 
     /**
-     * 删除某城市
+     * 删除某品牌
      *
      * @param int $id
      *
@@ -62,6 +62,6 @@ class City
      */
     public function delete($id)
     {
-        return (new CityModel())->where('id', $id)->delete();
+        return (new RentModel())->where('id', $id)->delete();
     }
 }
