@@ -25,7 +25,14 @@ class ShopCarCityController extends Controller
 
     public function show($id)
     {
-        return (new Info())->show($id);
+        $rent = (new Rent())->show($id);
+        if ($rent) {
+            $rent['car'] = (new Info())->show($rent['car_id']);
+            $rent['shop'] = (new Shop())->show($rent['shop_id']);
+            $rent['city'] = (new City())->show($rent['city_id']);
+        }
+
+        return $rent;
     }
 
     public function store(Request $request)
@@ -46,9 +53,14 @@ class ShopCarCityController extends Controller
         }
     }
 
-    public function changeValid(Request $request)
+    /**
+     * 删除某租售信息
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function delete($id)
     {
-        return (new Info())->store(collect($request->input())
-            ->only(['valid']), $request->get('id'));
+        return (new Rent())->delete($id);
     }
 }

@@ -67,7 +67,7 @@
                         <td>{{ isset($citys[$rent->city_id]) ? $citys[$rent->city_id]->city_name : '' }}</td>
                         <td>{{ isset($cars[$rent->car_id]) ? $cars[$rent->car_id]->name : '' }}</td>
                         <td>{{ date('Y-m-d H:i:s', $rent->created_at) }}</td>
-                        <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $shop->id }})">编辑</a></td>
+                        <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $rent->id }})">编辑</a></td>
                         <td><a id="delete" href="javascript:;" style="cursor:pointer" onclick="deleteRent({{ $rent->id }})">删除</a></td>
                     </tr>
                 @endforeach
@@ -88,8 +88,19 @@
                             <form role="form" id="carform" action="" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="id" id="id">
                                 <div class="form-group">
-                                    <label for="shop_name">店铺名称:</label>
-                                    <input type="text" name="shop_name" id="shop_name" class="form-control" placeholder="请输入店铺名称">
+                                    <label for="shop_name">店铺名称</label>
+                                    <select class="form-control" id="shop_name" name="shop_id">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="city_id">城市名称</label>
+                                    <select class="form-control" id="city_id" name="city_id">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="car_id">车辆名称</label>
+                                    <select class="form-control" id="car_id" name="car_id">
+                                    </select>
                                 </div>
                             </form>
                         </div>
@@ -104,7 +115,7 @@
             <script type="application/javascript">
                 function deleteRent(id) {
                     $.ajax({
-                        url:"/admin/shop/delete/" + id,
+                        url:"/admin/shopCarCity/delete/" + id,
                         data:{
                         },
                         type:"get",
