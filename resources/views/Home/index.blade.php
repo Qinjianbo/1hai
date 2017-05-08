@@ -68,26 +68,13 @@
 				<img src="/pictures/index/hotcar.jpg" />
 			</div>
 			<div class="contentR">
+				@foreach($top4 as $top)
 				<div class="contentR_car">
-					<p class="fl">标志301</p>
-					<span class="fr">￥98/天</span>
-					<img src="/pictures/index/car1.jpg" />
+					<p class="fl">{{ $top->name }}</p>
+					<span class="fr">￥{{ $top->price }}/天</span>
+					<img src="{{ $top->car_photo_path }}" />
 				</div>
-				<div class="contentR_car">
-					<p class="fl">宝马之诺IE</p>
-					<span class="fr">￥79/天</span>
-					<img src="/pictures/index/car2.jpg" />
-				</div>
-				<div class="contentR_car">
-					<p class="fl">大众斯柯达速派</p>
-					<span class="fr">￥182/天</span>
-					<img src="/pictures/index/car3.jpg" />
-				</div>
-				<div class="contentR_car">
-					<p class="fl">大众桑塔纳</p>
-					<span class="fr">￥62/天</span>
-					<img src="/pictures/index/car4.jpg" />
-				</div>
+				@endforeach
 			</div>
 		</div>
 		<!--尾部	-->
@@ -95,9 +82,9 @@
 			<div class="container">
 				<div class="advantage">
 					<ul class="clearfix">			 
-						<li>200多座城市</li>
-						<li>2500多服务网点</li>
-						<li>200余种车型</li>
+						<li>{{ $cityCount }}多座城市</li>
+						<li>{{ $shopCount }}多服务网点</li>
+						<li>{{ $carCount }}余种车型</li>
 						<li>24小时服务</li>
 						<li>国际租车</li>
 					</ul>
