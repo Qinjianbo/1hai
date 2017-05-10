@@ -38,7 +38,7 @@
 				<li class="active"><a href="/">首页</a></li>
 				<li><a href="#">自驾租车</a></li>
 				<li><a href="#">国际租车</a></li>
-				<li><a href="#">车型查询</a></li>
+				<li><a href="/search">车型查询</a></li>
 				<li><a href="#">营业网点</a></li>
 				<li><a href="#">企业服务</a></li>
 				<li><a href="#">接送服务</a></li>

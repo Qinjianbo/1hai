@@ -23,6 +23,7 @@ Route::group(['namespace' => 'Home'], function () {
     Route::get('/login', function() {
         return view('user.login');
     });
+    Route::get('/search', 'SearchController@index');
 });
 
 // 后台路由
