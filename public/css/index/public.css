@@ -83,6 +83,7 @@ b,em,i{display:inline-block; font-weight:normal; font-style:normal;}
 }
 .main-wrap {
 	width: 100%;
+	margin-top: 35px;
 }
 .car-wrap {
 	width: 1200px;
@@ -91,7 +92,7 @@ b,em,i{display:inline-block; font-weight:normal; font-style:normal;}
 }
 .brand-box {
 	position: relative;
-	width: 1120px;
+	width: 1140px;
 	overflow: hidden;
 	border: 1px solid #ccc;
 	margin-top: -21px;
@@ -141,7 +142,7 @@ b,em,i{display:inline-block; font-weight:normal; font-style:normal;}
 	font-weight: bolder;
 	color: #666;
 	text-align: right;
-	line-height: 62px;
+	/*line-height: 62px;*/
 }
 a {
 	text-decoration: none;

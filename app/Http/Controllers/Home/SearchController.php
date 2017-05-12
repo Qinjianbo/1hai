@@ -24,12 +24,21 @@ class SearchController extends Controller
         $cityCount = City::count();
         $types = Type::all();
         $brands = Brand::all();
+        $cars = Car::where('valid', 1);
+        if ($request->get('type_id')) {
+            $cars = $cars->where('type_id', $request->get('type_id'));
+        }
+        if ($request->get('brand_id')) {
+            $cars = $cars->where('brand_id', $request->get('brand_id'));
+        }
+        $cars = $cars->paginate(20);
         return view('Home.search',[
             'carCount'  => $carCount,
             'shopCount' => $shopCount,
             'cityCount' => $cityCount,
             'types'     => $types,
             'brands'    => $brands,
+            'cars'      => $cars
         ]);
     }
 }
