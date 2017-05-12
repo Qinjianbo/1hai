@@ -70,126 +70,18 @@
 				<div class="brand-box">
 					<div class="type-box">
 						<span>类 型：</span>
-						<a href="javascript:;" class="J_CarLevel">经济型</a>
-						<a href="javascript:;" class="J_CarLevel">舒适型</a>
-						<a href="javascript:;" class="J_CarLevel">精英型</a>
-						<a href="javascript:;" class="J_CarLevel">SUV</a>
-						<a href="javascript:;" class="J_CarLevel">7座MPV</a>
-						<a href="javascript:;" class="J_CarLevel">电动型</a>
+						@foreach($types as $type)
+							<a href="javascript:;" class="J_CarLevel" id="{{ "type_".$type->id }}">{{ $type->type_name }}</a>
+						@endforeach
 					</div>
 					<div class="brand-box-list">
 						<span>品 牌：</span>
 						<!--品牌标签页-->
 						<div class="tabbox" id="clicktab">
-
-							<div class="tabcon" style="display: none;">
-								<a bnid="8" href="JavaScript:;" class="J_BrandName">标致</a>
-								<a bnid="9" href="JavaScript:;" class="J_BrandName">别克</a>
-								<a bnid="27" href="JavaScript:;" class="J_BrandName">大众斯柯达</a>
-								<a bnid="2" href="JavaScript:;" class="J_BrandName">大众</a>
-								<a bnid="59" href="JavaScript:;" class="J_BrandName">MG</a>
-								<a bnid="1" href="JavaScript:;" class="J_BrandName">雪佛兰</a>
-								<a bnid="3" href="JavaScript:;" class="J_BrandName">福特</a>
-								<a bnid="40" href="JavaScript:;" class="J_BrandName">荣威</a>
-								<a bnid="13" href="JavaScript:;" class="J_BrandName">现代</a>
-								<a bnid="5" href="JavaScript:;" class="J_BrandName">丰田</a>
-								<a bnid="54" href="JavaScript:;" class="J_BrandName">特斯拉</a>
-								<a bnid="62" href="JavaScript:;" class="J_BrandName">东风风神</a>
-								<a bnid="17" href="JavaScript:;" class="J_BrandName">奥迪</a>
-								<a bnid="28" href="JavaScript:;" class="J_BrandName">沃尔沃</a>
-								<a bnid="36" href="JavaScript:;" class="J_BrandName">东风</a>
-								<a bnid="14" href="JavaScript:;" class="J_BrandName">宝马</a>
-								<a bnid="4" href="JavaScript:;" class="J_BrandName">本田</a>
-								<a bnid="31" href="JavaScript:;" class="J_BrandName">中华</a>
-								<a bnid="18" href="JavaScript:;" class="J_BrandName">奔驰</a>
-								<a bnid="48" href="JavaScript:;" class="J_BrandName">绅宝</a>
-								<a bnid="32" href="JavaScript:;" class="J_BrandName">日产</a>
-								<a bnid="86" href="JavaScript:;" class="J_BrandName">玛莎拉蒂</a>
-							</div>
 							<div class="tabcon tab-all" style="display: block;">
-								<a bnid="86" class="J_BrandName" href="JavaScript:;">玛莎拉蒂</a>
-								<a bnid="2" class="J_BrandName" href="JavaScript:;">大众</a>
-								<a bnid="85" class="J_BrandName" href="JavaScript:;">一汽马自达</a>
-								<a bnid="87" class="J_BrandName" href="JavaScript:;">英菲尼迪</a>
-								<a bnid="8" class="J_BrandName" href="JavaScript:;">标致</a>
-								<a bnid="27" class="J_BrandName" href="JavaScript:;">大众斯柯达</a>
-								<a bnid="59" class="J_BrandName" href="JavaScript:;">MG</a>
-								<a bnid="40" class="J_BrandName" href="JavaScript:;">荣威</a>
-								<a bnid="9" class="J_BrandName" href="JavaScript:;">别克</a>
-								<a bnid="36" class="J_BrandName" href="JavaScript:;">东风</a>
-								<a bnid="4" class="J_BrandName" href="JavaScript:;">本田</a>
-								<a bnid="1" class="J_BrandName" href="JavaScript:;">雪佛兰</a>
-								<a bnid="14" class="J_BrandName" href="JavaScript:;">宝马</a>
-								<a bnid="60" class="J_BrandName" href="JavaScript:;">上汽大通</a>
-								<a bnid="48" class="J_BrandName" href="JavaScript:;">绅宝</a>
-								<a bnid="28" class="J_BrandName" href="JavaScript:;">沃尔沃</a>
-								<a bnid="45" class="J_BrandName" href="JavaScript:;">路虎</a>
-								<a bnid="13" class="J_BrandName" href="JavaScript:;">现代</a>
-								<a bnid="5" class="J_BrandName" href="JavaScript:;">丰田</a>
-								<a bnid="44" class="J_BrandName" href="JavaScript:;">起亚</a>
-								<a bnid="3" class="J_BrandName" href="JavaScript:;">福特</a>
-								<a bnid="47" class="J_BrandName" href="JavaScript:;">捷豹</a>
-								<a bnid="32" class="J_BrandName" href="JavaScript:;">日产</a>
-								<a bnid="17" class="J_BrandName" href="JavaScript:;">奥迪</a>
-								<a bnid="18" class="J_BrandName" href="JavaScript:;">奔驰</a>
-								<a bnid="57" class="J_BrandName" href="JavaScript:;">凯迪拉克</a>
-								<a bnid="74" class="J_BrandName" href="JavaScript:;">纳智捷</a>
-								<a bnid="23" class="J_BrandName" href="JavaScript:;">江淮</a>
-								<a bnid="24" class="J_BrandName" href="JavaScript:;">江铃</a>
-								<a bnid="6" class="J_BrandName" href="JavaScript:;">马自达</a>
-								<a bnid="20" class="J_BrandName" href="JavaScript:;">东南</a>
-								<a bnid="42" class="J_BrandName" href="JavaScript:;">哈弗</a>
-								<a bnid="25" class="J_BrandName" href="JavaScript:;">金杯</a>
-								<a bnid="16" class="J_BrandName" href="JavaScript:;">比亚迪</a>
-								<a bnid="75" class="J_BrandName" href="JavaScript:;">广汽传祺</a>
-								<a bnid="49" class="J_BrandName" href="JavaScript:;">克莱斯勒</a>
-								<a bnid="7" class="J_BrandName" href="JavaScript:;">吉利</a>
-								<a bnid="10" class="J_BrandName" href="JavaScript:;">铃木</a>
-								<a bnid="11" class="J_BrandName" href="JavaScript:;">华晨</a>
-								<a bnid="12" class="J_BrandName" href="JavaScript:;">雪铁龙</a>
-								<a bnid="15" class="J_BrandName" href="JavaScript:;">奇瑞</a>
-								<a bnid="19" class="J_BrandName" href="JavaScript:;">长安</a>
-								<a bnid="21" class="J_BrandName" href="JavaScript:;">福田</a>
-								<a bnid="22" class="J_BrandName" href="JavaScript:;">汇众</a>
-								<a bnid="26" class="J_BrandName" href="JavaScript:;">金龙</a>
-								<a bnid="29" class="J_BrandName" href="JavaScript:;">五菱</a>
-								<a bnid="30" class="J_BrandName" href="JavaScript:;">宇通</a>
-								<a bnid="31" class="J_BrandName" href="JavaScript:;">中华</a>
-								<a bnid="33" class="J_BrandName" href="JavaScript:;">长城</a>
-								<a bnid="34" class="J_BrandName" href="JavaScript:;">庆铃</a>
-								<a bnid="35" class="J_BrandName" href="JavaScript:;">金旅</a>
-								<a bnid="37" class="J_BrandName" href="JavaScript:;">依维柯</a>
-								<a bnid="38" class="J_BrandName" href="JavaScript:;">MINI</a>
-								<a bnid="39" class="J_BrandName" href="JavaScript:;">东风小康</a>
-								<a bnid="41" class="J_BrandName" href="JavaScript:;">传祺</a>
-								<a bnid="43" class="J_BrandName" href="JavaScript:;">雷克萨斯</a>
-								<a bnid="46" class="J_BrandName" href="JavaScript:;">斯巴鲁</a>
-								<a bnid="50" class="J_BrandName" href="JavaScript:;">吉普</a>
-								<a bnid="51" class="J_BrandName" href="JavaScript:;">Jeep</a>
-								<a bnid="52" class="J_BrandName" href="JavaScript:;">猎豹</a>
-								<a bnid="54" class="J_BrandName" href="JavaScript:;">特斯拉</a>
-								<a bnid="55" class="J_BrandName" href="JavaScript:;">三菱</a>
-								<a bnid="56" class="J_BrandName" href="JavaScript:;">道奇</a>
-								<a bnid="58" class="J_BrandName" href="JavaScript:;">奔腾</a>
-								<a bnid="61" class="J_BrandName" href="JavaScript:;">启辰</a>
-								<a bnid="62" class="J_BrandName" href="JavaScript:;">东风风神</a>
-								<a bnid="63" class="J_BrandName" href="JavaScript:;">之诺</a>
-								<a bnid="64" class="J_BrandName" href="JavaScript:;">众泰</a>
-								<a bnid="65" class="J_BrandName" href="JavaScript:;">东风日产</a>
-								<a bnid="66" class="J_BrandName" href="JavaScript:;">东风风行</a>
-								<a bnid="67" class="J_BrandName" href="JavaScript:;">九龙</a>
-								<a bnid="68" class="J_BrandName" href="JavaScript:;">保时捷</a>
-								<a bnid="69" class="J_BrandName" href="JavaScript:;">宝骏</a>
-								<a bnid="70" class="J_BrandName" href="JavaScript:;">菲亚特</a>
-								<a bnid="71" class="J_BrandName" href="JavaScript:;">smart</a>
-								<a bnid="72" class="J_BrandName" href="JavaScript:;">北汽</a>
-								<a bnid="84" class="J_BrandName" href="JavaScript:;">哈佛</a>
-								<a bnid="88" class="J_BrandName" href="JavaScript:;">红旗</a>
-								<a bnid="89" class="J_BrandName" href="JavaScript:;">阿斯顿马丁</a>
-								<a bnid="90" class="J_BrandName" href="JavaScript:;">马丁</a>
-								<a bnid="91" class="J_BrandName" href="JavaScript:;">扬子江</a>
-								<a bnid="92" class="J_BrandName" href="JavaScript:;">力帆</a>
-								<a bnid="93" class="J_BrandName" href="JavaScript:;">阿尔法罗密欧</a>
+								@foreach($brands as $brand)
+									<a bnid="8" href="JavaScript:;" class="J_BrandName">标致</a>
+								@endforeach
 							</div>
 						</div>
 						<!--标签页结束-->
