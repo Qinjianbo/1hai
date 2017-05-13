@@ -135,5 +135,15 @@
 		</div>
 		<script type="text/javascript" src="/js/libs/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="/js/index/index.js" ></script>
+		<script type="text/javascript">
+			$(document).ready((function () {
+				$(".type-box a").click(function(){
+	               $(this).css({"background":"blue","color":"white"});
+				});
+                $(".brand-box-list a").click(function(){
+                    $(this).css({"background":"blue","color":"white"});
+                });
+            }));
+		</script>
 	</body>
 </html>
