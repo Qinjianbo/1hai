@@ -37,12 +37,11 @@
 			<ul class="clearfix">
 				<li><a href="/">首页</a></li>
 				<li><a href="#">自驾租车</a></li>
-				<li><a href="#">国际租车</a></li>
 				<li class="active"><a href="/search">车型查询</a></li>
 				<li><a href="#">营业网点</a></li>
 				<li><a href="#">企业服务</a></li>
-				<li><a href="#">接送服务</a></li>
-				<li><a href="#">精彩活动</a></li>
+				<li><a href="#">关于我们</a></li>
+				<li><a href="#">联系我们</a></li>
 				<li><a href="#">体验分享</a></li>
 			</ul>
 		</div>
@@ -60,18 +59,15 @@
 			<div class=" arrow aleft"><</div>
 		</div>
 		<div class="main-wrap">
-			<!--brandstep1 search box-->
-
-			<!--brandstep1 search box-->
-
 			<!--brandstep1 car box-->
 			<div class="car-wrap" id="J_CarType">
 				<!--品牌列表-->
 				<div class="brand-box">
 					<div class="type-box">
 						<span>类 型：</span>
+						<a href="/search?type_id=0&brand_id={{ $brand_id }}" class="J_CarLevel" id="type_0">全部</a>
 						@foreach($types as $type)
-							<a href="javascript:;" class="J_CarLevel" id="{{ "type_".$type->id }}">{{ $type->type_name }}</a>
+							<a href="/search?type_id={{ $type->id }}&brand_id={{ $brand_id }}" class="J_CarLevel" id="{{ "type_".$type->id }}">{{ $type->type_name }}</a>
 						@endforeach
 					</div>
 					<div class="brand-box-list">
@@ -79,8 +75,9 @@
 						<!--品牌标签页-->
 						<div class="tabbox" id="clicktab">
 							<div class="tabcon tab-all" style="display: block;">
+								<a bnid="8" href="/search?brand_id=0&type_id={{ $type_id }}" class="J_BrandName">全部</a>
 								@foreach($brands as $brand)
-									<a bnid="8" href="JavaScript:;" class="J_BrandName">{{ $brand->brand_name }}</a>
+									<a bnid="8" href="/search?brand_id={{ $brand->id }}&type_id={{ $type_id }}" class="J_BrandName">{{ $brand->brand_name }}</a>
 								@endforeach
 							</div>
 						</div>
@@ -90,23 +87,30 @@
 
 				<!--brandstep1 choosen box-->
 				<div class="car-box">
-					@foreach($cars as $car)
-					<div class="car-list J_car" cid="416" bnid="8" cl="经济型" url="/BrandStep2/8/416?from=BrandProcess" vtl="0">
+					@if(!$cars->isEmpty())
+						@foreach($cars as $car)
+						<div class="car-list J_car" cid="416" bnid="8" cl="经济型" url="/BrandStep2/8/416?from=BrandProcess" vtl="0">
 
-						<em class=""></em>
-						<div class="car-img">
+							<em class=""></em>
+							<div class="car-img">
 
-							<img src="{{ $car->car_photo_path }}" alt="{{ $car->name }}" onerror="this.src='/Content/Images/Shared/defaultCar.png' " data-original=" https://image.1hai.cn/images/cartype/20150729/86c3b86b-1079-48cb-ab58-4b26a1bb982f.jpg " style="display: inline;">
+								<img src="{{ $car->car_photo_path }}" alt="{{ $car->name }}" onerror="this.src='/Content/Images/Shared/defaultCar.png' " data-original=" https://image.1hai.cn/images/cartype/20150729/86c3b86b-1079-48cb-ab58-4b26a1bb982f.jpg " style="display: inline;">
+							</div>
+							<div class="car-des">
+								<span>{{ $car->name }}</span>
+								<i>
+									{{ $car->properties }}
+								</i>
+							</div>
 						</div>
-						<div class="car-des">
-							<span>{{ $car->name }}</span>
-							<i>
-								{{ $car->properties }}
-							</i>
+						@endforeach
+						{{ $cars->links() }}
+					@else
+						<div class="J_NoCar">
+							<div class="car-empty-box">
+							</div>
 						</div>
-					</div>
-					@endforeach
-					{{ $cars->links() }}
+					@endif
 				</div>
 				<!--brandstep1 car box-->
 			</div>
@@ -129,7 +133,7 @@
 				<p>版权所有&copy吴涛租车平台</p>
 			</div>
 		</div>
+		<script type="text/javascript" src="/js/libs/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="/js/index/index.js" ></script>
-		<script type="/js/search/search.js"></script>
 	</body>
 </html>

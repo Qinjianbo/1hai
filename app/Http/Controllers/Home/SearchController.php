@@ -26,10 +26,10 @@ class SearchController extends Controller
         $brands = Brand::all();
         $cars = Car::where('valid', 1);
         if ($request->get('type_id')) {
-            $cars = $cars->where('type_id', $request->get('type_id'));
+            $cars = $cars->where('typeid', $request->get('type_id'));
         }
         if ($request->get('brand_id')) {
-            $cars = $cars->where('brand_id', $request->get('brand_id'));
+            $cars = $cars->where('brandid', $request->get('brand_id'));
         }
         $cars = $cars->paginate(20);
         return view('Home.search',[
@@ -38,7 +38,9 @@ class SearchController extends Controller
             'cityCount' => $cityCount,
             'types'     => $types,
             'brands'    => $brands,
-            'cars'      => $cars
+            'cars'      => $cars,
+            'type_id'   => $request->get('type_id', 0),
+            'brand_id'  => $request->get('brand_id', 0),
         ]);
     }
 }

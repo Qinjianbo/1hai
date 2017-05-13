@@ -234,3 +234,8 @@ i, cite, em, var, address, dfn {
 	background: url(../../pictures/brandstep1_btn.png) no-repeat 0 -94px;
 	margin-top: 10px;
 }
+.car-empty-box {
+	background: url(../../pictures/car_empty.png) no-repeat center center;
+	width: 100%;
+	height: 300px;
+}
