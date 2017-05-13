@@ -5,6 +5,7 @@
 		<title>shouye</title>
 		<link rel="stylesheet" href="/css/index/public.css" />
 		<link rel="stylesheet" href="/css/index/index.css" />
+		<link rel="stylesheet" href="/css/search/search.css" />
 	</head>
 	<body>
 		<div class="top">
@@ -89,20 +90,22 @@
 				<div class="car-box">
 					@if(!$cars->isEmpty())
 						@foreach($cars as $car)
-						<div class="car-list J_car" cid="416" bnid="8" cl="经济型" url="/BrandStep2/8/416?from=BrandProcess" vtl="0">
+							<a href="/car?car_id={{ $car->id }}">
+								<div class="car-list J_car" cid="416" bnid="8" cl="经济型" url="/BrandStep2/8/416?from=BrandProcess" vtl="0">
 
-							<em class=""></em>
-							<div class="car-img">
+									<em class=""></em>
+									<div class="car-img">
 
-								<img src="{{ $car->car_photo_path }}" alt="{{ $car->name }}" onerror="this.src='/Content/Images/Shared/defaultCar.png' " data-original=" https://image.1hai.cn/images/cartype/20150729/86c3b86b-1079-48cb-ab58-4b26a1bb982f.jpg " style="display: inline;">
-							</div>
-							<div class="car-des">
-								<span>{{ $car->name }}</span>
-								<i>
-									{{ $car->properties }}
-								</i>
-							</div>
-						</div>
+										<img src="{{ $car->car_photo_path }}" alt="{{ $car->name }}" onerror="this.src='/Content/Images/Shared/defaultCar.png' " data-original=" https://image.1hai.cn/images/cartype/20150729/86c3b86b-1079-48cb-ab58-4b26a1bb982f.jpg " style="display: inline;">
+									</div>
+									<div class="car-des">
+										<span>{{ $car->name }}</span>
+										<i>
+											{{ $car->properties }}
+										</i>
+									</div>
+								</div>
+							</a>
 						@endforeach
 						{{ $cars->links() }}
 					@else

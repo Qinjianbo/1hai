@@ -24,6 +24,7 @@ Route::group(['namespace' => 'Home'], function () {
         return view('user.login');
     });
     Route::get('/search', 'SearchController@index');
+    Route::get('/car', 'CarController@index');
 });
 
 // 后台路由
