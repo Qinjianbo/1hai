@@ -96,7 +96,7 @@
 							<span><em>¥</em>{{ $rent->price ?? 0 }}<i>/日均</i></span>
 						</div>
 						<div class="store-btn">
-							<a href="javascript:;" title="预订" class="order-btn" sid="2" cid="416" url="/Order/BrandStep2/Booking?sqs=Oefmqz1boxw0rwIe1xMLDFriEkRdmjGoVnuM/mW2DxfwAb5eXJjVt6MwdbYYqXoB&amp;from=BrandProcess" t="1">预  订</a>
+							<a href="javascript:;" title="预订" class="order-btn" data-title="{{ $rent->id }}">预  订</a>
 						</div>
 
 					</div>
@@ -132,6 +132,34 @@
                 $(".brand-box-list a").click(function(){
                     $(this).css({"background":"blue","color":"white"});
                 });
+                $(".order-btn").click(function () {
+					var id = $(this).attr("data-title");
+					$.ajax({
+						url:"/order",
+						type:"post",
+						data:{
+							id:id
+						},
+						dataType:"json",
+						success:function (data) {
+							if (data.status == 1) {
+							    alert("预订成功,稍后将有工作人员与您进行联系");
+							} else if (data.status == 2) {
+							    alert(data.errorMsg);
+//                                window.location.href = "/login";
+							} else if (data.status == 3) {
+                                alert(data.errorMsg);
+//                                window.location.href = "/self";
+							} else {
+							    console.log(data.responseText);
+							}
+                        },
+						error:function (data) {
+							console.log(data.responseText);
+							alert("出错了，请稍后再试");
+                        }
+					})
+                })
             }));
 		</script>
 	</body>

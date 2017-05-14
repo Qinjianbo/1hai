@@ -30,6 +30,7 @@ Route::group(['namespace' => 'Home'], function () {
     Route::post('/message', 'MessageController@store');
     Route::get('/message', 'MessageController@top20');
     Route::get('/about', 'AboutController@index');
+    Route::post('/order', 'OrderController@store');
 });
 
 // 后台路由
