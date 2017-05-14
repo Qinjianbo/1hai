@@ -68,8 +68,9 @@
 	float: right;
 }
 .contentR_car{
+	border: 1px solid #a6e1ec;
 	display: inline-block;
-	width:320px;
+	width:318px;
 	margin-left: 3px;
 	height: 195px;
 	font-size:20px;

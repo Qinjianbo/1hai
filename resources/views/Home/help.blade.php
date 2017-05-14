@@ -35,14 +35,14 @@
 		<!--导航栏-->
 		<div class="nav container">
 			<ul class="clearfix">
-				<li class="active"><a href="/">首页</a></li>
+				<li><a href="/">首页</a></li>
 				<li><a href="#">自驾租车</a></li>
 				<li><a href="/search">车型查询</a></li>
 				<li><a href="#">体验分享</a></li>
 
 				<li><a href="#">关于我们</a></li>
 				<li><a href="/contact">联系我们</a></li>
-				<li><a href="/help">帮助中心</a></li>
+				<li class="active"><a href="/help">帮助中心</a></li>
 			</ul>
 		</div>
 		<!--banner图-->
@@ -58,26 +58,7 @@
 			<div class="arrow aright">></div>
 			<div class=" arrow aleft"><</div>
 		</div>
-		<div class="content container clearfix">
-			<div class="content_title">
-				<h3>热租车型</h3>
-				<p>百余款车型任你选，劲爆优惠天天推荐</p>
-			</div>
-			<div class="contentL">
-				<img src="/pictures/index/hotcar.jpg" />
-			</div>
-			<div class="contentR">
-				@foreach($top4 as $top)
-					<a href="/car?car_id={{ $top->car_id }}">
-					<div class="contentR_car">
-						<p class="fl">{{ $top->name }}</p>
-						<span class="fr">￥{{ $top->price }}/天</span>
-						<img src="{{ $top->car_photo_path }}" />
-					</div>
-					</a>
-				@endforeach
-			</div>
-		</div>
+		帮助中心
 		<!--尾部	-->
 		<div class="footer">
 			<div class="container">

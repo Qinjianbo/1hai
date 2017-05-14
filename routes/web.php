@@ -23,8 +23,10 @@ Route::group(['namespace' => 'Home'], function () {
     Route::get('/login', function() {
         return view('user.login');
     });
+    Route::get('/contact', 'ContactController@index');
     Route::get('/search', 'SearchController@index');
     Route::get('/car', 'CarController@index');
+    Route::get('/help', 'HelpController@index');
 });
 
 // 后台路由

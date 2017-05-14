@@ -20,7 +20,7 @@
 				<div class="top_r fr">
 					<ul class="clearfix">
 						<li><a href="">自驾分销</a></li>
-						<li><a href="">帮助中心</a></li>
+						<li><a href="">体验分享</a></li>
 						<li><a href="">投资者关系</a></li>
 						<li><a href="">网站导航</a></li>
 						<li><a href="">English</a></li>
@@ -39,11 +39,11 @@
 				<li><a href="/">首页</a></li>
 				<li><a href="#">自驾租车</a></li>
 				<li class="active"><a href="/search">车型查询</a></li>
-				<li><a href="#">营业网点</a></li>
-				<li><a href="#">企业服务</a></li>
-				<li><a href="#">关于我们</a></li>
-				<li><a href="#">联系我们</a></li>
 				<li><a href="#">体验分享</a></li>
+
+				<li><a href="#">关于我们</a></li>
+				<li><a href="/contact">联系我们</a></li>
+				<li><a href="/help">帮助中心</a></li>
 			</ul>
 		</div>
 		<!--banner图-->

@@ -17,7 +17,7 @@
         </a>
         <div class="head-nav">
             <a href="">
-                帮助中心
+                体验分享
             </a>
             <span class="line">
 						|
@@ -163,7 +163,7 @@
                 |
                 <a href="" rel="nofollow"
                    target="_blank">
-                    帮助中心
+                    体验分享
                 </a>
                 |
                 <a href="" rel="nofollow" target="_blank">

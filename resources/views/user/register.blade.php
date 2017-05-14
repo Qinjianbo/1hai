@@ -17,7 +17,7 @@
         </a>
         <div class="head-nav">
             <span class="line">
-						帮助中心 |
+						体验分享 |
 					</span>
             <span class="contact-info">
 						服务热线：
@@ -165,7 +165,7 @@
                 |
                 <a href="" rel="nofollow"
                    target="_blank">
-                    帮助中心
+                    体验分享
                 </a>
                 |
                 <a href="" rel="nofollow" target="_blank">
