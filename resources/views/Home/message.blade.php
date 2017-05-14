@@ -3,8 +3,9 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>shouye</title>
-		<link rel="stylesheet" href="/css/index/public.css" />
+		<link rel="stylesheet" href="/css/car/car.css" />
 		<link rel="stylesheet" href="/css/index/index.css" />
+		<link rel="stylesheet" href="/css/index/public.css" />
 	</head>
 	<body>
 		<div class="top">
@@ -33,9 +34,9 @@
 		<!--导航栏-->
 		<div class="nav container">
 			<ul class="clearfix">
-				<li class="active"><a href="/">首页</a></li>
+				<li><a href="/">首页</a></li>
 				<li><a href="/search">车型查询</a></li>
-				<li><a href="/message">精彩提问</a></li>
+				<li class="active"><a href="/message">精彩提问</a></li>
 
 				<li><a href="/about">关于我们</a></li>
 				<li><a href="/contact">联系我们</a></li>
@@ -55,26 +56,7 @@
 			<div class="arrow aright">></div>
 			<div class=" arrow aleft"><</div>
 		</div>
-		<div class="content container clearfix">
-			<div class="content_title">
-				<h3>热租车型</h3>
-				<p>百余款车型任你选，劲爆优惠天天推荐</p>
-			</div>
-			<div class="contentL">
-				<img src="/pictures/index/hotcar.jpg" />
-			</div>
-			<div class="contentR">
-				@foreach($top4 as $top)
-					<a href="/car?car_id={{ $top->car_id }}">
-					<div class="contentR_car">
-						<p class="fl">{{ $top->name }}</p>
-						<span class="fr">￥{{ $top->price }}/天</span>
-						<img src="{{ $top->car_photo_path }}" />
-					</div>
-					</a>
-				@endforeach
-			</div>
-		</div>
+		精彩提问
 		<!--尾部	-->
 		<div class="footer">
 			<div class="container">
@@ -92,6 +74,17 @@
 				<p>版权所有&copy吴涛租车平台</p>
 			</div>
 		</div>
+		<script type="text/javascript" src="/js/libs/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="/js/index/index.js" ></script>
+		<script type="text/javascript">
+			$(document).ready((function () {
+				$(".type-box a").click(function(){
+	               $(this).css({"background":"blue","color":"white"});
+				});
+                $(".brand-box-list a").click(function(){
+                    $(this).css({"background":"blue","color":"white"});
+                });
+            }));
+		</script>
 	</body>
 </html>

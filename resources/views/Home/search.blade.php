@@ -19,13 +19,11 @@
 				</div>
 				<div class="top_r fr">
 					<ul class="clearfix">
-						<li><a href="">自驾分销</a></li>
-						<li><a href="">体验分享</a></li>
-						<li><a href="">投资者关系</a></li>
-						<li><a href="">网站导航</a></li>
-						<li><a href="">English</a></li>
+						<li><a href="/message">精彩提问</a></li>
+						<li><a href="/about">关于我们</a></li>
+						<li><a href="/contact">联系我们</a></li>
+						<li><a href="/help">帮助中心</a></li>
 						<li><a href="">400-888-6608</a></li>
-						<li><a href="">微信</a></li>
 					</ul>
 				</div>
 			</div>
@@ -37,9 +35,8 @@
 		<div class="nav container">
 			<ul class="clearfix">
 				<li><a href="/">首页</a></li>
-				<li><a href="#">自驾租车</a></li>
 				<li class="active"><a href="/search">车型查询</a></li>
-				<li><a href="#">体验分享</a></li>
+				<li><a href="/message">精彩提问</a></li>
 
 				<li><a href="/about">关于我们</a></li>
 				<li><a href="/contact">联系我们</a></li>

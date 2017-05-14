@@ -28,6 +28,7 @@ Route::group(['namespace' => 'Home'], function () {
     Route::get('/car', 'CarController@index');
     Route::get('/help', 'HelpController@index');
     Route::post('/message', 'MessageController@store');
+    Route::get('/message', 'MessageController@top20');
     Route::get('/about', 'AboutController@index');
 });
 
