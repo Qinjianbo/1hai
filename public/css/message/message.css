@@ -1,0 +1,44 @@
+#main {
+    width: 1200px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+}
+.main-con {
+    float: left;
+    width: 1190px;
+}
+.wrap-tylist {
+    font-size: 12px;
+    padding: 9px 0 38px 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.wrap-tylist table tr td {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.box-tylist {
+    padding: 29px 10px 23px 12px;
+    border-bottom: 1px solid #dddddd;
+}
+.u-npho {
+    color: #0054aa;
+    font-size: 16px;
+}
+.up-con {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 10px 0 12px 0;
+}
+.up-time {
+    padding: 22px 0 0 0;
+}
+.box-logo-pho:after, .box-fm:after, .write-tit:after, .box-up-subm:after, #main:after, .wrap-page:after, .gz-list li:after, .box-login li:after {
+    display: block;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+    content: ".";
+}

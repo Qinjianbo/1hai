@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="/css/car/car.css" />
 		<link rel="stylesheet" href="/css/index/index.css" />
 		<link rel="stylesheet" href="/css/index/public.css" />
+		<link rel="stylesheet" href="/css/message/message.css"/>
 	</head>
 	<body>
 		<div class="top">
@@ -56,7 +57,33 @@
 			<div class="arrow aright">></div>
 			<div class=" arrow aleft"><</div>
 		</div>
-		精彩提问
+		<div id="main">
+			<div class="main-con">
+				<div class="wrap-tylist">
+					<table id="DataList_ppl_ty" cellspacing="0" style="width:100%;border-collapse:collapse;">
+						<tbody>
+						@foreach($top20 as $message)
+						<tr>
+							<td>
+								<div class="box-tylist" id="ppl4015">
+									<strong class="u-npho">
+										{{ $message->realname }}提问<span></span>：</strong>
+									<p class="up-con">
+										<strong>{{ $message->message }}？</strong><br/><br/>{{ date('Y-m-d', $message->created_at) }}
+									</p>
+									<hr>
+									<p class="up-con">
+										<strong>{{ $message->reply }}</strong><br/><br/>
+										{{ date('Y-m-d', $message->updated_at) }}
+									</p>
+								</div>
+							</td>
+						</tr>
+						@endforeach
+						</tbody></table>
+				</div>
+			</div>
+		</div>
 		<!--尾部	-->
 		<div class="footer">
 			<div class="container">
