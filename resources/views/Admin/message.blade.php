@@ -51,7 +51,10 @@
                 <tr>
                     <th>编号</th>
                     <th>姓名</th>
-                    <th>联系方式</th>
+                    <th>联系电话</th>
+                    <th>qq</th>
+                    <th>email</th>
+                    <th>微信</th>
                     <th>时间</th>
                     <th>内容</th>
                     <th>操作</th>
@@ -64,6 +67,9 @@
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $message->realname }}</td>
                         <td>{{ $message->mobile }}</td>
+                        <td>{{ $message->qq }}</td>
+                        <td>{{ $message->email }}</td>
+                        <td>{{ $message->wechat }}</td>
                         <td>{{ date('Y-m-d H:i:s', $message->created_at) }}</td>
                         <td><div title="{{ $message->message }}">@if(strlen($message->message) > 10){{ mb_substr($message->message, 0, 10).'...' }}@else{{ mb_substr($message->message, 0, 10) }}@endif</div></td>
                         <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $message->id }})">查看全部留言内容并回复</a></td>

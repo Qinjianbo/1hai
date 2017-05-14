@@ -42,7 +42,7 @@
 				<li><a href="/search">车型查询</a></li>
 				<li><a href="#">体验分享</a></li>
 
-				<li><a href="#">关于我们</a></li>
+				<li><a href="/about">关于我们</a></li>
 				<li class="active"><a href="/contact">联系我们</a></li>
 				<li><a href="/help">帮助中心</a></li>
 			</ul>
@@ -87,27 +87,26 @@
                             var $qq = $('#qq').val();
                             var $wechat = $('#wechat').val();
                             $.ajax({
-                                url: '/index.php/System/contactUs.html',
+                                url: '/message',
                                 type: 'post',
                                 dataType: 'json',
                                 data: {
-                                    name: $name,
+                                    realname: $name,
                                     email: $email,
-                                    phone: $phone,
+                                    mobile: $phone,
                                     message: $message,
                                     qq: $qq,
                                     wechat: $wechat
                                 },
                                 success: function (data) {
-                                    if (data.status == 1) {
+                                    if (data) {
                                         alert('发送成功，我们会取得与你的联系来解决你的问题!');
-                                    } else if (data.status == 2) {
-                                        alert('发送失败，请稍后再试...');
                                     } else {
-                                        alert('未知错误，请稍后再试...');
-                                    }
+                                        alert('发送失败');
+									}
                                 },
-                                error: function () {
+                                error: function (data) {
+                                    console.log(data.responseText);
                                     alert('发送出错了，请稍后再试...');
                                 }
                             })
@@ -133,6 +132,7 @@
 				<p>版权所有&copy吴涛租车平台</p>
 			</div>
 		</div>
+		<script type="text/javascript" src="/js/libs/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="/js/index/index.js" ></script>
 	</body>
 </html>

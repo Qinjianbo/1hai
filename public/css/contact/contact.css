@@ -63,3 +63,48 @@
     line-height:90px;
 }
 
+/*关于我们*/
+.address {
+    padding: 2em 0 0 0;
+    border-top: 1px solid #eee;
+    margin-top: 2em;
+}
+.address h3 {
+    font-family: '微软雅黑';
+    font-size: 1.8em;
+    color: #f43c60;
+    margin-bottom: 0.7em;
+    text-align: center;
+}
+.address-info h4 {
+    color: #09C3EA;
+    margin-bottom: 8px;
+    font-size: 1em;
+}
+.address-info p {
+    color: #999;
+    font-size: 0.9em;
+    text-decoration: none;
+    padding-bottom: 3px;
+    display: block;
+    font-weight: 400;
+}
+.address-info p a {
+    color: #999;
+}
+.address-info p {
+    color: #999;
+    font-size: 0.9em;
+    text-decoration: none;
+    padding-bottom: 3px;
+    display: block;
+    font-weight: 400;
+}
+.map-div {
+    margin-left: 36%;
+}
+.map {
+    width: 700px;
+    height: 400px;
+}
+

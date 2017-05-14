@@ -38,7 +38,7 @@ class Message
      */
     public function getMessagesForAdmin(Request $request)
     {
-        return MessageModel::paginate(20);
+        return MessageModel::orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->paginate(20);
     }
 
     /**

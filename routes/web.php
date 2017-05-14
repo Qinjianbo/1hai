@@ -27,6 +27,8 @@ Route::group(['namespace' => 'Home'], function () {
     Route::get('/search', 'SearchController@index');
     Route::get('/car', 'CarController@index');
     Route::get('/help', 'HelpController@index');
+    Route::post('/message', 'MessageController@store');
+    Route::get('/about', 'AboutController@index');
 });
 
 // 后台路由

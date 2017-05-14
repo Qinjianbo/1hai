@@ -40,7 +40,7 @@
 				<li><a href="/search">车型查询</a></li>
 				<li><a href="#">体验分享</a></li>
 
-				<li><a href="#">关于我们</a></li>
+				<li><a href="/about">关于我们</a></li>
 				<li><a href="/contact">联系我们</a></li>
 				<li><a href="/help">帮助中心</a></li>
 			</ul>
