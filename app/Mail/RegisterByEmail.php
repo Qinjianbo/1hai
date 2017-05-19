@@ -24,8 +24,8 @@ class RegisterByEmail extends Mailable
      */
     public function __construct(string $username, string $captcha)
     {
-	    $this->username = $username;
-	    $this->captcha = $captcha;
+        $this->username = $username;
+        $this->captcha = $captcha;
     }
 
     /**

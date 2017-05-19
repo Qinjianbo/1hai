@@ -25,20 +25,19 @@ class PasswordController
         if ($validator->fails()) {
             return collect($validator->messages());
         }
-                $criteria = [
+        $criteria = [
                         'username' => $request->input('username'),
                         'password' => md5($request->input('password'))
                 ];
-                if ($user = User::where($criteria)->first()) {
-                    $passLogic = new Password();
-                    if ($passLogic->doChange($request, $user)) {
-                        return collect(['code' => 200]);
-                    } else {
-                        return collect(['err' => 'Changing password failed!']);
-                    }
-                } else {
-                        return collect(['err' => 'The original password is wrong!']);
-                }
-
+        if ($user = User::where($criteria)->first()) {
+            $passLogic = new Password();
+            if ($passLogic->doChange($request, $user)) {
+                return collect(['code' => 200]);
+            } else {
+                return collect(['err' => 'Changing password failed!']);
+            }
+        } else {
+            return collect(['err' => 'The original password is wrong!']);
+        }
     }
 }

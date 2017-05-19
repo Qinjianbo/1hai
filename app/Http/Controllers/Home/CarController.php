@@ -16,7 +16,7 @@ class CarController extends Controller
 {
     public function index(Request $request)
     {
-        $car = Car::find($request->get('car_id',0));
+        $car = Car::find($request->get('car_id', 0));
         $rents = Rent::where('car_id', $request->get('car_id', 0))->get();
         $cities = collect();
         $shops = collect();

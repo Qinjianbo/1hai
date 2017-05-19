@@ -32,7 +32,7 @@ class SearchController extends Controller
             $cars = $cars->where('brandid', $request->get('brand_id'));
         }
         $cars = $cars->paginate(20);
-        return view('Home.search',[
+        return view('Home.search', [
             'carCount'  => $carCount,
             'shopCount' => $shopCount,
             'cityCount' => $cityCount,

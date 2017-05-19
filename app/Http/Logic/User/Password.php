@@ -23,6 +23,5 @@ class Password
         } else {
             return false;
         }
-
     }
 }

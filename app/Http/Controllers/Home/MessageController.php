@@ -32,7 +32,7 @@ class MessageController extends Controller
 
     public function top20(Request $request)
     {
-        $top20 = \App\Models\User\Message::where('can_show',1)
+        $top20 = \App\Models\User\Message::where('can_show', 1)
             ->orderBy('created_at', 'desc')
             ->limit(20)
             ->get();

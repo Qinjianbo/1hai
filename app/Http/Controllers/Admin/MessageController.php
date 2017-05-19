@@ -42,7 +42,7 @@ class MessageController extends Controller
     {
         if ($request->get('reply')) {
             $only = ['reply'];
-        } elseif($request->exists('can_show')) {
+        } elseif ($request->exists('can_show')) {
             $only = ['can_show'];
         }
         return (new Message())
