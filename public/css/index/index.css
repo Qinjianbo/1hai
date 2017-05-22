@@ -1,16 +1,14 @@
-
 .banner{
 	position:relative;
 	width:1200px;
-	overflow: hidden;
 }
 .banner .imgs{
-	width: 600%;
 	position:relative;
 	left: 0px;
+	height: 250PX;
 }
-.banner ul li{
-	float: left;
+.banner .imgs li{
+	position: absolute;
 }
 .banner ul li img{
 	width:1200px
@@ -85,4 +83,8 @@
 	height: 130px;
 	right: 0px;
 	bottom: 0px;
+	transition: all 0.1s;
+}
+.contentR_car img:hover{
+	transform:translateX(-20px);
 }

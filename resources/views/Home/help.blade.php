@@ -123,7 +123,8 @@
 
                 $(".help_tab li").click(function(){
                     $(this).css("opacity","1").siblings("li").css("opacity","0.5");
-                    $(".tab").eq($(this).index()).css("display","block").siblings("ol").css("display","none")
+                    $(".tab").eq($(this).index()).css("display","block").siblings().css("display","none")
+					console.log($(this).index())
                 })
             })
 		</script>
