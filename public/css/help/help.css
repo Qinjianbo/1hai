@@ -1,0 +1,53 @@
+.helpcenter{
+	width: 1200px;
+	margin: 0 auto;
+	background: url(../../pictures/help_search_bg.png) no-repeat;
+	text-align: center;
+	font-size: 26px;
+	height: 130px;
+	line-height: 130px;
+	color: rgb(244,60,96);
+	border:1px solid #d9d9d9;
+}
+.help_tab{
+	width: 1200px;
+	margin: 0 auto;
+	/*border: solid 1px #d9d9d9;*/
+	margin-top: 20px;
+}
+.help_tab li{
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: #FFFFFF;
+	background: #007fcc;
+	opacity: 0.5;
+	border-radius: 50%;
+	float: left;
+	margin-left: 150px;
+	font-size: 16px;
+}
+.tab{
+	width: 1200px;
+	height: 300px;
+	background: #f7fbfe;
+	border:1px solid #acd5f5;
+
+	display: none;
+	font-size: 14px;
+	line-height: 40px;
+	position: absolute;
+}
+.tab ol{
+	width: 1000px;
+	margin: 0 auto;
+	margin-top:30px
+}
+.tabs{
+	width: 1200px;
+	position: relative;
+	height: 305px;
+	margin:0 auto;
+	margin-top:25px;
+}
