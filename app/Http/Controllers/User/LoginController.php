@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\User;
 
+use App\Models\User\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Logic\User\Login;
@@ -19,8 +20,7 @@ class LoginController extends Controller
         $loginLogic = new Login();
         $user = $loginLogic->doLogin($request);
         if (!$user->isEmpty()) {
-            $request->session()->push('user', serialize($user));
-            return collect(['message' => '登录成功', 'errCode' => 0, 'data' => $user]);
+            return collect(['message' => '登录成功', 'errCode' => 0, 'data' => $user->toJson()]);
         } else {
             return collect(['message' => '用户名不存在或密码错误', 'errCode' => 1, 'data' => []]);
         }

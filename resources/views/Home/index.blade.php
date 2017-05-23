@@ -94,5 +94,9 @@
 		</div>
 		<script type="text/javascript" src="/js/libs/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="/js/index/index.js" ></script>
+		<script type="text/javascript" src="/js/libs/jquery.cookie.js"></script>
+		<script type="text/javascript">
+			alert($.cookie('user'));
+		</script>
 	</body>
 </html>

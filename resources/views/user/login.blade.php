@@ -188,7 +188,8 @@
         </div>
     </div>
 </div>
-<script type="application/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/libs/jquery.cookie.js"></script>
 <script type="text/javascript">
     $(function() {
         $(".login-way input").click(function() {
@@ -218,6 +219,7 @@
                                 alert(data.message);
                             } else {
                                 alert(data.message);
+                                $.cookie('user', data.data);
                                 window.location.href='/';
                             }
                         },
