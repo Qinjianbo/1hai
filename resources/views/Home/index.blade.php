@@ -92,6 +92,7 @@
 				<p>版权所有&copy吴涛租车平台</p>
 			</div>
 		</div>
+		<script type="text/javascript" src="/js/libs/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="/js/index/index.js" ></script>
 	</body>
 </html>
