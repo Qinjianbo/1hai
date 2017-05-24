@@ -219,6 +219,8 @@
                                 alert(data.message);
                             } else {
                                 alert(data.message);
+                                var date = new Date();
+                                date.setTime(date.getTime()+60*30*1000);
                                 $.cookie('user', data.data);
                                 window.location.href='/';
                             }
