@@ -6,7 +6,7 @@
     width: 950px;
     height: 375px;
     margin: 0 auto;
-    background: url(../../pictures/login_bg.jpg) no-repeat;
+    background: url(../../pictures/che_login.png) no-repeat;
     position: relative;
 }
 
@@ -217,8 +217,9 @@
 .mobile-link {
     display: block;
     position: absolute;
-    width: 580px;
-    height: 400px;
+    width: 552px;
+    height: 368px;
+    box-shadow: 0 0 100px white inset;
 }
 
 

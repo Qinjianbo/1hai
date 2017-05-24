@@ -137,9 +137,6 @@
                     元优惠券
                 </dd>
             </dl>
-            <div class="reg-banenr">
-                <img src="/pictures/reg-banner.jpg" width="100%">
-            </div>
         </div>
     </div>
 </div>
