@@ -49,12 +49,9 @@
 		<!--banner图-->
 		<div class="banner container ">
 			<ul class="clearfix imgs">
-				<li><a href="#"><img src="/pictures/index/banner1.jpg" alt="banner1" /></a></li>
 				<li><a href="#"><img src="/pictures/index/banner2.jpg" alt="banner2" /></a></li>
 				<li><a href="#"><img src="/pictures/index/banner3.jpg" alt="banner3" /></a></li>
-				<li><a href="#"><img src="/pictures/index/banner4.jpg" alt="banner4" /></a></li>
 				<li><a href="#"><img src="/pictures/index/banner5.jpg" alt="banner5" /></a></li>
-				<li><a href="#"><img src="/pictures/index/banner1.jpg" alt="banner1" /></a></li>
 			</ul>
 			<div class="arrow aright">></div>
 			<div class=" arrow aleft"><</div>

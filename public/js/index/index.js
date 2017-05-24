@@ -142,10 +142,10 @@ $(function(){
 	var num=0,timer=0;
 	function lunbo(){
 		num++;
-		if(num>5){
+		if(num>3){
 	  	num=0;
 	  }else if(num<0){
-	  	num=5;
+	  	num=3;
 	  }
 	  $(".imgs li").eq(num).stop().fadeIn(800).siblings().stop().fadeOut(800);
 	
@@ -161,7 +161,7 @@ $(function(){
 	})
 	$(".aleft").click(function(){
 		if(num<0){
-			num=5
+			num=3
 		}
 		num--;
 		$(".imgs li").eq(num).stop().fadeIn(1000).siblings().stop().fadeOut(1000);
