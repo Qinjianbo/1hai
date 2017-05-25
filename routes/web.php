@@ -31,6 +31,7 @@ Route::group(['namespace' => 'Home'], function () {
     Route::get('/message', 'MessageController@top20');
     Route::get('/about', 'AboutController@index');
     Route::post('/order', 'OrderController@store');
+    Route::get('/center/{id}', 'CenterController@index');
 });
 
 // 后台路由

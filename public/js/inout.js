@@ -6,7 +6,7 @@ $(function () {
         $("#after_login").css("display", "none");
     } else {
         $("#before_login").css("display", "none");
-        $("#center").text(user.realname).attr("href", "/center");
+        $("#center").text(user.realname).attr("href", "/center/"+user.id).attr("target", "_blank");
         $("#after_login").css("display", "");
     }
     $("#logout").click(function () {

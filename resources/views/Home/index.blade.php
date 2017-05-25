@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>shouye</title>
+		<title>首页</title>
 		<link rel="stylesheet" href="/css/index/public.css" />
 		<link rel="stylesheet" href="/css/index/index.css" />
 	</head>
