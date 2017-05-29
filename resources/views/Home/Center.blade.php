@@ -12,9 +12,9 @@
 <div class="container">
     <div class="left">
         <ul>
-            <li class="{{ $personal ?? '' }}"><a href="/center/{{ cookie('user') }}">个人信息</a></li>
-            <li class="{{ $password ?? '' }}"><a href="/index.php/PersonalCenter/toChangePwd.html">修改密码</a></li>
-            <li class="{{ $order ?? '' }}"><a href="/index.php/PersonalCenter/toChangePwd.html">我的订单</a></li>
+            <li class="{{ $personal ?? '' }}"><a href="/center/{{ $user->id }}">个人信息</a></li>
+            <li class="{{ $password ?? '' }}"><a href="/center/passwordIndex">修改密码</a></li>
+            <li class="{{ $order ?? '' }}"><a href="">我的订单</a></li>
         </ul>
     </div>
     <div class="right">
@@ -34,14 +34,14 @@
         <div class="center password {{ $password_hide ?? ''}}">
             <form id="password_form">
                 <label>原密码</label>
-                <input type="password" name="prepwd" id="oldpwd"><br>
+                <input type="password" name="oldpwd" id="oldpwd"><br>
                 <label>新密码</label>
                 <input type="password" name="newpwd" id="newpwd"><br>
                 <label>再次输入新密码</label>
                 <input type="password" name="secnewpwd" id="secnewpwd"><br>
                 <button type="reset" class="btn btn-default">重置</button>
             </form>
-            <button class="btn btn-danger" id="1" onclick="changePwd(this.id)">确认修改密码
+            <button class="btn btn-danger" data-title="{{ $user->id }}" id="changepwdbtn">确认修改密码
             </button>
         </div>
 
@@ -64,8 +64,6 @@
 @include('Home.footer')
 <script type="text/javascript" src="/js/libs/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="/js/index/index.js" ></script>
-<script type="text/javascript">
-
-</script>
+<script type="text/javascript" src="/js/center/center.js"></script>
 </body>
 </html>

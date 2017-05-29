@@ -17,7 +17,7 @@ class Register
     {
         $userModel = new User();
         $userModel->username = $request->input('username');
-        $userModel->password = md5($request->input('password'));
+        $userModel->password = $request->input('password');
         $userModel->realname = $request->input('realname');
         if ($userModel->save()) {
             return true;

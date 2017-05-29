@@ -22,7 +22,7 @@ class Login
     public function doLogin(Request $request): Collection
     {
         $criteria['username'] = $request->input('username', '');
-        $criteria['password'] = md5($request->input('password', ''));
+        $criteria['password'] = $request->input('password', '');
         $criteria['enabled'] = 1;
         $userModel = new User();
         $user = collect($userModel->select(['id','username','realname'])->where($criteria)->first());
