@@ -22,7 +22,12 @@ class Info
     {
         return Car::paginate(20);
     }
-
+    /**
+     * 获取某车辆信息
+     *
+     * @param $id
+     * @return mixed
+     */
     public function show($id)
     {
         return Car::where('id', $id)->first();
