@@ -107,4 +107,20 @@ class CenterController extends Controller
             return ['errorCode' => '1', 'errorMsg' => '密码更新失败', 'data' => ''];
         }
     }
+
+    public function changeInfo(Request $request)
+    {
+        $this->isLogin($request);
+        $realname = $request->get('realname', '');
+        $idcard = $request->get('idcard', '');
+        if (strlen($realname) < 0) {
+            return ['errorCode' => '1', 'errorMsg' => '请输入真实姓名', 'data' => ''];
+        }
+        $uid = $request->get('id', 0);
+        if (User::where('id', $uid)->update(['realname' => $realname, 'idcard' => $idcard]) !== false) {
+            return ['errorCode' => '', 'errorMsg' => '信息更新成功', 'data' => ''];
+        } else {
+            return ['errorCode' => '1', 'errorMsg' => '信息更新失败', 'data' => ''];
+        }
+    }
 }

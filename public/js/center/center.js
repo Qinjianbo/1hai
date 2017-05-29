@@ -35,5 +35,36 @@ $(function () {
                 alert('请稍后再试');
             }
         })
-    })
-})
+    });
+    $('#changeinfobtn').click(function changeinfo() {
+        var realname = $('#realname').val();
+        var idcard = $('#idcard').val();
+        var id = $('#changeinfobtn').attr('data-title');
+        if (realname.length < 0) {
+            alert('请输入真实姓名');
+            return;
+        }
+        $.ajax({
+            url:'/center/changeInfo',
+            type:'post',
+            dataType:'json',
+            data:{
+                realname: realname,
+                idcard: idcard,
+                id: id
+            },
+            success:function (data) {
+                if (data.errorCode) {
+                    alert(data.errorMsg);
+                } else {
+                    alert('修改成功');
+                    window.location.reload();
+                }
+            },
+            error:function (data) {
+                console.log(data.responseText);
+                alert('请稍后再试');
+            }
+        })
+    });
+});

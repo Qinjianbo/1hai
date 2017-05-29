@@ -23,12 +23,10 @@
             <form id="info_form">
                 <label>真实姓名</label>
                 <input type="text" name="realname" id="realname" value="{{ $user->realname }}"><br>
-                <label>手机号码</label>
-                <input type="text" name="mobile" id="mobile" value="{{ $user->username }}"><br>
                 <label>身份证号</label>
-                <input type="text" name="mobile" id="mobile" value="{{ $user->idcard }}"><br>
+                <input type="text" name="idcard" id="idcard" value="{{ $user->idcard }}"><br>
             </form>
-            <button class="btn btn-danger" id="{{ $user->id }}" onclick="submitInfo(this.id)">修改个人信息</button>
+            <button class="btn btn-danger" data-title="{{ $user->id }}" id="changeinfobtn">修改个人信息</button>
         </div>
         <!--密码信息div-->
         <div class="center password {{ $password_hide ?? ''}}">
