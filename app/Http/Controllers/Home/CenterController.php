@@ -97,7 +97,7 @@ class CenterController extends Controller
         if ($newpwd != $secnewpwd) {
             return ['errorCode' => '1', 'errorMsg' => '两次新密码输入不一致，请重新输入', 'data' => ''];
         }
-        $user = User::select('password')->where('id', $uid)->first();
+        $user = User::select(['password'])->where('id', $uid)->first();
         if ($oldpwd != $user['password']) {
             return ['errorCode' => '1', 'errorMsg' => '原密码输入错误，请重新输入', 'data' => ''];
         }

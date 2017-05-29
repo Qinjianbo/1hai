@@ -105,16 +105,13 @@
 						},
 						dataType:"json",
 						success:function (data) {
-							if (data.status == 1) {
-							    alert("预订成功,稍后将有工作人员与您进行联系");
-							} else if (data.status == 2) {
+							if (data.errorCode == 2) {
 							    alert(data.errorMsg);
-//                                window.location.href = "/login";
-							} else if (data.status == 3) {
+							    window.location.href = '/login';
+							} else if (data.errorCode == 3) {
                                 alert(data.errorMsg);
-//                                window.location.href = "/self";
 							} else {
-							    console.log(data.responseText);
+							    alert('预订成功，稍后将有工作人员与您进行联系');
 							}
                         },
 						error:function (data) {
