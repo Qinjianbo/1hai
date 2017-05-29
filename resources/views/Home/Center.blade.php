@@ -53,6 +53,20 @@
                 <th>租售价格</th>
                 <th>操作</th>
                 </thead>
+                <tbody>
+                @if(!$order_hide)
+                @foreach($orders as $order)
+                    <tr>
+                        <td>{{ $order->id }}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                @endforeach
+                @endif
+                </tbody>
             </table>
         </div>
     </div>

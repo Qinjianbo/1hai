@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use App\Models\Car\Car;
 use App\Models\City\City;
+use App\Models\Order\Order;
 use App\Models\Shop\Shop;
 use App\Models\User\User;
 use Illuminate\Http\Request;
@@ -55,11 +56,15 @@ class CenterController extends Controller
      */
     public function passwordIndex(Request $request)
     {
-        $this->isLogin($request);
+        $result = $this->isLogin($request);
+        if ($result == 1002) {
+            return ['errorCode' => 2, 'errorMsg' => '登录超时或没有登录，请登录'];
+        } elseif ($result == 1003) {
+            return redirect('/login');
+        }
         $user = session('user');
         $uid = $user['id'];
         $user = User::find($uid);
-        $this->isLogin($request);
         $carCount = Car::where('valid', 1)->count();
         $shopCount = Shop::count();
         $cityCount = City::count();
@@ -108,6 +113,11 @@ class CenterController extends Controller
         }
     }
 
+    /**
+     * 变更个人信息
+     * @param Request $request
+     * @return array
+     */
     public function changeInfo(Request $request)
     {
         $this->isLogin($request);
@@ -122,5 +132,36 @@ class CenterController extends Controller
         } else {
             return ['errorCode' => '1', 'errorMsg' => '信息更新失败', 'data' => ''];
         }
+    }
+
+    /**
+     * 获取我的订单列表
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|View
+     */
+    public function myOrders(Request $request)
+    {
+        $this->isLogin($request);
+        $user = session('user');
+        $uid = $user['id'];
+        $user = User::find($uid);
+        $this->isLogin($request);
+        $carCount = Car::where('valid', 1)->count();
+        $shopCount = Shop::count();
+        $cityCount = City::count();
+        $orders = Order::where('user_id', $uid)->order('created_at')->get();
+        return view(
+            'Home.center',
+            [
+                'orders' => $orders,
+                'user' => $user,
+                'carCount'  => $carCount,
+                'shopCount' => $shopCount,
+                'cityCount' => $cityCount,
+                'order'  => 'active',
+                'personal_hide' => 'hide',
+                'password_hide' => 'hide',
+            ]
+        );
     }
 }

@@ -21,11 +21,12 @@ class Controller extends BaseController
      */
     public function isLogin(Request $request)
     {
-        if (!session('user') || !session('user')->isEmpty()) {
+        if (!session('user') || session('user')->isEmpty()) {
             if ($request->ajax()) {
-                return ['errorCode' => 2, 'errorMsg' => '登录超时或没有登录，请登录'];
+                return 1002;
+
             } else {
-                return redirect('/login');
+                return 1003;
             }
         }
 

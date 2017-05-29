@@ -37,6 +37,7 @@ Route::group(['namespace' => 'Home'], function () {
     Route::post('/order', 'OrderController@store');
     Route::post('/center/changePwd', 'CenterController@changePwd');
     Route::get('/center/passwordIndex', 'CenterController@passwordIndex');
+    Route::get('/center/myOrders', 'CenterController@myOrders');
     Route::get('/center/{id}', 'CenterController@index');
     Route::post('/center/changeInfo', 'CenterController@changeInfo');
 });
