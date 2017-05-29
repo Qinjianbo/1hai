@@ -79,45 +79,8 @@
 </div>
 <script type="text/javascript" src="/js/libs/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="/js/index/index.js" ></script>
-<script type="text/javascript" src="/js/libs/jquery.cookie.js"></script>
-<script type="text/javascript" src="/js/inout.js"></script>
 <script type="text/javascript">
-    $(document).ready((function () {
-        $(".type-box a").click(function(){
-            $(this).css({"background":"blue","color":"white"});
-        });
-        $(".brand-box-list a").click(function(){
-            $(this).css({"background":"blue","color":"white"});
-        });
-        $(".order-btn").click(function () {
-            var id = $(this).attr("data-title");
-            $.ajax({
-                url:"/order",
-                type:"post",
-                data:{
-                    id:id
-                },
-                dataType:"json",
-                success:function (data) {
-                    if (data.status == 1) {
-                        alert("预订成功,稍后将有工作人员与您进行联系");
-                    } else if (data.status == 2) {
-                        alert(data.errorMsg);
-//                                window.location.href = "/login";
-                    } else if (data.status == 3) {
-                        alert(data.errorMsg);
-//                                window.location.href = "/self";
-                    } else {
-                        console.log(data.responseText);
-                    }
-                },
-                error:function (data) {
-                    console.log(data.responseText);
-                    alert("出错了，请稍后再试");
-                }
-            })
-        })
-    }));
+
 </script>
 </body>
 </html>

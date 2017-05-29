@@ -220,7 +220,7 @@
                                 alert(data.message);
                             } else {
                                 alert(data.message);
-                                window.location.href='/';
+                                window.location.href = document.referrer;
                             }
                         },
                         error:function (data) {
