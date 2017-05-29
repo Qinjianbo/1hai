@@ -40,6 +40,30 @@ class CenterController extends Controller
                 'carCount'  => $carCount,
                 'shopCount' => $shopCount,
                 'cityCount' => $cityCount,
+                'personal'  => 'active',
+                'password_hide' => 'hide',
+                'order_hide' => 'hide',
+            ]
+        );
+    }
+
+    /**
+     *
+     */
+    public function passwordIndex()
+    {
+        $carCount = Car::where('valid', 1)->count();
+        $shopCount = Shop::count();
+        $cityCount = City::count();
+        return view(
+            'Home.center',
+            [
+                'carCount'  => $carCount,
+                'shopCount' => $shopCount,
+                'cityCount' => $cityCount,
+                'password'  => 'active',
+                'personal_hide' => 'hide',
+                'order_hide' => 'hide',
             ]
         );
     }

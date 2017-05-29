@@ -13,7 +13,10 @@
 
 //公共获取验证码路由
 Route::get('/captcha', 'Controller@getCaptcha');
-
+Route::group(['prefix' => 'user', 'namespace' => 'User'], function() {
+    Route::post('/login', 'LoginController@doLogin');
+    Route::get('/logout', 'LoginController@doLogout');
+});
 // 前台路由
 Route::group(['namespace' => 'Home'], function () {
     Route::get('/', 'IndexController@index');
@@ -23,6 +26,7 @@ Route::group(['namespace' => 'Home'], function () {
     Route::get('/login', function() {
         return view('user.login');
     });
+
     Route::get('/contact', 'ContactController@index');
     Route::get('/search', 'SearchController@index');
     Route::get('/car', 'CarController@index');
@@ -32,6 +36,7 @@ Route::group(['namespace' => 'Home'], function () {
     Route::get('/about', 'AboutController@index');
     Route::post('/order', 'OrderController@store');
     Route::get('/center/{id}', 'CenterController@index');
+    Route::get('/center/password_index', 'CenterController@index');
 });
 
 // 后台路由

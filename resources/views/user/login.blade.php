@@ -58,6 +58,7 @@
                             {{--快速登录--}}
                         {{--</label>--}}
                     </div>
+                    <form action="" method="post">
                     <div class="login-wayinfo">
                         <div class="login-common">
                             <p>
@@ -128,7 +129,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    </form>
                 <div class="login-btm">
 							<span>
 								欢迎使用吴涛租车平台
@@ -206,7 +207,7 @@
             if (checkPassword(txtPassword)) {
                 if (checkCaptcha(txtcaptcha)) {
                     $.ajax({
-                        url:"/api/user/login",
+                        url:"/user/login",
                         type:"post",
                         dataType:"json",
                         data:{
@@ -219,9 +220,6 @@
                                 alert(data.message);
                             } else {
                                 alert(data.message);
-                                var date = new Date();
-                                date.setTime(date.getTime()+60*30*1000);
-                                $.cookie('user', data.data);
                                 window.location.href='/';
                             }
                         },

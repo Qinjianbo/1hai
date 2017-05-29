@@ -61,7 +61,6 @@
                     <th>身份证号</th>
                     <th>创建时间</th>
                     <th>操作</th>
-                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -72,7 +71,6 @@
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->idcard }}</td>
                         <td>{{ date('Y-m-d H:i:s', $user->created_at) }}</td>
-                        <td><a id="edit" href="javascript:;" style="cursor:pointer" onclick="edit({{ $user->id }})">查看身份证图片</a></td>
                         <td>
                             <a id="delete" style="cursor:pointer" href="javascript:;" onclick="changeEnabled({{ $user->id }})">
                                 @if ($user->enabled == 1)

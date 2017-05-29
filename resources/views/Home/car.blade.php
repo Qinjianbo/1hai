@@ -11,14 +11,17 @@
 		<div class="top">
 			<div class="container">
 				<div class="top_l fl">
-					<ul class="clearfix" id="after_login" style="display: none">
-						<li>欢迎会员：<a href="javascript:void(0)" id="center">一嗨会员</a></li>
-						<li><a href="javascript:;" id="logout">退出</a></li>
-					</ul>
-					<ul class="clearfix" id="before_login">
-						<li><a href="/login">登录</a></li>
-						<li><a href="/register">免费注册</a></li>
-					</ul>
+					@if(session('user') && !session('user')->isEmpty())
+						<ul class="clearfix">
+							<li>欢迎会员：<a href="javascript:void(0)" id="center">{{ session('user')['realname'] ?? '一嗨会员' }}</a></li>
+							<li><a href="/user/logout" id="logout">退出</a></li>
+						</ul>
+					@else
+						<ul class="clearfix">
+							<li><a href="/login">登录</a></li>
+							<li><a href="/register">免费注册</a></li>
+						</ul>
+					@endif
 				</div>
 				<div class="top_r fr">
 					<ul class="clearfix">
@@ -124,8 +127,6 @@
 		</div>
 		<script type="text/javascript" src="/js/libs/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="/js/index/index.js" ></script>
-		<script type="text/javascript" src="/js/libs/jquery.cookie.js"></script>
-		<script type="text/javascript" src="/js/inout.js"></script>
 		<script type="text/javascript">
 			$(document).ready((function () {
 				$(".type-box a").click(function(){
