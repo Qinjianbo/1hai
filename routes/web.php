@@ -81,4 +81,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/shopCarCity/{id}', 'ShopCarCityController@show')->middleware('adminAuthCheck');
     Route::post('/shopCarCity/store', 'ShopCarCityController@store')->middleware('adminAuthCheck');
     Route::get('/cities', 'CityController@cities')->middleware('adminAuthCheck');
+    Route::get('/orderList', 'OrderController@orders')->middleware('adminAuthCheck');
+    Route::get('/order/finishOrder', 'OrderController@finishOrder')->middleware('adminAuthCheck');
+    Route::get('/order/changePayed', 'OrderController@changePayed')->middleware('adminAuthCheck');
 });

@@ -24,7 +24,7 @@ class OrderController extends Controller
         if (!$user['idcard'] || strlen($user['idcard']) != 18) {
             return collect(['errorCode' => 3, 'errorMsg' => '请先前往个人中心将身份证号更改正确']);
         }
-        $currentOrder = Order::select(['id'])->where('user_id', $user['id'])->whereIn('status',[1,2,3])->get();
+        $currentOrder = Order::select(['id'])->where('user_id', $user['id'])->whereIn('status',[1,2])->get();
         if (!$currentOrder->isEmpty()) {
             return collect(['errorCode' => 3, 'errorMsg' => '您有未完成订单，请完成后再来预订']);
         }

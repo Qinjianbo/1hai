@@ -27,7 +27,8 @@
                 <li class=""><a href="/admin/users">用户信息管理</a></li>
                 <li class=""><a href="/admin/messages">留言信息管理</a></li>
                 <li class=""><a href="/admin/shops">门店信息管理</a></li>
-                <li class=""><a href="/admin/shopCarCityList">租售信息管理</a></li>            </ul>
+                <li class=""><a href="/admin/shopCarCityList">租售信息管理</a></li>
+                <li class=""><a href="/admin/orderList">订单信息管理</a></li></ul>
         </div>
         <div class="col-md-10">
             <!--头部搜索及新增按钮 -->
