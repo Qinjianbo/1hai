@@ -14,7 +14,7 @@
         <ul>
             <li class="{{ $personal ?? '' }}"><a href="/center/{{ $user->id }}">个人信息</a></li>
             <li class="{{ $password ?? '' }}"><a href="/center/passwordIndex">修改密码</a></li>
-            <li class="{{ $order ?? '' }}"><a href="">我的订单</a></li>
+            <li class="{{ $order ?? '' }}"><a href="/center/myOrders">我的订单</a></li>
         </ul>
     </div>
     <div class="right">
@@ -54,15 +54,31 @@
                 <th>操作</th>
                 </thead>
                 <tbody>
-                @if(!$order_hide)
+                @if(!isset($order_hide) || !$order_hide)
                 @foreach($orders as $order)
                     <tr>
                         <td>{{ $order->id }}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>
+                            @if($order->status == 1)
+                                下单成功
+                                @elseif($order->status == 2)
+                                付款成功
+                                @elseif($order->status == 3)
+                                订单已取消
+                                @else
+                                订单已完成
+                            @endif
+                        </td>
+                        <td>{{ $rents[$order['rent_id']]['shop_name'] }}</td>
+                        <td>{{ $rents[$order['rent_id']]['name'] }}</td>
+                        <td>{{ $rents[$order['rent_id']]['price'] }}</td>
+                        <td>
+                            @if(in_array($order->status, [1,2]))
+                            <a href="javascript:;" class="cancelOrder" data-title="{{ $order->id }}">取消订单</a>
+                                @else
+                                订单已完成或已取消
+                                @endif
+                        </td>
                     </tr>
                 @endforeach
                 @endif

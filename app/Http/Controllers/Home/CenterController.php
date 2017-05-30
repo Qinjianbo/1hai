@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use App\Models\Car\Car;
+use App\Models\Car\Rent;
 use App\Models\City\City;
 use App\Models\Order\Order;
 use App\Models\Shop\Shop;
@@ -169,11 +170,28 @@ class CenterController extends Controller
         $carCount = Car::where('valid', 1)->count();
         $shopCount = Shop::count();
         $cityCount = City::count();
-        $orders = Order::where('user_id', $uid)->order('created_at')->get();
+        $orders = Order::where('user_id', $uid)->orderBy('created_at')->get();
+        $rent_ids = $orders->pluck('rent_id');
+        $rents = Rent::leftJoin(
+            'wutao_car_info',
+            'wutao_shop_car_city.car_id',
+            '=',
+            'wutao_car_info.id'
+        )->leftJoin(
+            'wutao_shop',
+            'wutao_shop_car_city.shop_id',
+            '=',
+            'wutao_shop.id'
+        )->whereIn('wutao_shop_car_city.id', $rent_ids)
+            ->select(['wutao_shop_car_city.id','price', 'name', 'shop_name'])
+            ->get()
+        ->keyBy('id');
+
         return view(
             'Home.center',
             [
                 'orders' => $orders,
+                'rents'  => $rents,
                 'user' => $user,
                 'carCount'  => $carCount,
                 'shopCount' => $shopCount,
@@ -183,5 +201,21 @@ class CenterController extends Controller
                 'password_hide' => 'hide',
             ]
         );
+    }
+
+    /**
+     * 取消订单
+     * @param Request $request
+     * @param $orderId
+     * @return array
+     */
+    public function cancelOrder(Request $request, $orderId)
+    {
+        $result = Order::where('id', $orderId)->update(['status' => 3]);
+        if ($result !== false) {
+            return ['errorCode' => '', 'errorMsg' => ''];
+        } else {
+            return ['errorCode' => 1, 'errorMsg' => '订单取消失败'];
+        }
     }
 }

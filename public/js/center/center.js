@@ -67,4 +67,26 @@ $(function () {
             }
         })
     });
+    $('.cancelOrder').click(function cancelOrder() {
+        var orderId = $(this).attr('data-title');
+        $.ajax({
+            url:'/center/cancelOrder/'+orderId,
+            type:'get',
+            dataType:'json',
+            data:{
+            },
+            success:function (data) {
+                if (data.errorCode) {
+                    alert(data.errorMsg);
+                } else {
+                    alert('订单取消成功');
+                    window.location.reload();
+                }
+            },
+            error:function (data) {
+                console.log(data.responseText);
+                alert('请稍后重试');
+            }
+        });
+    });
 });
