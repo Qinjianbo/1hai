@@ -28,7 +28,12 @@ class CenterController extends Controller
      */
     public function index(Request $request, $uid)
     {
-        $this->isLogin($request);
+        $result = $this->isLogin($request);
+        if ($result == 1002) {
+            return ['errorCode' => 2, 'errorMsg' => '登录超时或没有登录，请登录'];
+        } elseif ($result == 1003) {
+            return redirect('/login');
+        }
         $user = User::find($uid);
 
         $carCount = Car::where('valid', 1)->count();
@@ -91,7 +96,12 @@ class CenterController extends Controller
      */
     public function changePwd(Request $request)
     {
-        $this->isLogin($request);
+        $result = $this->isLogin($request);
+        if ($result == 1002) {
+            return ['errorCode' => 2, 'errorMsg' => '登录超时或没有登录，请登录'];
+        } elseif ($result == 1003) {
+            return redirect('/login');
+        }
         $uid = $request->get('id', 0);
         $oldpwd = $request->get('oldpwd', 0);
         $newpwd = $request->get('newpwd', 0);
@@ -120,7 +130,12 @@ class CenterController extends Controller
      */
     public function changeInfo(Request $request)
     {
-        $this->isLogin($request);
+        $result = $this->isLogin($request);
+        if ($result == 1002) {
+            return ['errorCode' => 2, 'errorMsg' => '登录超时或没有登录，请登录'];
+        } elseif ($result == 1003) {
+            return redirect('/login');
+        }
         $realname = $request->get('realname', '');
         $idcard = $request->get('idcard', '');
         if (strlen($realname) < 0) {
@@ -141,7 +156,12 @@ class CenterController extends Controller
      */
     public function myOrders(Request $request)
     {
-        $this->isLogin($request);
+        $result = $this->isLogin($request);
+        if ($result == 1002) {
+            return ['errorCode' => 2, 'errorMsg' => '登录超时或没有登录，请登录'];
+        } elseif ($result == 1003) {
+            return redirect('/login');
+        }
         $user = session('user');
         $uid = $user['id'];
         $user = User::find($uid);
