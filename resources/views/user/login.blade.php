@@ -214,7 +214,11 @@
                         },
                         success:function (data) {
                             if (data.errCode) {
-                                alert(data.message);
+                                if (data.message.username != undefined){
+                                    alert(data.message.username);
+                                } else {
+                                    alert(data.message);
+                                }
                             } else {
                                 alert(data.message);
                                 window.location.href = document.referrer;
