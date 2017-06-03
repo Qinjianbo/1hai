@@ -207,7 +207,11 @@
                             dataType:'json',
                             success:function (data) {
                                 if (data.errCode) {
-                                    alert(data.message);
+                                    if (data.message.username != undefined) {
+                                        alert(data.message.username);
+                                    } else {
+                                        alert(data.message);
+                                    }
                                 } else {
                                     alert("注册成功");
                                     window.location.href="/";
