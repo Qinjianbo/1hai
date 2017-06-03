@@ -73,14 +73,14 @@
                                        onblur="checkPassword(this)" placeholder="请输入密码" type="password" value="">
                             </p>
                             <i class="error-msg" id="txtPassword-error-msg"></i>
-                            <p class="panel-captcha">
-                                验证码
-                                <input id="txtcaptcha" name="Captcha" autocomplete="off" class="input-code"
-                                       maxlength="5" type="text" onblur="checkCaptcha(this)">
-                                <span class="ident-code">
-											<img id="imgCaptcha" title="换一张" src="/captcha" onclick="reloadCaptcha(this)">
-										</span>
-                            </p>
+                            {{--<p class="panel-captcha">--}}
+                                {{--验证码--}}
+                                {{--<input id="txtcaptcha" name="Captcha" autocomplete="off" class="input-code"--}}
+                                       {{--maxlength="5" type="text" onblur="checkCaptcha(this)">--}}
+                                {{--<span class="ident-code">--}}
+											{{--<img id="imgCaptcha" title="换一张" src="/captcha" onclick="reloadCaptcha(this)">--}}
+										{{--</span>--}}
+                            {{--</p>--}}
                             <i class="error-msg" id="txtcaptcha-error-msg"></i>
                             <div class="error-msg">
                             </div>
@@ -103,7 +103,7 @@
                                 <input id="MobilePhoneNo" name="" autocomplete="off" class="" maxlength="15"
                                        placeholder="请输入手机号" type="text">
                             </p>
-                            <p class="quick-check" style="display:block;" id="quick_Captcha">
+                            <!--<p class="quick-check" style="display:block;" id="quick_Captcha">
                                 验证码
                                 <input id="quick_txtcaptcha" name="Captcha" autocomplete="off" class="quick-code"
                                        maxlength="4" type="text" placeholder="请输入验证码">
@@ -111,15 +111,15 @@
 											<img id="quick_imgCaptcha" title="换一张" src=""
                                                  style="width: 99px; height: 33px; margin-left: 5px; vertical-align: middle;">
 										</span>
-                            </p>
-                            <p class="quick-check">
+                            </p>-->
+                            <!--<p class="quick-check">
                                 校验码
                                 <input id="phoneCode" name="" autocomplete="off" class="quick-code" maxlength="6"
                                        placeholder="请输入您的图形验证码" type="text">
                                 <input id="J_quickcode" type="button" class="quick-codebtn" value="获取校验码">
                             </p>
                             <p class="login-error">
-                            </p>
+                            </p>-->
                             <div class="login-btn">
                                 <a href="javascript:void(0)" title="登录" id="quick_ahrLogin">
                                     登录
@@ -202,10 +202,8 @@
     ahrLogin.click(function () {
         var txtLoginName = document.getElementById("txtLoginName");
         var txtPassword = document.getElementById("txtPassword");
-        var txtcaptcha = document.getElementById("txtcaptcha");
         if (checkMobile(txtLoginName)) {
             if (checkPassword(txtPassword)) {
-                if (checkCaptcha(txtcaptcha)) {
                     $.ajax({
                         url:"/user/login",
                         type:"post",
@@ -213,7 +211,6 @@
                         data:{
                             username:trim(txtLoginName.value),
                             password:trim(txtPassword.value),
-                            captcha:trim(txtcaptcha.value)
                         },
                         success:function (data) {
                             if (data.errCode) {
@@ -227,9 +224,6 @@
                             alert("请检查网络后重试");
                         }
                     });
-                } else {
-                    txtcaptcha.focus();
-                }
             } else {
                 txtPassword.focus();
             }

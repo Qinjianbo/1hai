@@ -187,8 +187,9 @@
 }
 
 .login-btm {
-    width: 355px;
-    height: 55px;
+    width: 320px;
+    height: 40px;
+    margin-top:5px;
     background: #F5F5F5;
     border-top: 1px dotted #ccc;
     padding-top: 5px;

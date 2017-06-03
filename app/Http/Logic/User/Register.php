@@ -19,6 +19,9 @@ class Register
         $userModel->username = $request->input('username');
         $userModel->password = $request->input('password');
         $userModel->realname = $request->input('realname');
+        $userModel->created_at = time();
+        $userModel->updated_at = time();
+        $userModel->enabled = 1;
         if ($userModel->save()) {
             return true;
         } else {

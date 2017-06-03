@@ -60,19 +60,19 @@
                         <i id="PhoneNumber-error-msg" class="error-msg">
                         </i>
                     </div>
-                    <div class="reg-li">
-								<span>
-									图片验证码 :
-								</span>
-                        <input class="input-imgcode" id="txtCaptcha" maxlength="5" name="ImgCode"
-                               placeholder="请输入您的图形验证码" type="text" value="" onblur="checkCaptcha(this)">
-                        <img class="imgCaptcha" id="imgCaptcha" src="/captcha" onclick="reloadCaptcha(this)">
-                        <em>
-                            *
-                        </em>
-                        <i id="txtCaptcha-error-msg" class="error-msg">
-                        </i>
-                    </div>
+                    {{--<div class="reg-li">--}}
+								{{--<span>--}}
+									{{--图片验证码 :--}}
+								{{--</span>--}}
+                        {{--<input class="input-imgcode" id="txtCaptcha" maxlength="5" name="ImgCode"--}}
+                               {{--placeholder="请输入您的图形验证码" type="text" value="" onblur="checkCaptcha(this)">--}}
+                        {{--<img class="imgCaptcha" id="imgCaptcha" src="/captcha" onclick="reloadCaptcha(this)">--}}
+                        {{--<em>--}}
+                            {{--*--}}
+                        {{--</em>--}}
+                        {{--<i id="txtCaptcha-error-msg" class="error-msg">--}}
+                        {{--</i>--}}
+                    {{--</div>--}}
                     <div class="reg-li clear_float">
 								<span>
 									设置密码 :
@@ -192,18 +192,15 @@
     btnSubmit.onclick = function () {
         var TrueName = document.getElementById("TrueName");
         var PhoneNumber = document.getElementById("PhoneNumber");
-        var txtCaptcha = document.getElementById("txtCaptcha");
         var password = document.getElementById("password");
         if (checkTrueName(TrueName)) {
             if (checkMobile(PhoneNumber)) {
-                if (checkCaptcha(txtCaptcha)) {
                     if (checkPassword(password)) {
                         $.ajax({
                             url:"/api/user/reg",
                             type:"post",
                             data:{
                                 username:trim(PhoneNumber.value),
-                                captcha:trim(txtCaptcha.value),
                                 password:trim(password.value),
                                 realname:trim(TrueName.value)
                             },
@@ -213,7 +210,7 @@
                                     alert(data.message);
                                 } else {
                                     alert("注册成功");
-                                    window.location.href="/login";
+                                    window.location.href="/";
                                 }
                             },
                             error:function (data) {
@@ -223,9 +220,6 @@
                     } else {
                         password.focus();
                     }
-                } else {
-                    txtCaptcha.focus();
-                }
             } else {
                 PhoneNumber.focus();
             }
