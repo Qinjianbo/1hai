@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>首页</title>
+		<title>联系我们</title>
 		<link rel="stylesheet" href="/css/libs/bootstrap.min.css">
 		<link rel="stylesheet" href="/css/index/public.css" />
 		<link rel="stylesheet" href="/css/index/index.css" />

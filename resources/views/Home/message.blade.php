@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>shouye</title>
+		<title>精彩提问</title>
 		<link rel="stylesheet" href="/css/car/car.css" />
 		<link rel="stylesheet" href="/css/index/index.css" />
 		<link rel="stylesheet" href="/css/index/public.css" />
